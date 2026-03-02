@@ -19,7 +19,9 @@ import {
   Target,
   ShieldCheck,
   Briefcase,
-  Workflow
+  Workflow,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 const App = () => {
@@ -30,6 +32,89 @@ const App = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeJourneyStep, setActiveJourneyStep] = useState(11); 
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  // --- THEME DEFINITIONS ---
+  const themes = {
+    dark: {
+      bg: 'bg-zinc-950',
+      text: 'text-zinc-400',
+      heading: 'text-zinc-100',
+      subheading: 'text-zinc-300',
+      muted: 'text-zinc-500',
+      mutedExtra: 'text-zinc-600',
+      navBg: 'bg-zinc-900/60',
+      cardBg: 'bg-zinc-900/40',
+      cardBorder: 'border-white/5',
+      cardHover: 'hover:border-orange-500/20',
+      innerBg: 'bg-zinc-900',
+      itemBg: 'bg-zinc-950',
+      itemBorder: 'border-zinc-800',
+      accentText: 'text-orange-500',
+      accentTextHover: 'hover:text-orange-400',
+      accentBg: 'bg-orange-600',
+      accentHover: 'hover:bg-orange-500',
+      accentBorder: 'border-orange-600/50',
+      accentBorderHover: 'hover:border-orange-500',
+      accentRing: 'ring-orange-500/20',
+      navHover: 'hover:text-white',
+      tabActive: 'bg-zinc-800 text-zinc-100',
+      tabInactive: 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50',
+      modalBg: 'bg-black/95',
+      modalBgAlt: 'bg-black/90',
+      modalCardBg: 'bg-zinc-950',
+      modalBorder: 'border-white/10',
+      statsBg: 'bg-zinc-900/50',
+      sectionBg: 'bg-zinc-900/10',
+      sectionBgAlt: 'bg-zinc-900/20',
+      glowPrimary: 'bg-orange-600/10',
+      glowSecondary: 'bg-orange-900/10',
+      logoGradient: 'from-orange-600 to-orange-700',
+      selection: 'selection:bg-orange-600/30',
+      imgFilter: 'grayscale brightness-90',
+      iconBg: 'bg-zinc-950'
+    },
+    light: {
+      bg: 'bg-slate-50',
+      text: 'text-slate-800',
+      heading: 'text-slate-950',
+      subheading: 'text-slate-900',
+      muted: 'text-slate-700',
+      mutedExtra: 'text-slate-600',
+      navBg: 'bg-white/70',
+      cardBg: 'bg-white/40',
+      cardBorder: 'border-slate-200',
+      cardHover: 'hover:border-blue-500/30',
+      innerBg: 'bg-slate-100',
+      itemBg: 'bg-white',
+      itemBorder: 'border-slate-200',
+      accentText: 'text-blue-600',
+      accentTextHover: 'hover:text-blue-700',
+      accentBg: 'bg-blue-600',
+      accentHover: 'hover:bg-blue-700',
+      accentBorder: 'border-blue-600/50',
+      accentBorderHover: 'hover:border-blue-600',
+      accentRing: 'ring-blue-500/30',
+      navHover: 'hover:text-blue-600',
+      tabActive: 'bg-blue-600 text-white shadow-lg shadow-blue-500/20',
+      tabInactive: 'text-slate-500 hover:text-slate-700 hover:bg-slate-200',
+      modalBg: 'bg-white/95',
+      modalBgAlt: 'bg-white/90',
+      modalCardBg: 'bg-white',
+      modalBorder: 'border-slate-200',
+      statsBg: 'bg-white/60',
+      sectionBg: 'bg-slate-100/50',
+      sectionBgAlt: 'bg-slate-200/20',
+      glowPrimary: 'bg-blue-600/10',
+      glowSecondary: 'bg-blue-900/05',
+      logoGradient: 'from-blue-600 to-blue-700',
+      selection: 'selection:bg-blue-600/30',
+      imgFilter: 'grayscale brightness-105',
+      iconBg: 'bg-white'
+    }
+  };
+
+  const t = isDarkMode ? themes.dark : themes.light;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -296,27 +381,33 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-400 font-sans selection:bg-orange-600/30">
+    <div className={`min-h-screen ${t.bg} ${t.text} font-sans ${t.selection}`}>
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-orange-600/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-orange-900/10 blur-[120px] rounded-full" />
+        <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] ${t.glowPrimary} blur-[120px] rounded-full`} />
+        <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] ${t.glowSecondary} blur-[120px] rounded-full`} />
       </div>
 
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'py-4' : 'py-6'}`}>
         <div className="max-w-5xl mx-auto px-6 text-left">
-          <div className="bg-zinc-900/60 backdrop-blur-xl border border-white/5 rounded-full px-6 py-3 flex justify-between items-center shadow-2xl">
+          <div className={`${t.navBg} backdrop-blur-xl border ${t.cardBorder} rounded-full px-6 py-3 flex justify-between items-center shadow-2xl`}>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-tr from-orange-600 to-orange-700 rounded-lg flex items-center justify-center text-white font-black text-xs">NL</div>
-              <span className="font-bold text-zinc-100 tracking-tight text-sm uppercase">{heroData.h1}</span>
+              <div className={`w-8 h-8 bg-gradient-to-tr ${t.logoGradient} rounded-lg flex items-center justify-center text-white font-black text-xs`}>NL</div>
+              <span className={`font-bold ${t.heading} tracking-tight text-sm uppercase`}>{heroData.h1}</span>
             </div>
             <div className="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-widest">
-              <a href="#journey" className="hover:text-white transition-colors">Journey</a>
-              <a href="#work" className="hover:text-white transition-colors">Impact</a>
-              <a href="#skills" className="hover:text-white transition-colors">Skills</a>
-              <a href="#foundations" className="hover:text-white transition-colors">Foundations</a>
-              <button onClick={() => setIsResumeOpen(true)} className="bg-orange-600 text-white px-4 py-2 rounded-full hover:bg-orange-500 transition-all flex items-center gap-2 font-black shadow-lg">Resume</button>
+              <a href="#journey" className={`transition-colors ${t.navHover}`}>Journey</a>
+              <a href="#work" className={`transition-colors ${t.navHover}`}>Impact</a>
+              <a href="#skills" className={`transition-colors ${t.navHover}`}>Skills</a>
+              <a href="#foundations" className={`transition-colors ${t.navHover}`}>Foundations</a>
+              <button onClick={() => setIsResumeOpen(true)} className={`${t.accentBg} text-white px-4 py-2 rounded-full ${t.accentHover} transition-all flex items-center gap-2 font-black shadow-lg`}>Resume</button>
+              <button 
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className={`p-2 ${t.innerBg} border ${t.cardBorder} rounded-full transition-all ${t.muted} hover:${t.accentText} ${t.accentBorderHover} shadow-xl active:scale-90`}
+              >
+                {isDarkMode ? <Moon size={18} /> : <Sun size={18} />}
+              </button>
             </div>
-            <button className="md:hidden text-zinc-100" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button className={`md:hidden ${t.heading}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
@@ -327,37 +418,37 @@ const App = () => {
       <section className="relative pt-32 pb-8 px-6 text-left">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
           <div className="flex-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[10px] font-bold uppercase tracking-[0.2em] text-orange-500 mb-6">
+            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full ${t.innerBg} border ${t.itemBorder} text-[10px] font-bold uppercase tracking-[0.2em] ${t.accentText} mb-6`}>
               <Sparkles size={12} /> Strategic Ops & MarTech Leadership
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-zinc-100 mb-6 tracking-tighter leading-none">{heroData.h1}</h1>
-            <h2 className="text-xl md:text-3xl font-medium text-zinc-300 mb-8 leading-tight">{heroData.h2}</h2>
-            <p className="text-base text-zinc-500 mb-8 max-w-2xl leading-relaxed">{heroData.body}</p>
+            <h1 className={`text-5xl md:text-7xl font-bold ${t.heading} mb-6 tracking-tighter leading-none`}>{heroData.h1}</h1>
+            <h2 className={`text-xl md:text-3xl font-medium ${t.subheading} mb-8 leading-tight`}>{heroData.h2}</h2>
+            <p className={`text-base ${t.muted} mb-8 max-w-2xl leading-relaxed`}>{heroData.body}</p>
             <div className="flex flex-wrap gap-2 mb-8">
               {heroData.roleTags.map((tag, i) => (
-                <div key={i} className="px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[10px] font-bold text-zinc-500 uppercase tracking-widest">{tag}</div>
+                <div key={i} className={`px-3 py-1 ${t.innerBg} border ${t.itemBorder} rounded-full text-[10px] font-bold ${t.muted} uppercase tracking-widest`}>{tag}</div>
               ))}
             </div>
-            <a href="#work" className="inline-flex items-center h-12 px-6 bg-orange-600 text-white rounded-xl font-bold gap-2 hover:bg-orange-500 transition-all shadow-lg active:scale-95">
+            <a href="#work" className={`inline-flex items-center h-12 px-6 ${t.accentBg} text-white rounded-xl font-bold gap-2 ${t.accentHover} transition-all shadow-lg active:scale-95`}>
               Explore Impact <ArrowRight size={18} />
             </a>
           </div>
-          <div className="flex-1 w-full max-w-sm relative group">
-            <div className="absolute -inset-2 bg-gradient-to-tr from-orange-600 to-orange-900 rounded-[3.5rem] blur opacity-20 group-hover:opacity-40 transition duration-700"></div>
-            <div className="relative aspect-[4/5] w-full bg-zinc-900 border border-white/10 rounded-[3.5rem] overflow-hidden shadow-2xl">
-              <img src={heroData.imageUrl} alt="Nick" className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"; }} />
+          <div className="flex-1 w-full max-sm relative group">
+            <div className={`absolute -inset-2 bg-gradient-to-tr ${t.logoGradient} rounded-[3.5rem] blur opacity-20 group-hover:opacity-40 transition duration-700`}></div>
+            <div className={`relative aspect-[4/5] w-full ${t.innerBg} border ${t.modalBorder} rounded-[3.5rem] overflow-hidden shadow-2xl`}>
+              <img src={heroData.imageUrl} alt="Nick" className={`w-full h-full object-cover transition-all duration-700 ${t.imgFilter} group-hover:grayscale-0`} onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"; }} />
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-10 px-6">
+      <section className="py-10 px-6 text-left">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
           {stats.map((stat, i) => (
-            <div key={i} className="p-4 bg-zinc-900/50 border border-white/5 rounded-2xl backdrop-blur-sm group hover:border-orange-500/30 transition-all">
-              <div className="text-xl font-bold text-zinc-100 mb-1 group-hover:text-orange-500 transition-colors">{stat.value}</div>
-              <div className="text-[9px] uppercase tracking-widest font-black text-zinc-600 group-hover:text-zinc-400">{stat.label}</div>
+            <div key={i} className={`p-4 ${t.statsBg} border ${t.cardBorder} rounded-2xl backdrop-blur-sm ${t.cardHover} transition-all group`}>
+              <div className={`text-xl font-bold ${t.heading} mb-1 group-hover:${t.accentText} transition-colors`}>{stat.value}</div>
+              <div className={`text-[10px] font-bold ${t.mutedExtra} group-hover:${t.text}`}>{stat.label}</div>
             </div>
           ))}
         </div>
@@ -367,30 +458,30 @@ const App = () => {
       <section id="journey" className="py-12 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-10 text-left">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-2 tracking-tight uppercase">Strategic Journey</h2>
-            <p className="text-zinc-500 text-sm italic">Enterprise evolution and technical pivot.</p>
+            <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Strategic Journey</h2>
+            <p className={`${t.muted} text-sm italic`}>Enterprise evolution and technical pivot.</p>
           </div>
-          <div className="relative flex flex-col md:flex-row gap-8 text-left">
+          <div className="relative flex flex-col md:flex-row md:items-center gap-8 text-left">
             <div className="relative w-12 shrink-0 flex justify-center">
-                <div className="absolute top-0 bottom-0 w-px bg-zinc-800" />
+                <div className={`absolute top-0 bottom-0 w-px ${t.itemBorder}`} />
                 <div className="relative h-full flex flex-col justify-between py-2">
                     {journeyPoints.map((point, i) => (
-                        <button key={i} onClick={() => setActiveJourneyStep(i)} className={`group relative z-10 w-8 h-8 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${activeJourneyStep === i ? 'bg-orange-600 border-orange-500 scale-110 shadow-lg' : 'bg-zinc-950 border-zinc-800 hover:border-zinc-500'}`}>
-                            <div className={`text-[8px] font-black ${activeJourneyStep === i ? 'text-white' : 'text-zinc-600'}`}>{point.year.slice(-2)}</div>
+                        <button key={i} onClick={() => setActiveJourneyStep(i)} className={`group relative z-10 w-8 h-8 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${activeJourneyStep === i ? `${t.accentBg} ${t.accentRing} border-transparent scale-110 shadow-lg` : `${t.bg} ${t.itemBorder} hover:border-zinc-500`}`}>
+                            <div className={`text-[8px] font-black ${activeJourneyStep === i ? 'text-white' : t.mutedExtra}`}>{point.year.slice(-2)}</div>
                         </button>
                     ))}
                 </div>
             </div>
             <div className="flex-1">
-                <div className="sticky top-24 p-8 bg-zinc-900/40 border border-white/5 rounded-[2.5rem] shadow-xl min-h-[240px] flex flex-col justify-center">
+                <div className={`sticky top-24 p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2.5rem] shadow-xl min-h-[240px] flex flex-col justify-center`}>
                     <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-12 bg-zinc-950 border border-zinc-800 rounded-xl flex items-center justify-center text-orange-500">{journeyPoints[activeJourneyStep].icon}</div>
+                        <div className={`w-12 h-12 ${t.bg} border ${t.itemBorder} rounded-xl flex items-center justify-center ${t.accentText}`}>{journeyPoints[activeJourneyStep].icon}</div>
                         <div>
-                            <div className="text-orange-500 font-black uppercase tracking-[0.2em] text-[9px] mb-1">{journeyPoints[activeJourneyStep].year} Milestone</div>
-                            <h3 className="text-2xl font-bold text-zinc-100 tracking-tight">{journeyPoints[activeJourneyStep].title}</h3>
+                            <div className={`${t.accentText} font-black uppercase tracking-[0.2em] text-[9px] mb-1`}>{journeyPoints[activeJourneyStep].year} Milestone</div>
+                            <h3 className={`text-2xl font-bold ${t.heading} tracking-tight`}>{journeyPoints[activeJourneyStep].title}</h3>
                         </div>
                     </div>
-                    <p className="text-zinc-400 text-base leading-relaxed border-l-2 border-orange-600/50 pl-6 italic">&quot;{journeyPoints[activeJourneyStep].desc}&quot;</p>
+                    <p className={`${t.text} text-base leading-relaxed border-l-2 ${t.accentBorder} pl-6 italic`}>&quot;{journeyPoints[activeJourneyStep].desc}&quot;</p>
                 </div>
             </div>
           </div>
@@ -398,39 +489,39 @@ const App = () => {
       </section>
 
       {/* Experience & Impact Section */}
-      <section id="work" className="py-12 px-6 bg-zinc-900/20">
+      <section id="work" className={`py-12 px-6 ${t.statsBg}`}>
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6 text-left">
             <div>
-              <h2 className="text-3xl font-bold text-zinc-100 mb-2 tracking-tight uppercase">Experience & Impact</h2>
-              <p className="text-zinc-500 text-sm italic">Systems architecture with measurable value.</p>
+              <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Experience & Impact</h2>
+              <p className={`${t.muted} text-sm italic`}>Systems architecture with measurable value.</p>
             </div>
-            <div className="flex gap-2 p-1 bg-zinc-900 border border-zinc-800 rounded-xl">
+            <div className={`flex flex-wrap gap-2 p-1 ${t.innerBg} border ${t.itemBorder} rounded-xl`}>
               {["All", "Product", "Design / UX", "AI / Automation"].map(f => (
-                <button key={f} onClick={() => setActiveFilter(f)} className={`px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-tight transition-all active:scale-95 ${activeFilter === f ? 'bg-zinc-800 text-white shadow-md' : 'text-zinc-500 hover:text-zinc-300'}`}>{f}</button>
+                <button key={f} onClick={() => setActiveFilter(f)} className={`px-4 py-2 rounded-lg text-[10px] font-bold tracking-tight transition-all active:scale-95 ${activeFilter === f ? t.tabActive : t.tabInactive}`}>{f}</button>
               ))}
             </div>
           </div>
           <div className="grid gap-8">
             {filteredStudies.map((study) => (
-              <div key={study.id} className="relative bg-zinc-900/40 border border-white/5 rounded-[2.5rem] overflow-hidden p-8 text-left">
+              <div key={study.id} className={`relative ${t.cardBg} border ${t.cardBorder} ${t.cardHover} rounded-[2.5rem] overflow-hidden p-8 text-left transition-all`}>
                 <div className="flex justify-between items-start mb-6">
-                  <div className="bg-zinc-950 text-orange-500 rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border border-zinc-800">{study.subtitle}</div>
-                  <button onClick={() => setSelectedCaseStudy(study)} className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 rounded-xl group/btn hover:border-orange-500 transition-all active:scale-95">
-                    <ArrowRight size={18} className="text-zinc-400 group-hover/btn:text-orange-500 transition-all" />
+                  <div className={`${t.itemBg} ${t.accentText} rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder}`}>{study.subtitle}</div>
+                  <button onClick={() => setSelectedCaseStudy(study)} className={`w-10 h-10 flex items-center justify-center ${t.innerBg} border ${t.itemBorder} rounded-xl group/btn ${t.accentBorderHover} transition-all active:scale-95`}>
+                    <ArrowRight size={18} className={`${t.text} group-hover/btn:${t.accentText} transition-all`} />
                   </button>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-8">
                   <div className="flex-1">
-                    <h3 className="text-2xl md:text-4xl font-bold text-zinc-100 mb-4 tracking-tight leading-tight">{study.title}</h3>
-                    <p className="text-zinc-300 text-base font-medium border-l-2 border-orange-600 pl-6 italic mb-8">{study.bluf}</p>
+                    <h3 className={`text-2xl md:text-4xl font-bold ${t.heading} mb-4 tracking-tight leading-tight`}>{study.title}</h3>
+                    <p className={`${t.subheading} text-base font-medium border-l-2 ${t.accentBorder} pl-6 italic mb-8`}>{study.bluf}</p>
                   </div>
                   <div className="w-full md:w-40 shrink-0">
-                    <div className="p-4 bg-zinc-950 border border-zinc-800 rounded-2xl space-y-4">
+                    <div className={`p-4 ${t.itemBg} border ${t.itemBorder} rounded-2xl space-y-4`}>
                         {study.results.map((r, i) => (
                           <div key={i} className="text-center border-b border-white/5 pb-2 last:border-0 last:pb-0">
-                            <div className="text-[8px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
-                            <div className="text-lg font-bold text-zinc-100">{r.outcome}</div>
+                            <div className="text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
+                            <div className={`text-2xl font-bold ${t.heading}`}>{r.outcome}</div>
                           </div>
                         ))}
                     </div>
@@ -438,12 +529,12 @@ const App = () => {
                 </div>
                 <div className="grid md:grid-cols-2 gap-8 text-sm">
                   <section>
-                    <div className="text-[9px] font-black text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-2"><Target size={12} className="text-orange-500" /> Strategic Need (The Why)</div>
-                    <p className="text-zinc-300 leading-relaxed">{study.why}</p>
+                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Target size={12} className={t.accentText} /> Strategic Need (The Why)</div>
+                    <p className={`${t.subheading} leading-relaxed`}>{study.why}</p>
                   </section>
                   <section>
-                    <div className="text-[9px] font-black text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-2"><Workflow size={12} className="text-orange-500" /> Method of Delivery (The How)</div>
-                    <p className="text-zinc-300 leading-relaxed">{study.how}</p>
+                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Workflow size={12} className={t.accentText} /> Method of Delivery (The How)</div>
+                    <p className={`${t.subheading} leading-relaxed`}>{study.how}</p>
                   </section>
                 </div>
               </div>
@@ -455,34 +546,34 @@ const App = () => {
       {/* Skills & Tools Section */}
       <section id="skills" className="py-12 px-6">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-zinc-100 mb-10 tracking-tight uppercase text-left">Skills & Tools</h2>
+          <h2 className={`text-3xl font-bold ${t.heading} mb-10 tracking-tight uppercase text-left`}>Skills & Tools</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             {/* Professional Tenure Featured Card */}
-            <div className="md:col-span-2 p-8 bg-zinc-900/40 border border-white/5 rounded-[2rem] hover:border-orange-500/20 transition-all">
+            <div className={`md:col-span-2 p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] ${t.cardHover} transition-all`}>
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-10 h-10 bg-zinc-950 border border-white/5 rounded-xl flex items-center justify-center text-orange-500 shadow-inner"><Briefcase size={18} /></div>
-                  <h3 className="text-xl font-black text-zinc-100 uppercase tracking-widest">{skillGroups[0].group}</h3>
+                  <div className={`w-10 h-10 ${t.itemBg} border ${t.cardBorder} rounded-xl flex items-center justify-center ${t.accentText} shadow-inner`}><Briefcase size={18} /></div>
+                  <h3 className={`text-xl font-black ${t.heading} uppercase tracking-widest`}>{skillGroups[0].group}</h3>
                 </div>
-                <p className="text-zinc-500 text-sm leading-relaxed mb-6">{skillGroups[0].description}</p>
+                <p className={`${t.muted} text-sm leading-relaxed mb-6`}>{skillGroups[0].description}</p>
                 <div className="flex flex-wrap gap-2">
                   {skillGroups[0].items.map((item, iIdx) => (
-                    <button key={iIdx} onClick={() => setSelectedSkill(item)} className="px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight bg-zinc-950 border border-zinc-800 text-zinc-100 hover:border-orange-500 transition-all shadow-md active:scale-95">{item.name}</button>
+                    <button key={iIdx} onClick={() => setSelectedSkill(item)} className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight ${t.itemBg} border ${t.itemBorder} ${t.heading} hover:${t.accentText} hover:${t.accentBorder.replace('/50', '')} transition-all shadow-md active:scale-95`}>{item.name}</button>
                   ))}
                 </div>
             </div>
             {/* Grid Skills Cards */}
             {skillGroups.slice(1).map((group, gIdx) => (
-              <div key={gIdx} className="p-8 bg-zinc-900/40 border border-white/5 rounded-[2rem] hover:border-orange-500/20 transition-all">
+              <div key={gIdx} className={`p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] ${t.cardHover} transition-all`}>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 bg-zinc-950 border border-white/5 rounded-xl flex items-center justify-center text-orange-500 shadow-inner">
+                    <div className={`w-10 h-10 ${t.itemBg} border ${t.cardBorder} rounded-xl flex items-center justify-center ${t.accentText} shadow-inner`}>
                       {renderIcon(group.icon, 18)}
                     </div>
-                    <h3 className="text-lg font-black text-zinc-100 uppercase tracking-widest">{group.group}</h3>
+                    <h3 className={`text-lg font-black ${t.heading} uppercase tracking-widest`}>{group.group}</h3>
                   </div>
-                  <p className="text-zinc-500 text-[13px] leading-relaxed mb-6">{group.description || "Core toolset for enterprise project delivery."}</p>
+                  <p className={`${t.muted} text-[13px] leading-relaxed mb-6`}>{group.description || "Core toolset for enterprise project delivery."}</p>
                   <div className="flex flex-wrap gap-2">
                     {group.items.map((item, iIdx) => (
-                      <button key={iIdx} onClick={() => setSelectedSkill(item)} className="px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight bg-zinc-950 border border-zinc-800 text-zinc-100 hover:border-orange-500 transition-all shadow-md active:scale-95">{item.name}</button>
+                      <button key={iIdx} onClick={() => setSelectedSkill(item)} className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight ${t.itemBg} border ${t.itemBorder} ${t.heading} hover:${t.accentText} hover:${t.accentBorder.replace('/50', '')} transition-all shadow-md active:scale-95`}>{item.name}</button>
                     ))}
                   </div>
               </div>
@@ -492,22 +583,22 @@ const App = () => {
       </section>
 
       {/* Foundations Section */}
-      <section id="foundations" className="py-10 px-6 bg-zinc-900/10">
+      <section id="foundations" className={`py-10 px-6 ${t.sectionBg}`}>
         <div className="max-w-5xl mx-auto text-left">
-          <h2 className="text-3xl font-bold text-zinc-100 mb-8 tracking-tight uppercase">Foundations</h2>
-          <div className="flex items-center gap-3 text-orange-500 mb-6 font-black uppercase tracking-widest text-[10px]"><BookOpen size={14} /> Education & Credentials</div>
-          <div className="space-y-6 border-l border-zinc-800 pl-6">
+          <h2 className={`text-3xl font-bold ${t.heading} mb-8 tracking-tight uppercase`}>Foundations</h2>
+          <div className={`flex items-center gap-3 ${t.accentText} mb-6 font-black uppercase tracking-widest text-[10px]`}><BookOpen size={14} /> Education & Credentials</div>
+          <div className={`space-y-6 border-l ${t.itemBorder} pl-6`}>
             {resumeData.education.map((edu, idx) => (
-              <div key={idx}><div className="text-zinc-100 font-bold tracking-tight text-sm">{edu.institution}</div><div className="text-zinc-500 text-xs">{edu.degree}</div></div>
+              <div key={idx}><div className={`${t.heading} font-bold tracking-tight text-sm`}>{edu.institution}</div><div className={`${t.muted} text-xs`}>{edu.degree}</div></div>
             ))}
           </div>
 
           {resumeData.certifications && (
             <>
-              <div className="flex items-center gap-3 text-orange-500 mb-6 mt-12 font-black uppercase tracking-widest text-[10px]"><ShieldCheck size={14} /> Certifications</div>
-              <div className="space-y-6 border-l border-zinc-800 pl-6">
+              <div className={`flex items-center gap-3 ${t.accentText} mb-6 mt-12 font-black uppercase tracking-widest text-[10px]`}><ShieldCheck size={14} /> Certifications</div>
+              <div className={`space-y-6 border-l ${t.itemBorder} pl-6`}>
                 {resumeData.certifications.map((cert, idx) => (
-                  <div key={idx}><div className="text-zinc-100 font-bold tracking-tight text-sm">{cert.name}</div><div className="text-zinc-500 text-xs">{cert.issuer}</div></div>
+                  <div key={idx}><div className={`${t.heading} font-bold tracking-tight text-sm`}>{cert.name}</div><div className={`${t.muted} text-xs`}>{cert.issuer}</div></div>
                 ))}
               </div>
             </>
@@ -516,14 +607,14 @@ const App = () => {
       </section>
 
       {/* Honors Section */}
-      <section id="honors" className="py-10 px-6 border-t border-white/5">
+      <section id="honors" className={`py-10 px-6 border-t ${t.cardBorder}`}>
         <div className="max-w-5xl mx-auto text-left">
-          <div className="flex items-center gap-3 text-orange-500 mb-8 font-black uppercase tracking-widest text-[10px]"><Award size={16} /> Key Honors</div>
+          <div className={`flex items-center gap-3 ${t.accentText} mb-8 font-black uppercase tracking-widest text-[10px]`}><Award size={16} /> Key Honors</div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {resumeData.awards.map((award, idx) => (
-                <div key={idx} className="p-8 bg-zinc-900/50 rounded-3xl border border-white/5 group hover:border-orange-500/20 transition-all">
-                    <div className="text-zinc-100 font-bold text-sm tracking-tight mb-2">{award.name}</div>
-                    <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest">{award.issuer}</div>
+                <div key={idx} className={`p-8 ${t.statsBg} rounded-3xl border ${t.cardBorder} ${t.cardHover} group transition-all`}>
+                    <div className={`${t.heading} font-bold text-sm tracking-tight mb-2`}>{award.name}</div>
+                    <div className={`${t.mutedExtra} text-[11px] font-medium`}>{award.issuer}</div>
                 </div>
             ))}
           </div>
@@ -531,14 +622,14 @@ const App = () => {
       </section>
 
       {/* Languages Section */}
-      <section id="languages" className="py-10 px-6 bg-zinc-900/10">
+      <section id="languages" className={`py-10 px-6 ${t.sectionBg}`}>
         <div className="max-w-5xl mx-auto text-left">
-          <div className="flex items-center gap-3 text-orange-500 mb-8 font-black uppercase tracking-widest text-[10px]"><Globe size={16} /> Languages</div>
+          <div className={`flex items-center gap-3 ${t.accentText} mb-8 font-black uppercase tracking-widest text-[10px]`}><Globe size={16} /> Languages</div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {resumeData.languages.map((lang, idx) => (
-              <div key={idx} className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5 group hover:border-orange-500/20 transition-all text-left">
-                <div className="text-zinc-100 font-bold text-sm tracking-tight mb-1">{lang.name}</div>
-                <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest">{lang.level}</div>
+              <div key={idx} className={`p-6 ${t.statsBg} rounded-2xl border ${t.cardBorder} ${t.cardHover} group transition-all text-left`}>
+                <div className={`${t.heading} font-bold text-sm tracking-tight mb-1`}>{lang.name}</div>
+                <div className={`${t.mutedExtra} text-[11px] font-medium`}>{lang.level}</div>
               </div>
             ))}
           </div>
@@ -546,53 +637,53 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="pt-20 pb-8 px-6 border-t border-white/5 bg-zinc-950">
+      <footer id="contact" className={`pt-20 pb-8 px-6 border-t ${t.cardBorder} ${t.bg}`}>
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-12 mb-12">
             <div className="text-left">
-              <h2 className="text-4xl md:text-6xl font-bold text-zinc-100 mb-6 tracking-tighter uppercase">Connect</h2>
+              <h2 className={`text-4xl md:text-6xl font-bold ${t.heading} mb-6 tracking-tighter uppercase`}>Connect</h2>
               <div className="flex gap-4">
-                <a href="mailto:leblancn876@gmail.com" className="h-12 px-6 bg-orange-600 text-white rounded-xl font-bold flex items-center gap-2 hover:bg-orange-500 transition-all shadow-lg active:scale-95"><Mail size={16} /> Get in touch</a>
-                <a href="https://linkedin.com/in/leblancns07" target="_blank" rel="noreferrer" className="h-12 w-12 border border-zinc-800 rounded-xl flex items-center justify-center hover:bg-zinc-900 transition-all text-zinc-100"><Linkedin size={18} /></a>
+                <a href="mailto:leblancn876@gmail.com" className={`h-12 px-6 ${t.accentBg} text-white rounded-xl font-bold flex items-center gap-2 ${t.accentHover} transition-all shadow-lg active:scale-95`}><Mail size={16} /> Get in touch</a>
+                <a href="https://linkedin.com/in/leblancns07" target="_blank" rel="noreferrer" className={`h-12 w-12 border ${t.itemBorder} rounded-xl flex items-center justify-center ${t.innerBg} transition-all ${t.heading} ${t.accentTextHover} ${t.accentBorderHover}`}><Linkedin size={18} /></a>
               </div>
             </div>
             <div className="md:text-right">
-              <div className="text-zinc-500 text-[9px] uppercase tracking-widest mb-1">Location</div>
-              <div className="text-zinc-100 font-bold uppercase tracking-widest text-base flex items-center gap-2 md:justify-end">Olathe, Kansas <Globe size={16} className="text-orange-500" /></div>
+              <div className={`${t.muted} text-[9px] uppercase tracking-widest mb-1`}>Location</div>
+              <div className={`${t.heading} font-bold uppercase tracking-widest text-base flex items-center gap-2 md:justify-end`}>Olathe, Kansas <Globe size={16} className={t.accentText} /></div>
             </div>
           </div>
-          <div className="pt-8 border-t border-white/5 text-[9px] font-bold uppercase tracking-widest text-zinc-600 text-center md:text-left">© 2026 Nick LeBlanc — Senior Enterprise Leader</div>
+          <div className={`pt-8 border-t ${t.cardBorder} text-[9px] font-bold uppercase tracking-widest ${t.mutedExtra} text-center md:text-left`}>© 2026 Nick LeBlanc — Senior Enterprise Leader</div>
         </div>
       </footer>
 
       {/* Resume Overlay */}
       {isResumeOpen && (
-        <div className="fixed inset-0 z-[110] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4">
-          <div className="bg-zinc-950 w-full max-w-4xl h-[90vh] rounded-[2.5rem] border border-white/10 shadow-2xl flex flex-col overflow-hidden">
-            <div className="p-8 border-b border-white/5 flex justify-between items-center shrink-0 text-left">
-                <div><h2 className="text-2xl font-bold text-zinc-100 tracking-tight">Full Resume</h2><p className="text-orange-500 font-bold text-[9px] uppercase tracking-widest mt-1 text-left">Nick LeBlanc • Systems Architecture & Strategy</p></div>
-                <button onClick={() => setIsResumeOpen(false)} className="p-3 bg-zinc-900 hover:bg-zinc-800 rounded-xl transition-all text-zinc-100 active:scale-95"><X size={18} /></button>
+        <div className={`fixed inset-0 z-[110] ${t.modalBg} backdrop-blur-xl flex items-center justify-center p-4`}>
+          <div className={`${t.modalCardBg} w-full max-w-4xl h-[90vh] rounded-[2.5rem] border ${t.modalBorder} shadow-2xl flex flex-col overflow-hidden`}>
+            <div className={`p-8 border-b ${t.cardBorder} flex justify-between items-center shrink-0 text-left`}>
+                <div><h2 className={`text-2xl font-bold ${t.heading} tracking-tight`}>Full Resume</h2><p className={`${t.accentText} font-bold text-[9px] uppercase tracking-widest mt-1 text-left`}>Nick LeBlanc • Systems Architecture & Strategy</p></div>
+                <button onClick={() => setIsResumeOpen(false)} className={`p-3 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}><X size={18} /></button>
             </div>
             <div className="flex-grow overflow-y-auto p-8 space-y-12 scrollbar-hide text-left">
                 <section>
-                    <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-6 flex items-center gap-2"><Target size={14} className="text-orange-500" /> Executive Summary</div>
-                    <p className="text-lg text-zinc-300 leading-relaxed font-medium border-l-2 border-orange-600 pl-6">&quot;{resumeData.summary}&quot;</p>
+                    <div className={`text-[9px] font-black uppercase tracking-widest ${t.mutedExtra} mb-6 flex items-center gap-2`}><Target size={14} className={t.accentText} /> Executive Summary</div>
+                    <p className={`text-lg ${t.subheading} leading-relaxed font-medium border-l-2 ${t.accentBorder} pl-6`}>&quot;{resumeData.summary}&quot;</p>
                 </section>
                 <section>
-                    <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><Briefcase size={14} className="text-orange-500" /> Experience</div>
+                    <div className={`text-[9px] font-black uppercase tracking-widest ${t.mutedExtra} mb-8 flex items-center gap-2`}><Briefcase size={14} className={t.accentText} /> Experience</div>
                     <div className="space-y-10">
                         {resumeData.experience.map((exp, i) => (
-                            <div key={i} className="group border-l border-zinc-800 pl-6 relative">
-                                <div className="absolute top-0 -left-[5px] w-2.5 h-2.5 rounded-full bg-zinc-800 border-2 border-zinc-950 group-hover:bg-orange-500 transition-colors" />
-                                <h4 className="text-zinc-100 font-bold text-base leading-tight mb-1">{exp.role}</h4>
-                                <div className="text-orange-500 font-bold text-[10px] uppercase mb-4 tracking-widest">{exp.company}</div>
+                            <div key={i} className={`group border-l ${t.itemBorder} pl-6 relative`}>
+                                <div className={`absolute top-0 -left-[5px] w-2.5 h-2.5 rounded-full ${t.itemBorder} border-2 ${t.modalCardBg} group-hover:${t.accentBg} transition-colors`} />
+                                <h4 className={`${t.heading} font-bold text-base leading-tight mb-1`}>{exp.role}</h4>
+                                <div className={`${t.accentText} font-bold text-[10px] uppercase mb-4 tracking-widest`}>{exp.company}</div>
                                 <ul className="space-y-4">
                                     {exp.highlights.map((h, j) => (
-                                        <li key={j} className="text-zinc-400 text-[13px] leading-relaxed flex items-start gap-3">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-orange-600 mt-1.5 shrink-0" /> 
+                                        <li key={j} className={`${t.text} text-[13px] leading-relaxed flex items-start gap-3`}>
+                                            <span className={`w-1.5 h-1.5 rounded-full ${t.accentBg} mt-1.5 shrink-0`} /> 
                                             <div>
-                                              <strong className="text-zinc-100 block mb-1 uppercase tracking-tight text-[11px]">{h.label}:</strong>
-                                              <span className="text-zinc-300">{h.text}</span>
+                                              <strong className={`${t.heading} block mb-1 uppercase tracking-tight text-[11px]`}>{h.label}:</strong>
+                                              <span className={t.subheading}>{h.text}</span>
                                             </div>
                                         </li>
                                     ))}
@@ -602,37 +693,37 @@ const App = () => {
                     </div>
                 </section>
                 <section>
-                    <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><Cpu size={14} className="text-orange-500" /> Multi-Disciplinary Skills</div>
+                    <div className={`text-[9px] font-black uppercase tracking-widest ${t.mutedExtra} mb-8 flex items-center gap-2`}><Cpu size={14} className={t.accentText} /> Multi-Disciplinary Skills</div>
                     <div className="grid md:grid-cols-2 gap-8">
                         {Object.entries(resumeData.skills).map(([key, items]) => (
-                            <div key={key} className="border-l border-zinc-800 pl-6">
-                                <h5 className="text-zinc-100 font-bold text-[9px] uppercase tracking-[0.2em] mb-4 flex items-center gap-2"><span className="w-1.5 h-1.5 bg-orange-600 rounded-full" />{key.toUpperCase()}</h5>
+                            <div key={key} className={`border-l ${t.itemBorder} pl-6`}>
+                                <h5 className={`${t.heading} font-bold text-[9px] uppercase tracking-[0.2em] mb-4 flex items-center gap-2`}><span className={`w-1.5 h-1.5 ${t.accentBg} rounded-full`} />{key.toUpperCase()}</h5>
                                 <div className="flex flex-wrap gap-2">
-                                  {items.map((s, idx) => (<span key={idx} className="px-3 py-1 bg-zinc-900 border border-white/5 text-zinc-400 text-[9px] font-bold rounded-full">{s}</span>))}
+                                  {items.map((s, idx) => (<span key={idx} className={`px-3 py-1 ${t.innerBg} border ${t.cardBorder} ${t.text} text-[9px] font-bold rounded-full`}>{s}</span>))}
                                 </div>
                             </div>
                         ))}
                     </div>
                 </section>
                 <section>
-                    <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><BookOpen size={14} className="text-orange-500" /> Education & Credentials</div>
-                    <div className="space-y-6 border-l border-zinc-800 pl-6">
+                    <div className={`text-[9px] font-black uppercase tracking-widest ${t.mutedExtra} mb-8 flex items-center gap-2`}><BookOpen size={14} className={t.accentText} /> Education & Credentials</div>
+                    <div className={`space-y-6 border-l ${t.itemBorder} pl-6`}>
                         {resumeData.education.map((edu, idx) => (
                             <div key={idx}>
-                                <div className="text-zinc-100 font-bold tracking-tight text-sm">{edu.institution}</div>
-                                <div className="text-zinc-500 text-xs">{edu.degree}</div>
+                                <div className={`${t.heading} font-bold tracking-tight text-sm`}>{edu.institution}</div>
+                                <div className={`${t.muted} text-xs`}>{edu.degree}</div>
                             </div>
                         ))}
                     </div>
                 </section>
                 {resumeData.certifications && (
                   <section>
-                      <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><ShieldCheck size={14} className="text-orange-500" /> Certifications</div>
-                      <div className="space-y-6 border-l border-zinc-800 pl-6">
+                      <div className={`text-[9px] font-black uppercase tracking-widest ${t.mutedExtra} mb-8 flex items-center gap-2`}><ShieldCheck size={14} className={t.accentText} /> Certifications</div>
+                      <div className={`space-y-6 border-l ${t.itemBorder} pl-6`}>
                           {resumeData.certifications.map((cert, idx) => (
                               <div key={idx}>
-                                  <div className="text-zinc-100 font-bold tracking-tight text-sm">{cert.name}</div>
-                                  <div className="text-zinc-500 text-xs">{cert.issuer}</div>
+                                  <div className={`${t.heading} font-bold tracking-tight text-sm`}>{cert.name}</div>
+                                  <div className={`${t.muted} text-xs`}>{cert.issuer}</div>
                               </div>
                           ))}
                       </div>
@@ -640,12 +731,12 @@ const App = () => {
                 )}
                 {resumeData.awards && (
                   <section>
-                      <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><Award size={14} className="text-orange-500" /> Key Honors</div>
+                      <div className={`text-[9px] font-black uppercase tracking-widest ${t.mutedExtra} mb-8 flex items-center gap-2`}><Award size={14} className={t.accentText} /> Key Honors</div>
                       <div className="grid md:grid-cols-2 gap-4">
                           {resumeData.awards.map((award, idx) => (
-                              <div key={idx} className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5 group hover:border-orange-500/20 transition-all text-left">
-                                  <div className="text-zinc-100 font-bold text-sm tracking-tight mb-2">{award.name}</div>
-                                  <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest">{award.issuer}</div>
+                              <div key={idx} className={`p-6 ${t.innerBg} rounded-2xl border ${t.cardBorder} ${t.cardHover} group transition-all text-left`}>
+                                  <div className={`${t.heading} font-bold text-sm tracking-tight mb-2`}>{award.name}</div>
+                                  <div className={`${t.mutedExtra} text-[11px] font-medium`}>{award.issuer}</div>
                               </div>
                           ))}
                       </div>
@@ -653,12 +744,12 @@ const App = () => {
                 )}
                 {resumeData.languages && (
                   <section>
-                      <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><Globe size={14} className="text-orange-500" /> Languages</div>
+                      <div className={`text-[9px] font-black uppercase tracking-widest ${t.mutedExtra} mb-8 flex items-center gap-2`}><Globe size={14} className={t.accentText} /> Languages</div>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                           {resumeData.languages.map((lang, idx) => (
-                              <div key={idx} className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5 group hover:border-orange-500/20 transition-all text-left">
-                                  <div className="text-zinc-100 font-bold text-sm tracking-tight mb-1">{lang.name}</div>
-                                  <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest">{lang.level}</div>
+                              <div key={idx} className={`p-6 ${t.innerBg} rounded-2xl border ${t.cardBorder} ${t.cardHover} group transition-all text-left`}>
+                                  <div className={`${t.heading} font-bold text-sm tracking-tight mb-1`}>{lang.name}</div>
+                                  <div className={`${t.mutedExtra} text-[11px] font-medium`}>{lang.level}</div>
                               </div>
                           ))}
                       </div>
@@ -671,16 +762,16 @@ const App = () => {
 
       {/* Artifact Overlay */}
       {selectedSkill && (
-        <div className="fixed inset-0 z-[101] bg-black/95 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-zinc-950 w-full max-w-xl rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative text-left">
-            <button onClick={() => setSelectedSkill(null)} className="absolute top-6 right-6 p-2 bg-zinc-900 hover:bg-zinc-800 rounded-xl transition-all text-zinc-100 active:scale-95"><X size={18} /></button>
+        <div className={`fixed inset-0 z-[101] ${t.modalBgAlt} backdrop-blur-md flex items-center justify-center p-4`}>
+          <div className={`${t.modalCardBg} w-full max-w-xl rounded-[2.5rem] overflow-hidden border ${t.modalBorder} shadow-2xl relative text-left`}>
+            <button onClick={() => setSelectedSkill(null)} className={`absolute top-6 right-6 p-2 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}><X size={18} /></button>
             <div className="p-10">
-               <div className="text-orange-500 font-black uppercase tracking-[0.3em] text-[9px] mb-3">Strategic Artifact</div>
-               <h2 className="text-3xl font-bold text-zinc-100 mb-8 tracking-tight">{selectedSkill.name}</h2>
+               <div className={`${t.accentText} font-black uppercase tracking-[0.3em] text-[9px] mb-3`}>Strategic Artifact</div>
+               <h2 className={`text-3xl font-bold ${t.heading} mb-8 tracking-tight`}>{selectedSkill.name}</h2>
                <div className="space-y-8">
-                 <section className="flex gap-5"><div className="w-10 h-10 bg-zinc-950 border border-zinc-800 rounded-xl flex items-center justify-center shrink-0"><BarChart3 size={20} className="text-orange-500" /></div><div><div className="text-[9px] font-black text-zinc-400 uppercase tracking-widest mb-1">Executive Summary (The What)</div><p className="text-zinc-300 text-base leading-relaxed">{selectedSkill.what}</p></div></section>
-                 <section className="flex gap-5"><div className="w-10 h-10 bg-zinc-950 border border-zinc-800 rounded-xl flex items-center justify-center shrink-0"><Target size={20} className="text-orange-500" /></div><div><div className="text-[9px] font-black text-zinc-400 uppercase tracking-widest mb-1">Strategic Need (The Why)</div><p className="text-zinc-300 text-base leading-relaxed">{selectedSkill.why}</p></div></section>
-                 <section className="flex gap-5"><div className="w-10 h-10 bg-zinc-950 border border-zinc-800 rounded-xl flex items-center justify-center shrink-0"><Workflow size={20} className="text-orange-500" /></div><div><div className="text-[9px] font-black text-zinc-400 uppercase tracking-widest mb-1">Method of Delivery (The How)</div><p className="text-zinc-300 text-base leading-relaxed">{selectedSkill.how}</p></div></section>
+                 <section className="flex gap-5"><div className={`w-10 h-10 ${t.itemBg} border ${t.itemBorder} rounded-xl flex items-center justify-center shrink-0`}><BarChart3 size={20} className={t.accentText} /></div><div><div className={`text-[9px] font-black ${t.muted} uppercase tracking-widest mb-1`}>Executive Summary (The What)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedSkill.what}</p></div></section>
+                 <section className="flex gap-5"><div className={`w-10 h-10 ${t.itemBg} border ${t.itemBorder} rounded-xl flex items-center justify-center shrink-0`}><Target size={20} className={t.accentText} /></div><div><div className={`text-[9px] font-black ${t.muted} uppercase tracking-widest mb-1`}>Strategic Need (The Why)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedSkill.why}</p></div></section>
+                 <section className="flex gap-5"><div className={`w-10 h-10 ${t.itemBg} border ${t.itemBorder} rounded-xl flex items-center justify-center shrink-0`}><Workflow size={20} className={t.accentText} /></div><div><div className={`text-[9px] font-black ${t.muted} uppercase tracking-widest mb-1`}>Method of Delivery (The How)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedSkill.how}</p></div></section>
                </div>
             </div>
           </div>
@@ -689,28 +780,28 @@ const App = () => {
 
       {/* Case Study Modal */}
       {selectedCaseStudy && (
-        <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
-          <div className="bg-zinc-950 w-full max-w-4xl max-h-[85vh] rounded-[2.5rem] overflow-hidden flex flex-col border border-white/10 shadow-2xl text-left">
+        <div className={`fixed inset-0 z-[100] ${t.modalBgAlt} backdrop-blur-xl flex items-center justify-center p-4`}>
+          <div className={`${t.modalCardBg} w-full max-w-4xl max-h-[85vh] rounded-[2.5rem] overflow-hidden flex flex-col border ${t.modalBorder} shadow-2xl text-left`}>
             <div className="p-8 overflow-y-auto scrollbar-hide">
               <div className="flex justify-between items-start mb-12">
                 <div>
-                  <div className="bg-zinc-950 text-orange-500 rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border border-zinc-800 mb-4 inline-block">{selectedCaseStudy.subtitle}</div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 tracking-tight">{selectedCaseStudy.title}</h2>
+                  <div className={`${t.modalCardBg} ${t.accentText} rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} mb-4 inline-block`}>{selectedCaseStudy.subtitle}</div>
+                  <h2 className={`text-3xl md:text-4xl font-bold ${t.heading} tracking-tight`}>{selectedCaseStudy.title}</h2>
                 </div>
-                <button onClick={() => setSelectedCaseStudy(null)} className="p-3 bg-zinc-900 hover:bg-zinc-800 rounded-xl transition-all text-zinc-100 active:scale-95"><X size={20} /></button>
+                <button onClick={() => setSelectedCaseStudy(null)} className={`p-3 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}><X size={20} /></button>
               </div>
               <div className="grid md:grid-cols-3 gap-12">
                 <div className="md:col-span-2 space-y-12">
-                  <section><div className="flex items-center gap-3 text-zinc-400 mb-4 font-black uppercase tracking-widest text-[10px]"><BarChart3 size={14} className="text-orange-500" /> Executive Summary (The What)</div><p className="text-zinc-300 text-lg leading-relaxed italic border-l-2 border-orange-600 pl-6">{selectedCaseStudy.bluf}</p></section>
-                  <section><div className="flex items-center gap-3 text-zinc-400 mb-4 font-black uppercase tracking-widest text-[10px]"><Target size={14} className="text-orange-500" /> Strategic Need (The Why)</div><p className="text-zinc-300 text-base leading-relaxed">{selectedCaseStudy.why}</p></section>
-                  <section><div className="flex items-center gap-3 text-zinc-400 mb-4 font-black uppercase tracking-widest text-[10px]"><Workflow size={14} className="text-orange-500" /> Method of Delivery (The How)</div><p className="text-zinc-300 text-base leading-relaxed">{selectedCaseStudy.how}</p></section>
+                  <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><BarChart3 size={14} className={t.accentText} /> Executive Summary (The What)</div><p className={`${t.subheading} text-lg leading-relaxed italic border-l-2 ${t.accentBorder} pl-6`}>{selectedCaseStudy.bluf}</p></section>
+                  <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Target size={14} className={t.accentText} /> Strategic Need (The Why)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.why}</p></section>
+                  <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Workflow size={14} className={t.accentText} /> Method of Delivery (The How)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.how}</p></section>
                 </div>
-                <div className="p-8 bg-zinc-900/50 border border-white/5 rounded-2xl space-y-8">
-                  <div className="flex items-center gap-2 justify-center mb-2"><Trophy size={14} className="text-orange-500" /><h4 className="text-[9px] font-black uppercase tracking-widest text-zinc-500">Core Metrics</h4></div>
+                <div className={`p-8 ${t.statsBg} border ${t.cardBorder} rounded-2xl space-y-8`}>
+                  <div className="flex items-center gap-2 justify-center mb-2"><Trophy size={14} className={t.accentText} /><h4 className={`text-[9px] font-black uppercase tracking-widest ${t.muted}`}>Core Metrics</h4></div>
                   {selectedCaseStudy.results.map((r, i) => (
                     <div key={i} className="text-center border-b border-white/5 pb-4 last:border-0 last:pb-0">
-                      <div className="text-[9px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
-                      <div className="text-3xl font-bold text-zinc-100">{r.outcome}</div>
+                      <div className="text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
+                      <div className={`text-4xl font-bold ${t.heading}`}>{r.outcome}</div>
                     </div>
                   ))}
                 </div>
