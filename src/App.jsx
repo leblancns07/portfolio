@@ -883,7 +883,7 @@ const App = () => {
             <div className="p-8 overflow-y-auto scrollbar-hide">
               <div className="flex justify-between items-start mb-12 gap-12 md:gap-20">
                 <div className="flex-1">
-                  <div className={`${t.modalCardBg} ${t.accentText} rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} mb-4 inline-block`}>{selectedCaseStudy.subtitle}</div>
+                  <div className={`${t.modalCardBg} ${t.accentText} rounded-full px-4 py-1.5 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} mb-4 w-fit flex items-center justify-center text-center`}>{selectedCaseStudy.subtitle}</div>
                   <h2 className={`text-3xl md:text-4xl font-bold ${t.heading} tracking-tight`}>{selectedCaseStudy.title}</h2>
                 </div>
                 <button 
