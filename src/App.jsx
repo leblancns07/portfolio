@@ -898,13 +898,16 @@ const App = () => {
                 <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><BarChart3 size={14} className={t.accentText} /> Executive Summary (The What)</div><p className={`${t.subheading} text-lg leading-relaxed italic border-l-2 ${t.accentBorder} pl-6`}>{selectedCaseStudy.bluf}</p></section>
                 
                 <section>
-                  <div className={`p-6 md:p-8 ${t.statsBg} border ${t.cardBorder} rounded-2xl`}>
-                    <div className="flex items-center gap-2 justify-center mb-8"><Trophy size={14} className={t.accentText} /><h4 className={`text-[9px] font-black uppercase tracking-widest ${t.muted}`}>Core Metrics</h4></div>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <div className={`p-6 md:p-8 ${t.statsBg} border ${t.cardBorder} rounded-2xl flex flex-col md:flex-row md:items-center gap-8 md:gap-0`}>
+                    <div className="md:w-1/4 flex items-center gap-3 justify-center md:justify-start md:border-r border-zinc-800/50 md:pr-8 md:mr-8 shrink-0">
+                      <Trophy size={16} className={t.accentText} />
+                      <h4 className={`text-[9px] font-black uppercase tracking-[0.2em] ${t.muted}`}>Core Metrics</h4>
+                    </div>
+                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6">
                       {selectedCaseStudy.results.map((r, i) => (
-                        <div key={i} className="text-center">
-                          <div className="text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
-                          <div className={`text-3xl md:text-3xl font-bold ${t.heading}`}>{r.outcome}</div>
+                        <div key={i} className="text-center md:text-left">
+                          <div className="text-[11px] uppercase font-bold text-zinc-600 mb-1 tracking-tight">{r.metric}</div>
+                          <div className={`text-3xl md:text-3xl font-bold ${t.heading} tabular-nums`}>{r.outcome}</div>
                         </div>
                       ))}
                     </div>
