@@ -197,16 +197,62 @@ const App = () => {
         highlights: [
             { label: "200% Velocity Increase", text: "Transformed cross-functional implementation processes to improve scalability, functionality, speed & quality." },
             { label: "500x Scalability of Insights", text: "Directed execution of financial planning workflow shift to become an automated system of record." },
-            { label: "66% Reduction in Staffing Waste", text: "Established and optimized a 24x7 enterprise global service management team leveraging Adobe Workfront." }
+            { label: "66% Reduction in Staffing Waste", text: "Established and optimized a 24x7 enterprise global service management team leveraging Adobe Workfront." },
+            { label: "First-of-Kind Compliance", text: "Led establishment of first compliant SaaS-to-SaaS integration, turning governance process into a service." },
+            { label: "Engineered Business ROI", text: "Shifted organizational focus to measurable ROI by building a reporting model with audience-tailored outputs." },
         ]
       },
       {
         role: "Senior Manager: Personalization Strategy & Execution",
         company: "Verizon",
-        functionalTags: ["LEADERSHIP", "STRATEGY", "REVENUE GROWTH"],
+        functionalTags: ["STRATEGIC OPS", "PRODUCT MANAGEMENT", "MARTECH SYSTEMS", "LEADERSHIP", "PROCESS ENGINEERING"],
         highlights: [
             { label: "$1B+ Revenue Growth", text: "Co-Founded, Co-Architected & designed an enterprise marketing communications personalization distribution platform." },
-            { label: "$146M Revenue Generated", text: "Operationalized personalization roadmap through data-driven prioritization." }
+            { label: "$146M Revenue Generated", text: "Operationalized personalization roadmap through data-driven prioritization, bridging the gap between idea and execution." },
+            { label: "78% Velocity Improvement", text: "Transformed project lifecycle into a scalable, agile, and compliant framework, accelerating marketing deployments." },
+            { label: "Systems & Governance Leadership", text: "Directed MarTech strategy, governance, risk, compliance layers to ensure auditable & scalable personalization." }
+        ]
+      },
+      {
+        role: "Lead Product Manager: Marketing Communications & Personalization",
+        company: "Verizon",
+        functionalTags: ["PRODUCT MANAGEMENT", "MARTECH SYSTEMS", "PERSONALIZATION", "MARKETING COMMS", "OPERATIONS"],
+        highlights: [
+            { label: "'Engage' MarTech Platform Ownership", text: "Served as Product Owner for the 'Engage' platform, architecting the bridge between business owners and engineering." },
+            { label: "250+ Marketing Campaigns Delivered", text: "Led delivery of scalable marketing programming, balancing complex business logic with curated user experience." },
+            { label: "$700K+ Revenue & Cost-Savings Realized", text: "Applied data-driven personalization practices into project lifecycle to increase marketing communication relevancy." },
+            { label: "Framework Creation", text: "Established operational frameworks scaling personalization from a pilot program into a core business function." }
+        ]
+      },
+      {
+        role: "Product & Project Manager: Marketing Operations, UX Design & Strategy",
+        company: "Verizon",
+        functionalTags: ["PRODUCT MANAGEMENT", "PROJECT MANAGEMENT", "UX & DESIGN", "GTM", "DIGITAL MARKETING"],
+        highlights: [
+            { label: "2.0 to 4.5 App Store Rating", text: "Directed 'My Verizon' redesign, using user analytics to transform the customer experience and boost app ratings." },
+            { label: "$30M Cost-Savings Realized", text: "Engineered scalable lifecycle process improvements using Design Thinking frameworks and structured data models." },
+            { label: "Cross-Platform Orchestration", text: "Managed iOS and Android deployment schedules, ensuring feature parity and seamless updates for user bases." }
+        ]
+      },
+      {
+        role: "IT Project Manager & UX Designer: Digital Experience",
+        company: "Sprint",
+        functionalTags: ["PROJECT MANAGEMENT", "UX DESIGN", "SYSTEMS ANALYSIS", "ENTERPRISE SCALABILITY"],
+        highlights: [
+            { label: "Designed Customer Care Tool for 35,000+ Agents", text: "Designed and optimized enterprise Customer Care tool to reduce handle times and streamline call center operations." },
+            { label: "Rapid Portfolio Stabilization", text: "Led Sprint Digital Marketing portfolio, resolving 60 critical defects in under 90 days." },
+            { label: "Systems-Led Problem Solving", text: "Managed digital experience projects, translating business requirements into scalable and compliant technical execution." }
+        ]
+      },
+      {
+        role: "Product Manager: Digital Marketing Operations",
+        company: "Sprint",
+        functionalTags: ["PRODUCT MANAGEMENT", "PERSONALIZATION", "DIGITAL MARKETING", "PROCESS ENGINEERING"],
+        highlights: [
+            { label: "60% DAU Growth (500k to 800k)", text: "Accelerated Wireless Web adoption by optimizing marketing campaigns and user journey mapping for the digital ecosystem." },
+            { label: "57% Time-to-Market Reduction", text: "Transformed production cycle workflows from 7 days to 3 days, expanding product launch capabilities." },
+            { label: "Personalization SME", text: "Bridged the gap between engineering and marketing to define architectural requirements for early-stage personalization." },
+            { label: "Strategic Product Launches", text: "Built and executed GTM strategies for Sprint Web Portal and OpenWeb, significantly expanding mobile digital offerings." }
         ]
       }
     ],
@@ -218,15 +264,23 @@ const App = () => {
     },
     education: [
         { degree: "Bachelor of Arts, Applied Organizational Leadership", institution: "MidAmerica Nazarene University" },
+        { degree: "Associates of Applied Science, Business Administration", institution: "Johnson County Community College" },
         { degree: "Diploma, Web Development & Graphic Design", institution: "York Technology Institute" }
+    ],
+    certifications: [
+        { name: "Design Thinking Foundations", issuer: "VZ Learn" },
+        { name: "Agile Product Owner", issuer: "VZ Learn" },
+        { name: "Agile Mindset", issuer: "VZ Learn" }
     ],
     awards: [
         { name: "Power of Us Award: “Bias to Action”", issuer: "Verizon SVP" },
-        { name: "25x Recipient: “Recognizing You”", issuer: "Leadership & Peers" }
+        { name: "25x Recipient: “Recognizing You”", issuer: "Leadership & Peers" },
+        { name: "Top GPA in Class (Webmaster Award)", issuer: "York Technology Institute" }
     ],
     languages: [
         { name: "English", level: "Native" },
-        { name: "Spanish", level: "Intermediate" }
+        { name: "Spanish", level: "Intermediate" },
+        { name: "Japanese", level: "Beginner" }
     ]
   };
 
@@ -447,6 +501,17 @@ const App = () => {
               <div key={idx}><div className="text-zinc-100 font-bold tracking-tight text-sm">{edu.institution}</div><div className="text-zinc-500 text-xs">{edu.degree}</div></div>
             ))}
           </div>
+
+          {resumeData.certifications && (
+            <>
+              <div className="flex items-center gap-3 text-orange-500 mb-6 mt-12 font-black uppercase tracking-widest text-[10px]"><ShieldCheck size={14} /> Certifications</div>
+              <div className="space-y-6 border-l border-zinc-800 pl-6">
+                {resumeData.certifications.map((cert, idx) => (
+                  <div key={idx}><div className="text-zinc-100 font-bold tracking-tight text-sm">{cert.name}</div><div className="text-zinc-500 text-xs">{cert.issuer}</div></div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -460,6 +525,21 @@ const App = () => {
                     <div className="text-zinc-100 font-bold text-sm tracking-tight mb-2">{award.name}</div>
                     <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest">{award.issuer}</div>
                 </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Languages Section */}
+      <section id="languages" className="py-10 px-6 bg-zinc-900/10">
+        <div className="max-w-5xl mx-auto text-left">
+          <div className="flex items-center gap-3 text-orange-500 mb-8 font-black uppercase tracking-widest text-[10px]"><Globe size={16} /> Languages</div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {resumeData.languages.map((lang, idx) => (
+              <div key={idx} className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5 group hover:border-orange-500/20 transition-all text-left">
+                <div className="text-zinc-100 font-bold text-sm tracking-tight mb-1">{lang.name}</div>
+                <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest">{lang.level}</div>
+              </div>
             ))}
           </div>
         </div>
@@ -536,15 +616,54 @@ const App = () => {
                 </section>
                 <section>
                     <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><BookOpen size={14} className="text-orange-500" /> Education & Credentials</div>
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-6 border-l border-zinc-800 pl-6">
                         {resumeData.education.map((edu, idx) => (
-                            <div key={idx} className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5 group hover:border-orange-500/20 transition-all text-left">
-                                <div className="text-zinc-100 font-bold text-sm tracking-tight mb-2">{edu.degree}</div>
-                                <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest">{edu.institution}</div>
+                            <div key={idx}>
+                                <div className="text-zinc-100 font-bold tracking-tight text-sm">{edu.institution}</div>
+                                <div className="text-zinc-500 text-xs">{edu.degree}</div>
                             </div>
                         ))}
                     </div>
                 </section>
+                {resumeData.certifications && (
+                  <section>
+                      <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><ShieldCheck size={14} className="text-orange-500" /> Certifications</div>
+                      <div className="space-y-6 border-l border-zinc-800 pl-6">
+                          {resumeData.certifications.map((cert, idx) => (
+                              <div key={idx}>
+                                  <div className="text-zinc-100 font-bold tracking-tight text-sm">{cert.name}</div>
+                                  <div className="text-zinc-500 text-xs">{cert.issuer}</div>
+                              </div>
+                          ))}
+                      </div>
+                  </section>
+                )}
+                {resumeData.awards && (
+                  <section>
+                      <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><Award size={14} className="text-orange-500" /> Key Honors</div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                          {resumeData.awards.map((award, idx) => (
+                              <div key={idx} className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5 group hover:border-orange-500/20 transition-all text-left">
+                                  <div className="text-zinc-100 font-bold text-sm tracking-tight mb-2">{award.name}</div>
+                                  <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest">{award.issuer}</div>
+                              </div>
+                          ))}
+                      </div>
+                  </section>
+                )}
+                {resumeData.languages && (
+                  <section>
+                      <div className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-8 flex items-center gap-2"><Globe size={14} className="text-orange-500" /> Languages</div>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                          {resumeData.languages.map((lang, idx) => (
+                              <div key={idx} className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5 group hover:border-orange-500/20 transition-all text-left">
+                                  <div className="text-zinc-100 font-bold text-sm tracking-tight mb-1">{lang.name}</div>
+                                  <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest">{lang.level}</div>
+                              </div>
+                          ))}
+                      </div>
+                  </section>
+                )}
             </div>
           </div>
         </div>
