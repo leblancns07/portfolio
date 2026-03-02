@@ -413,6 +413,39 @@ const App = () => {
           </div>
         </div>
       </nav>
+      
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className={`fixed inset-0 z-[49] md:hidden ${t.modalBg} backdrop-blur-3xl p-6 pt-32 animate-in fade-in zoom-in duration-300`}>
+          <div className="flex flex-col space-y-8 items-center text-center">
+            {['journey', 'work', 'skills', 'foundations'].map((id) => (
+              <a 
+                key={id} 
+                href={`#${id}`} 
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-2xl font-bold uppercase tracking-widest ${t.heading} ${t.navHover} transition-all`}
+              >
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </a>
+            ))}
+            <button 
+              onClick={() => { setIsResumeOpen(true); setIsMenuOpen(false); }} 
+              className={`w-full max-w-xs ${t.accentBg} text-white px-6 py-4 rounded-2xl font-black text-lg shadow-xl ${t.accentHover} transition-all active:scale-95`}
+            >
+              RESUME
+            </button>
+            <div className={`w-full max-w-xs flex justify-between items-center p-4 ${t.innerBg} border ${t.cardBorder} rounded-2xl`}>
+              <span className={`font-bold ${t.muted} uppercase tracking-widest text-xs`}>Theme Mode</span>
+              <button 
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className={`p-3 ${t.bg} border ${t.cardBorder} rounded-xl ${t.accentText} shadow-inner active:scale-95 transition-all`}
+              >
+                {isDarkMode ? <Moon size={20} /> : <Sun size={20} />}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-8 px-6 text-left">
@@ -433,7 +466,7 @@ const App = () => {
               Explore Impact <ArrowRight size={18} />
             </a>
           </div>
-          <div className="flex-1 w-full max-sm relative group">
+          <div className="flex-1 w-full max-sm relative group scale-90 md:scale-100">
             <div className={`absolute -inset-2 bg-gradient-to-tr ${t.logoGradient} rounded-[3.5rem] blur opacity-20 group-hover:opacity-40 transition duration-700`}></div>
             <div className={`relative aspect-[4/5] w-full ${t.innerBg} border ${t.modalBorder} rounded-[3.5rem] overflow-hidden shadow-2xl`}>
               <img src={heroData.imageUrl} alt="Nick" className={`w-full h-full object-cover transition-all duration-700 ${t.imgFilter} group-hover:grayscale-0`} onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"; }} />
@@ -457,31 +490,31 @@ const App = () => {
       {/* Journey Section */}
       <section id="journey" className="py-12 px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-10 text-left">
+          <div className="mb-12 text-left">
             <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Strategic Journey</h2>
             <p className={`${t.muted} text-sm italic`}>Enterprise evolution and technical pivot.</p>
           </div>
-          <div className="relative flex flex-col md:flex-row md:items-center gap-8 text-left">
+          <div className="relative flex flex-row items-center gap-4 md:gap-8 text-left">
             <div className="relative w-12 shrink-0 flex justify-center">
                 <div className={`absolute top-0 bottom-0 w-px ${t.itemBorder}`} />
-                <div className="relative h-full flex flex-col justify-between py-2">
+                <div className="relative h-full flex flex-col justify-between py-12 min-h-[480px]">
                     {journeyPoints.map((point, i) => (
-                        <button key={i} onClick={() => setActiveJourneyStep(i)} className={`group relative z-10 w-8 h-8 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${activeJourneyStep === i ? `${t.accentBg} ${t.accentRing} border-transparent scale-110 shadow-lg` : `${t.bg} ${t.itemBorder} hover:border-zinc-500`}`}>
-                            <div className={`text-[8px] font-black ${activeJourneyStep === i ? 'text-white' : t.mutedExtra}`}>{point.year.slice(-2)}</div>
+                        <button key={i} onClick={() => setActiveJourneyStep(i)} className={`group relative z-10 w-10 h-10 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${activeJourneyStep === i ? `${t.accentBg} ${t.accentRing} border-transparent scale-110 shadow-lg` : `${t.bg} ${t.itemBorder} hover:border-zinc-500`}`}>
+                            <div className={`text-[10px] font-black ${activeJourneyStep === i ? 'text-white' : t.mutedExtra}`}>{point.year.slice(-2)}</div>
                         </button>
                     ))}
                 </div>
             </div>
             <div className="flex-1">
-                <div className={`sticky top-24 p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2.5rem] shadow-xl min-h-[240px] flex flex-col justify-center`}>
-                    <div className="flex items-center gap-4 mb-6">
-                        <div className={`w-12 h-12 ${t.bg} border ${t.itemBorder} rounded-xl flex items-center justify-center ${t.accentText}`}>{journeyPoints[activeJourneyStep].icon}</div>
+                <div className={`sticky top-24 p-4 md:p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] md:rounded-[2.5rem] shadow-xl min-h-[220px] md:min-h-[240px] flex flex-col justify-center`}>
+                    <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+                        <div className={`w-10 h-10 md:w-12 md:h-12 ${t.bg} border ${t.itemBorder} rounded-xl flex items-center justify-center ${t.accentText}`}>{journeyPoints[activeJourneyStep].icon}</div>
                         <div>
-                            <div className={`${t.accentText} font-black uppercase tracking-[0.2em] text-[9px] mb-1`}>{journeyPoints[activeJourneyStep].year} Milestone</div>
-                            <h3 className={`text-2xl font-bold ${t.heading} tracking-tight`}>{journeyPoints[activeJourneyStep].title}</h3>
+                            <div className={`${t.accentText} font-black uppercase tracking-[0.2em] text-[8px] md:text-[9px] mb-1`}>{journeyPoints[activeJourneyStep].year} Milestone</div>
+                            <h3 className={`text-lg md:text-2xl font-bold ${t.heading} tracking-tight`}>{journeyPoints[activeJourneyStep].title}</h3>
                         </div>
                     </div>
-                    <p className={`${t.text} text-base leading-relaxed border-l-2 ${t.accentBorder} pl-6 italic`}>&quot;{journeyPoints[activeJourneyStep].desc}&quot;</p>
+                    <p className={`${t.text} text-sm md:text-base leading-relaxed border-l-2 ${t.accentBorder} pl-4 md:pl-6 italic`}>&quot;{journeyPoints[activeJourneyStep].desc}&quot;</p>
                 </div>
             </div>
           </div>
@@ -491,15 +524,17 @@ const App = () => {
       {/* Experience & Impact Section */}
       <section id="work" className={`py-12 px-6 ${t.statsBg}`}>
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6 text-left">
-            <div>
+          <div className="mb-12 text-left">
+            <div className="mb-8">
               <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Experience & Impact</h2>
-              <p className={`${t.muted} text-sm italic`}>Systems architecture with measurable value.</p>
+              <p className={`${t.muted} text-sm italic`}>Quantifiable value delivery across product and design.</p>
             </div>
-            <div className={`flex flex-wrap gap-2 p-1 ${t.innerBg} border ${t.itemBorder} rounded-xl`}>
-              {["All", "Product", "Design / UX", "AI / Automation"].map(f => (
-                <button key={f} onClick={() => setActiveFilter(f)} className={`px-4 py-2 rounded-lg text-[10px] font-bold tracking-tight transition-all active:scale-95 ${activeFilter === f ? t.tabActive : t.tabInactive}`}>{f}</button>
-              ))}
+            <div className="flex justify-start">
+              <div className={`flex flex-wrap gap-2 p-1 ${t.innerBg} border ${t.itemBorder} rounded-xl`}>
+                {["All", "Product", "Design / UX", "AI / Automation"].map(f => (
+                  <button key={f} onClick={() => setActiveFilter(f)} className={`px-4 py-2 rounded-lg text-[10px] font-bold tracking-tight transition-all active:scale-95 ${activeFilter === f ? t.tabActive : t.tabInactive}`}>{f}</button>
+                ))}
+              </div>
             </div>
           </div>
           <div className="grid gap-8">
@@ -517,11 +552,11 @@ const App = () => {
                     <p className={`${t.subheading} text-base font-medium border-l-2 ${t.accentBorder} pl-6 italic mb-8`}>{study.bluf}</p>
                   </div>
                   <div className="w-full md:w-40 shrink-0">
-                    <div className={`p-4 ${t.itemBg} border ${t.itemBorder} rounded-2xl space-y-4`}>
+                    <div className={`p-3 md:p-4 ${t.itemBg} border ${t.itemBorder} rounded-2xl grid grid-cols-3 md:grid-cols-1 gap-2 md:space-y-4`}>
                         {study.results.map((r, i) => (
-                          <div key={i} className="text-center border-b border-white/5 pb-2 last:border-0 last:pb-0">
-                            <div className="text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
-                            <div className={`text-2xl font-bold ${t.heading}`}>{r.outcome}</div>
+                          <div key={i} className="text-center border-b md:border-b-0 border-white/5 pb-2 md:pb-0 last:border-0 last:pb-0">
+                            <div className="text-[10px] md:text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
+                            <div className={`text-xl md:text-2xl font-bold ${t.heading}`}>{r.outcome}</div>
                           </div>
                         ))}
                     </div>
@@ -546,7 +581,10 @@ const App = () => {
       {/* Skills & Tools Section */}
       <section id="skills" className="py-12 px-6">
         <div className="max-w-5xl mx-auto">
-          <h2 className={`text-3xl font-bold ${t.heading} mb-10 tracking-tight uppercase text-left`}>Skills & Tools</h2>
+          <div className="mb-12 text-left">
+            <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Skills & Tools</h2>
+            <p className={`${t.muted} text-sm italic`}>Technical ecosystems and multidisciplinary leadership.</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             {/* Professional Tenure Featured Card */}
             <div className={`md:col-span-2 p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] ${t.cardHover} transition-all`}>
@@ -585,7 +623,10 @@ const App = () => {
       {/* Foundations Section */}
       <section id="foundations" className={`py-10 px-6 ${t.sectionBg}`}>
         <div className="max-w-5xl mx-auto text-left">
-          <h2 className={`text-3xl font-bold ${t.heading} mb-8 tracking-tight uppercase`}>Foundations</h2>
+          <div className="mb-12">
+            <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Foundations</h2>
+            <p className={`${t.muted} text-sm italic`}>Academic background and industry-leading certifications.</p>
+          </div>
           <div className={`flex items-center gap-3 ${t.accentText} mb-6 font-black uppercase tracking-widest text-[10px]`}><BookOpen size={14} /> Education & Credentials</div>
           <div className={`space-y-6 border-l ${t.itemBorder} pl-6`}>
             {resumeData.education.map((edu, idx) => (
@@ -796,12 +837,12 @@ const App = () => {
                   <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Target size={14} className={t.accentText} /> Strategic Need (The Why)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.why}</p></section>
                   <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Workflow size={14} className={t.accentText} /> Method of Delivery (The How)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.how}</p></section>
                 </div>
-                <div className={`p-8 ${t.statsBg} border ${t.cardBorder} rounded-2xl space-y-8`}>
-                  <div className="flex items-center gap-2 justify-center mb-2"><Trophy size={14} className={t.accentText} /><h4 className={`text-[9px] font-black uppercase tracking-widest ${t.muted}`}>Core Metrics</h4></div>
+                <div className={`p-6 md:p-8 ${t.statsBg} border ${t.cardBorder} rounded-2xl grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 gap-6 md:space-y-8`}>
+                  <div className="flex items-center gap-2 justify-center mb-2 sm:col-span-3 md:col-span-1"><Trophy size={14} className={t.accentText} /><h4 className={`text-[9px] font-black uppercase tracking-widest ${t.muted}`}>Core Metrics</h4></div>
                   {selectedCaseStudy.results.map((r, i) => (
-                    <div key={i} className="text-center border-b border-white/5 pb-4 last:border-0 last:pb-0">
+                    <div key={i} className="text-center md:border-b border-white/5 md:pb-4 last:border-0 last:pb-0">
                       <div className="text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
-                      <div className={`text-4xl font-bold ${t.heading}`}>{r.outcome}</div>
+                      <div className={`text-3xl md:text-4xl font-bold ${t.heading}`}>{r.outcome}</div>
                     </div>
                   ))}
                 </div>
