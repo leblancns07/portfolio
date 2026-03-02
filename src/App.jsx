@@ -31,7 +31,7 @@ const App = () => {
   const [selectedSkill, setSelectedSkill] = useState(null);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeJourneyStep, setActiveJourneyStep] = useState(11); 
+  const [activeJourneyStep, setActiveJourneyStep] = useState(0); 
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   // --- THEME DEFINITIONS ---
@@ -58,7 +58,7 @@ const App = () => {
       accentBorderHover: 'hover:border-orange-500',
       accentRing: 'ring-orange-500/20',
       navHover: 'hover:text-white',
-      tabActive: 'bg-zinc-800 text-zinc-100',
+      tabActive: 'bg-orange-600 text-white shadow-lg shadow-orange-500/20',
       tabInactive: 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50',
       modalBg: 'bg-black/95',
       modalBgAlt: 'bg-black/90',
@@ -403,11 +403,17 @@ const App = () => {
               <button 
                 onClick={() => setIsDarkMode(!isDarkMode)}
                 className={`p-2 ${t.innerBg} border ${t.cardBorder} rounded-full transition-all ${t.muted} hover:${t.accentText} ${t.accentBorderHover} shadow-xl active:scale-90`}
+                aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
               >
                 {isDarkMode ? <Moon size={18} /> : <Sun size={18} />}
               </button>
             </div>
-            <button className={`md:hidden ${t.heading}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button 
+              className={`md:hidden ${t.heading}`} 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+            >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
@@ -439,6 +445,7 @@ const App = () => {
               <button 
                 onClick={() => setIsDarkMode(!isDarkMode)}
                 className={`p-3 ${t.bg} border ${t.cardBorder} rounded-xl ${t.accentText} shadow-inner active:scale-95 transition-all`}
+                aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
               >
                 {isDarkMode ? <Moon size={20} /> : <Sun size={20} />}
               </button>
@@ -459,7 +466,7 @@ const App = () => {
             <p className={`text-base ${t.muted} mb-8 max-w-2xl leading-relaxed`}>{heroData.body}</p>
             <div className="flex flex-wrap gap-2 mb-8">
               {heroData.roleTags.map((tag, i) => (
-                <div key={i} className={`px-3 py-1 ${t.innerBg} border ${t.itemBorder} rounded-full text-[10px] font-bold ${t.muted} uppercase tracking-widest`}>{tag}</div>
+                <div key={i} className={`px-3 py-1 ${t.innerBg} border ${t.itemBorder} rounded-full text-[10px] font-bold ${t.muted} uppercase tracking-widest text-center`}>{tag}</div>
               ))}
             </div>
             <a href="#work" className={`inline-flex items-center h-12 px-6 ${t.accentBg} text-white rounded-xl font-bold gap-2 ${t.accentHover} transition-all shadow-lg active:scale-95`}>
@@ -469,7 +476,7 @@ const App = () => {
           <div className="flex-1 w-full max-sm relative group scale-90 md:scale-100">
             <div className={`absolute -inset-2 bg-gradient-to-tr ${t.logoGradient} rounded-[3.5rem] blur opacity-20 group-hover:opacity-40 transition duration-700`}></div>
             <div className={`relative aspect-[4/5] w-full ${t.innerBg} border ${t.modalBorder} rounded-[3.5rem] overflow-hidden shadow-2xl`}>
-              <img src={heroData.imageUrl} alt="Nick" className={`w-full h-full object-cover transition-all duration-700 ${t.imgFilter} group-hover:grayscale-0`} onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"; }} />
+              <img src={heroData.imageUrl} alt="Professional portrait of Nick LeBlanc" className={`w-full h-full object-cover transition-all duration-700 ${t.imgFilter} group-hover:grayscale-0`} onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"; }} />
             </div>
           </div>
         </div>
@@ -479,7 +486,7 @@ const App = () => {
       <section className="py-10 px-6 text-left">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
           {stats.map((stat, i) => (
-            <div key={i} className={`p-4 ${t.statsBg} border ${t.cardBorder} rounded-2xl backdrop-blur-sm ${t.cardHover} transition-all group`}>
+            <div key={i} className={`p-4 ${t.statsBg} border ${t.cardBorder} rounded-2xl backdrop-blur-sm ${t.cardHover} transition-all group flex flex-col items-center justify-center text-center`}>
               <div className={`text-xl font-bold ${t.heading} mb-1 group-hover:${t.accentText} transition-colors`}>{stat.value}</div>
               <div className={`text-[10px] font-bold ${t.mutedExtra} group-hover:${t.text}`}>{stat.label}</div>
             </div>
@@ -488,33 +495,61 @@ const App = () => {
       </section>
 
       {/* Journey Section */}
-      <section id="journey" className="py-12 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12 text-left">
+      <section id="journey" className={`py-16 px-6 ${t.sectionBg} border-t ${t.cardBorder}`}>
+        <div className="max-w-5xl mx-auto flex flex-col items-center">
+          <div className="mb-12 text-center w-full">
             <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Strategic Journey</h2>
             <p className={`${t.muted} text-sm italic`}>Enterprise evolution and technical pivot.</p>
           </div>
-          <div className="relative flex flex-row items-center gap-4 md:gap-8 text-left">
-            <div className="relative w-12 shrink-0 flex justify-center">
-                <div className={`absolute top-0 bottom-0 w-px ${t.itemBorder}`} />
-                <div className="relative h-full flex flex-col justify-between py-12 min-h-[480px]">
-                    {journeyPoints.map((point, i) => (
-                        <button key={i} onClick={() => setActiveJourneyStep(i)} className={`group relative z-10 w-10 h-10 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${activeJourneyStep === i ? `${t.accentBg} ${t.accentRing} border-transparent scale-110 shadow-lg` : `${t.bg} ${t.itemBorder} hover:border-zinc-500`}`}>
-                            <div className={`text-[10px] font-black ${activeJourneyStep === i ? 'text-white' : t.mutedExtra}`}>{point.year.slice(-2)}</div>
-                        </button>
-                    ))}
-                </div>
+
+          {/* Slider Controls */}
+          <div className="flex items-center gap-6 w-full max-w-2xl mb-12">
+            <button 
+              onClick={() => setActiveJourneyStep(prev => Math.max(0, prev - 1))}
+              className={`h-12 px-6 rounded-full border ${t.itemBorder} flex items-center justify-center transition-all active:scale-95 ${t.accentBg} text-white font-black shadow-lg ${t.accentHover}`}
+              disabled={activeJourneyStep === 0}
+              aria-label="Previous career milestone"
+            >
+              <ArrowRight size={18} className="rotate-180" />
+            </button>
+            
+            <div className="flex-1 relative group py-4">
+              <input 
+                type="range" 
+                min="0" 
+                max={journeyPoints.length - 1} 
+                value={activeJourneyStep} 
+                onChange={(e) => setActiveJourneyStep(parseInt(e.target.value))}
+                className={`w-full h-1.5 appearance-none rounded-full cursor-pointer transition-all ${t.itemBorder} border bg-transparent focus:outline-none ${isDarkMode ? 'accent-orange-600' : 'accent-blue-600'}`}
+                aria-label="Career timeline scrub slider"
+                style={{
+                  background: `linear-gradient(to right, ${isDarkMode ? '#ea580c' : '#2563eb'} 0%, ${isDarkMode ? '#ea580c' : '#2563eb'} ${(activeJourneyStep / (journeyPoints.length - 1)) * 100}%, ${isDarkMode ? '#27272a' : '#e2e8f0'} ${(activeJourneyStep / (journeyPoints.length - 1)) * 100}%, ${isDarkMode ? '#27272a' : '#e2e8f0'} 100%)`
+                }}
+              />
             </div>
-            <div className="flex-1">
-                <div className={`sticky top-24 p-4 md:p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] md:rounded-[2.5rem] shadow-xl min-h-[220px] md:min-h-[240px] flex flex-col justify-center`}>
-                    <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
-                        <div className={`w-10 h-10 md:w-12 md:h-12 ${t.bg} border ${t.itemBorder} rounded-xl flex items-center justify-center ${t.accentText}`}>{journeyPoints[activeJourneyStep].icon}</div>
-                        <div>
-                            <div className={`${t.accentText} font-black uppercase tracking-[0.2em] text-[8px] md:text-[9px] mb-1`}>{journeyPoints[activeJourneyStep].year} Milestone</div>
-                            <h3 className={`text-lg md:text-2xl font-bold ${t.heading} tracking-tight`}>{journeyPoints[activeJourneyStep].title}</h3>
+
+            <button 
+              onClick={() => setActiveJourneyStep(prev => Math.min(journeyPoints.length - 1, prev + 1))}
+              className={`h-12 px-6 rounded-full border ${t.itemBorder} flex items-center justify-center transition-all active:scale-95 ${t.accentBg} text-white font-black shadow-lg ${t.accentHover}`}
+              disabled={activeJourneyStep === journeyPoints.length - 1}
+              aria-label="Next career milestone"
+            >
+              <ArrowRight size={18} />
+            </button>
+          </div>
+
+          <div className="w-full max-w-4xl">
+            <div className={`p-8 md:p-12 ${t.cardBg} border ${t.cardBorder} ${t.cardHover} rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl relative overflow-hidden group/card transition-all duration-500`}>
+                <div className="relative flex flex-col items-center text-center">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8 w-full">
+                        <div className={`w-16 h-16 ${t.bg} border ${t.itemBorder} rounded-2xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0`}>
+                          {React.cloneElement(journeyPoints[activeJourneyStep].icon, { size: 28 })}
                         </div>
+                        <h3 className={`text-3xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight`}>{journeyPoints[activeJourneyStep].title}</h3>
                     </div>
-                    <p className={`${t.text} text-sm md:text-base leading-relaxed border-l-2 ${t.accentBorder} pl-4 md:pl-6 italic`}>&quot;{journeyPoints[activeJourneyStep].desc}&quot;</p>
+                    <p className={`${t.text} text-lg md:text-xl leading-relaxed italic border-l-0 border-t-2 ${t.accentBorder} pt-8 mt-4 max-w-2xl`}>
+                      &quot;{journeyPoints[activeJourneyStep].desc}&quot;
+                    </p>
                 </div>
             </div>
           </div>
@@ -522,7 +557,7 @@ const App = () => {
       </section>
 
       {/* Experience & Impact Section */}
-      <section id="work" className={`py-12 px-6 ${t.statsBg}`}>
+      <section id="work" className={`pt-6 pb-12 px-6 ${t.statsBg}`}>
         <div className="max-w-5xl mx-auto">
           <div className="mb-12 text-left">
             <div className="mb-8">
@@ -540,21 +575,25 @@ const App = () => {
           <div className="grid gap-8">
             {filteredStudies.map((study) => (
               <div key={study.id} className={`relative ${t.cardBg} border ${t.cardBorder} ${t.cardHover} rounded-[2.5rem] overflow-hidden p-8 text-left transition-all`}>
-                <div className="flex justify-between items-start mb-6">
-                  <div className={`${t.itemBg} ${t.accentText} rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder}`}>{study.subtitle}</div>
-                  <button onClick={() => setSelectedCaseStudy(study)} className={`w-10 h-10 flex items-center justify-center ${t.innerBg} border ${t.itemBorder} rounded-xl group/btn ${t.accentBorderHover} transition-all active:scale-95`}>
-                    <ArrowRight size={18} className={`${t.text} group-hover/btn:${t.accentText} transition-all`} />
+                <div className="flex justify-between items-start mb-6 gap-4">
+                  <div className={`${t.itemBg} ${t.accentText} rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} w-fit text-center`}>{study.subtitle}</div>
+                  <button 
+                    onClick={() => setSelectedCaseStudy(study)} 
+                    className={`h-10 px-6 ${t.accentBg} text-white rounded-full font-bold flex items-center gap-2 ${t.accentHover} transition-all shadow-lg active:scale-95 shrink-0 text-[10px] uppercase tracking-widest`}
+                    aria-label={`View ${study.title} case study`}
+                  >
+                    View Impact <ArrowRight size={14} />
                   </button>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-8">
                   <div className="flex-1">
                     <h3 className={`text-2xl md:text-4xl font-bold ${t.heading} mb-4 tracking-tight leading-tight`}>{study.title}</h3>
-                    <p className={`${t.subheading} text-base font-medium border-l-2 ${t.accentBorder} pl-6 italic mb-8`}>{study.bluf}</p>
+                    <p className={`${t.subheading} text-base font-medium border-l-2 ${t.accentBorder} pl-6 italic mb-4`}>{study.bluf}</p>
                   </div>
                   <div className="w-full md:w-40 shrink-0">
                     <div className={`p-3 md:p-4 ${t.itemBg} border ${t.itemBorder} rounded-2xl grid grid-cols-3 md:grid-cols-1 gap-2 md:space-y-4`}>
                         {study.results.map((r, i) => (
-                          <div key={i} className="text-center border-b md:border-b-0 border-white/5 pb-2 md:pb-0 last:border-0 last:pb-0">
+                          <div key={i} className="text-center">
                             <div className="text-[10px] md:text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
                             <div className={`text-xl md:text-2xl font-bold ${t.heading}`}>{r.outcome}</div>
                           </div>
@@ -611,7 +650,7 @@ const App = () => {
                   <p className={`${t.muted} text-[13px] leading-relaxed mb-6`}>{group.description || "Core toolset for enterprise project delivery."}</p>
                   <div className="flex flex-wrap gap-2">
                     {group.items.map((item, iIdx) => (
-                      <button key={iIdx} onClick={() => setSelectedSkill(item)} className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight ${t.itemBg} border ${t.itemBorder} ${t.heading} hover:${t.accentText} hover:${t.accentBorder.replace('/50', '')} transition-all shadow-md active:scale-95`}>{item.name}</button>
+                      <button key={iIdx} onClick={() => setSelectedSkill(item)} className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight ${t.itemBg} border ${t.itemBorder} ${t.heading} hover:${t.accentText} ${t.accentBorderHover} transition-all shadow-md active:scale-95`}>{item.name}</button>
                     ))}
                   </div>
               </div>
@@ -621,58 +660,61 @@ const App = () => {
       </section>
 
       {/* Foundations Section */}
-      <section id="foundations" className={`py-10 px-6 ${t.sectionBg}`}>
+      <section id="foundations" className={`py-12 px-6 ${t.sectionBg} border-t ${t.cardBorder}`}>
         <div className="max-w-5xl mx-auto text-left">
           <div className="mb-12">
             <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Foundations</h2>
-            <p className={`${t.muted} text-sm italic`}>Academic background and industry-leading certifications.</p>
-          </div>
-          <div className={`flex items-center gap-3 ${t.accentText} mb-6 font-black uppercase tracking-widest text-[10px]`}><BookOpen size={14} /> Education & Credentials</div>
-          <div className={`space-y-6 border-l ${t.itemBorder} pl-6`}>
-            {resumeData.education.map((edu, idx) => (
-              <div key={idx}><div className={`${t.heading} font-bold tracking-tight text-sm`}>{edu.institution}</div><div className={`${t.muted} text-xs`}>{edu.degree}</div></div>
-            ))}
+            <p className={`${t.muted} text-sm italic`}>Academic background, industry certifications, and key honors.</p>
           </div>
 
-          {resumeData.certifications && (
-            <>
-              <div className={`flex items-center gap-3 ${t.accentText} mb-6 mt-12 font-black uppercase tracking-widest text-[10px]`}><ShieldCheck size={14} /> Certifications</div>
-              <div className={`space-y-6 border-l ${t.itemBorder} pl-6`}>
-                {resumeData.certifications.map((cert, idx) => (
-                  <div key={idx}><div className={`${t.heading} font-bold tracking-tight text-sm`}>{cert.name}</div><div className={`${t.muted} text-xs`}>{cert.issuer}</div></div>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-      </section>
-
-      {/* Honors Section */}
-      <section id="honors" className={`py-10 px-6 border-t ${t.cardBorder}`}>
-        <div className="max-w-5xl mx-auto text-left">
-          <div className={`flex items-center gap-3 ${t.accentText} mb-8 font-black uppercase tracking-widest text-[10px]`}><Award size={16} /> Key Honors</div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {resumeData.awards.map((award, idx) => (
-                <div key={idx} className={`p-8 ${t.statsBg} rounded-3xl border ${t.cardBorder} ${t.cardHover} group transition-all`}>
-                    <div className={`${t.heading} font-bold text-sm tracking-tight mb-2`}>{award.name}</div>
-                    <div className={`${t.mutedExtra} text-[11px] font-medium`}>{award.issuer}</div>
+          <div className="grid md:grid-cols-2 gap-16">
+            <div className="space-y-12">
+              <section>
+                <div className={`flex items-center gap-3 ${t.accentText} mb-6 font-black uppercase tracking-widest text-[10px]`}><BookOpen size={14} /> Education & Credentials</div>
+                <div className={`space-y-6 border-l ${t.itemBorder} pl-6`}>
+                  {resumeData.education.map((edu, idx) => (
+                    <div key={idx}><div className={`${t.heading} font-bold tracking-tight text-sm`}>{edu.institution}</div><div className={`${t.muted} text-xs`}>{edu.degree}</div></div>
+                  ))}
                 </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              </section>
 
-      {/* Languages Section */}
-      <section id="languages" className={`py-10 px-6 ${t.sectionBg}`}>
-        <div className="max-w-5xl mx-auto text-left">
-          <div className={`flex items-center gap-3 ${t.accentText} mb-8 font-black uppercase tracking-widest text-[10px]`}><Globe size={16} /> Languages</div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {resumeData.languages.map((lang, idx) => (
-              <div key={idx} className={`p-6 ${t.statsBg} rounded-2xl border ${t.cardBorder} ${t.cardHover} group transition-all text-left`}>
-                <div className={`${t.heading} font-bold text-sm tracking-tight mb-1`}>{lang.name}</div>
-                <div className={`${t.mutedExtra} text-[11px] font-medium`}>{lang.level}</div>
-              </div>
-            ))}
+              {resumeData.certifications && (
+                <section>
+                  <div className={`flex items-center gap-3 ${t.accentText} mb-6 font-black uppercase tracking-widest text-[10px]`}><ShieldCheck size={14} /> Certifications</div>
+                  <div className={`space-y-6 border-l ${t.itemBorder} pl-6`}>
+                    {resumeData.certifications.map((cert, idx) => (
+                      <div key={idx}><div className={`${t.heading} font-bold tracking-tight text-sm`}>{cert.name}</div><div className={`${t.muted} text-xs`}>{cert.issuer}</div></div>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </div>
+
+            <div className="space-y-12">
+              <section>
+                <div className={`flex items-center gap-3 ${t.accentText} mb-8 font-black uppercase tracking-widest text-[10px]`}><Award size={16} /> Key Honors</div>
+                <div className="grid gap-4">
+                  {resumeData.awards.map((award, idx) => (
+                      <div key={idx} className={`p-6 ${t.statsBg} rounded-2xl border ${t.cardBorder} ${t.cardHover} transition-all group`}>
+                          <div className={`${t.heading} font-bold text-sm tracking-tight mb-2`}>{award.name}</div>
+                          <div className={`${t.mutedExtra} text-[10px] font-medium`}>{award.issuer}</div>
+                      </div>
+                  ))}
+                </div>
+              </section>
+
+              <section>
+                <div className={`flex items-center gap-3 ${t.accentText} mb-8 font-black uppercase tracking-widest text-[10px]`}><Globe size={16} /> Languages</div>
+                <div className="grid grid-cols-2 gap-4">
+                  {resumeData.languages.map((lang, idx) => (
+                    <div key={idx} className={`p-4 ${t.statsBg} rounded-2xl border ${t.cardBorder} ${t.cardHover} transition-all text-left group`}>
+                      <div className={`${t.heading} font-bold text-xs tracking-tight mb-1`}>{lang.name}</div>
+                      <div className={`${t.mutedExtra} text-[10px] font-medium`}>{lang.level}</div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </div>
           </div>
         </div>
       </section>
@@ -703,7 +745,13 @@ const App = () => {
           <div className={`${t.modalCardBg} w-full max-w-4xl h-[90vh] rounded-[2.5rem] border ${t.modalBorder} shadow-2xl flex flex-col overflow-hidden`}>
             <div className={`p-8 border-b ${t.cardBorder} flex justify-between items-center shrink-0 text-left`}>
                 <div><h2 className={`text-2xl font-bold ${t.heading} tracking-tight`}>Full Resume</h2><p className={`${t.accentText} font-bold text-[9px] uppercase tracking-widest mt-1 text-left`}>Nick LeBlanc • Systems Architecture & Strategy</p></div>
-                <button onClick={() => setIsResumeOpen(false)} className={`p-3 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}><X size={18} /></button>
+                <button 
+                  onClick={() => setIsResumeOpen(false)} 
+                  className={`p-3 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}
+                  aria-label="Close resume"
+                >
+                  <X size={18} />
+                </button>
             </div>
             <div className="flex-grow overflow-y-auto p-8 space-y-12 scrollbar-hide text-left">
                 <section>
@@ -740,7 +788,7 @@ const App = () => {
                             <div key={key} className={`border-l ${t.itemBorder} pl-6`}>
                                 <h5 className={`${t.heading} font-bold text-[9px] uppercase tracking-[0.2em] mb-4 flex items-center gap-2`}><span className={`w-1.5 h-1.5 ${t.accentBg} rounded-full`} />{key.toUpperCase()}</h5>
                                 <div className="flex flex-wrap gap-2">
-                                  {items.map((s, idx) => (<span key={idx} className={`px-3 py-1 ${t.innerBg} border ${t.cardBorder} ${t.text} text-[9px] font-bold rounded-full`}>{s}</span>))}
+                                  {items.map((s, idx) => (<span key={idx} className={`px-3 py-1 ${t.innerBg} border ${t.cardBorder} ${t.text} text-[11px] font-bold rounded-full`}>{s}</span>))}
                                 </div>
                             </div>
                         ))}
@@ -805,7 +853,13 @@ const App = () => {
       {selectedSkill && (
         <div className={`fixed inset-0 z-[101] ${t.modalBgAlt} backdrop-blur-md flex items-center justify-center p-4`}>
           <div className={`${t.modalCardBg} w-full max-w-xl rounded-[2.5rem] overflow-hidden border ${t.modalBorder} shadow-2xl relative text-left`}>
-            <button onClick={() => setSelectedSkill(null)} className={`absolute top-6 right-6 p-2 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}><X size={18} /></button>
+            <button 
+              onClick={() => setSelectedSkill(null)} 
+              className={`absolute top-6 right-6 p-2 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}
+              aria-label="Close artifact details"
+            >
+              <X size={18} />
+            </button>
             <div className="p-10">
                <div className={`${t.accentText} font-black uppercase tracking-[0.3em] text-[9px] mb-3`}>Strategic Artifact</div>
                <h2 className={`text-3xl font-bold ${t.heading} mb-8 tracking-tight`}>{selectedSkill.name}</h2>
@@ -829,23 +883,33 @@ const App = () => {
                   <div className={`${t.modalCardBg} ${t.accentText} rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} mb-4 inline-block`}>{selectedCaseStudy.subtitle}</div>
                   <h2 className={`text-3xl md:text-4xl font-bold ${t.heading} tracking-tight`}>{selectedCaseStudy.title}</h2>
                 </div>
-                <button onClick={() => setSelectedCaseStudy(null)} className={`p-3 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}><X size={20} /></button>
+                <button 
+                  onClick={() => setSelectedCaseStudy(null)} 
+                  className={`p-3 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}
+                  aria-label="Close case study"
+                >
+                  <X size={20} />
+                </button>
               </div>
-              <div className="grid md:grid-cols-3 gap-12">
-                <div className="md:col-span-2 space-y-12">
-                  <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><BarChart3 size={14} className={t.accentText} /> Executive Summary (The What)</div><p className={`${t.subheading} text-lg leading-relaxed italic border-l-2 ${t.accentBorder} pl-6`}>{selectedCaseStudy.bluf}</p></section>
-                  <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Target size={14} className={t.accentText} /> Strategic Need (The Why)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.why}</p></section>
-                  <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Workflow size={14} className={t.accentText} /> Method of Delivery (The How)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.how}</p></section>
-                </div>
-                <div className={`p-6 md:p-8 ${t.statsBg} border ${t.cardBorder} rounded-2xl grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 gap-6 md:space-y-8`}>
-                  <div className="flex items-center gap-2 justify-center mb-2 sm:col-span-3 md:col-span-1"><Trophy size={14} className={t.accentText} /><h4 className={`text-[9px] font-black uppercase tracking-widest ${t.muted}`}>Core Metrics</h4></div>
-                  {selectedCaseStudy.results.map((r, i) => (
-                    <div key={i} className="text-center md:border-b border-white/5 md:pb-4 last:border-0 last:pb-0">
-                      <div className="text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
-                      <div className={`text-3xl md:text-4xl font-bold ${t.heading}`}>{r.outcome}</div>
+              <div className="flex flex-col gap-12">
+                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><BarChart3 size={14} className={t.accentText} /> Executive Summary (The What)</div><p className={`${t.subheading} text-lg leading-relaxed italic border-l-2 ${t.accentBorder} pl-6`}>{selectedCaseStudy.bluf}</p></section>
+                
+                <section>
+                  <div className={`p-6 md:p-8 ${t.statsBg} border ${t.cardBorder} rounded-2xl`}>
+                    <div className="flex items-center gap-2 justify-center mb-8"><Trophy size={14} className={t.accentText} /><h4 className={`text-[9px] font-black uppercase tracking-widest ${t.muted}`}>Core Metrics</h4></div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                      {selectedCaseStudy.results.map((r, i) => (
+                        <div key={i} className="text-center">
+                          <div className="text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
+                          <div className={`text-3xl md:text-3xl font-bold ${t.heading}`}>{r.outcome}</div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                </section>
+
+                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Target size={14} className={t.accentText} /> Strategic Need (The Why)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.why}</p></section>
+                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Workflow size={14} className={t.accentText} /> Method of Delivery (The How)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.how}</p></section>
               </div>
             </div>
           </div>
