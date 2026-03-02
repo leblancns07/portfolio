@@ -180,7 +180,7 @@ const App = () => {
       how: "Applied Design Thinking and behavioral analytics to restructure core user flows and unify iOS/Android feature parity.",
       skills: ["Design Thinking", "UX Design", "Product Management", "Behavioral Analytics", "Cross-Platform Orchestration"],
       results: [
-        { metric: "App Rating", outcome: "2.0 → 4.5" },
+        { metric: "App Rating", outcome: "2 to 4.5" },
         { metric: "Cost Savings", outcome: "$30M" },
         { metric: "Engagement", outcome: "+45%" }
       ]
