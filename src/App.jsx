@@ -391,7 +391,13 @@ const App = () => {
         <div className="max-w-5xl mx-auto px-6 text-left">
           <div className={`${t.navBg} backdrop-blur-xl border ${t.cardBorder} rounded-full px-6 py-3 flex justify-between items-center shadow-2xl`}>
             <div className="flex items-center gap-3">
-              <div className={`w-8 h-8 bg-gradient-to-tr ${t.logoGradient} rounded-lg flex items-center justify-center text-white font-black text-xs`}>NL</div>
+              <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className={`w-10 h-10 ${t.accentBg} rounded-full flex items-center justify-center text-white font-black text-xs shadow-lg ${t.accentHover} transition-all active:scale-90`}
+                aria-label="Go to top of page"
+              >
+                NL
+              </button>
               <span className={`font-bold ${t.heading} tracking-tight text-sm uppercase`}>{heroData.h1}</span>
             </div>
             <div className="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-widest">
@@ -579,10 +585,10 @@ const App = () => {
                   <div className={`${t.itemBg} ${t.accentText} rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} w-fit text-center`}>{study.subtitle}</div>
                   <button 
                     onClick={() => setSelectedCaseStudy(study)} 
-                    className={`h-10 px-6 ${t.accentBg} text-white rounded-full font-bold flex items-center gap-2 ${t.accentHover} transition-all shadow-lg active:scale-95 shrink-0 text-[10px] uppercase tracking-widest`}
+                    className={`w-10 h-10 flex items-center justify-center ${t.accentBg} text-white rounded-full transition-all shadow-lg active:scale-95 shrink-0 ${t.accentHover}`}
                     aria-label={`View ${study.title} case study`}
                   >
-                    View Impact <ArrowRight size={14} />
+                    <ArrowRight size={18} />
                   </button>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-8">
@@ -634,7 +640,7 @@ const App = () => {
                 <p className={`${t.muted} text-sm leading-relaxed mb-6`}>{skillGroups[0].description}</p>
                 <div className="flex flex-wrap gap-2">
                   {skillGroups[0].items.map((item, iIdx) => (
-                    <button key={iIdx} onClick={() => setSelectedSkill(item)} className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight ${t.itemBg} border ${t.itemBorder} ${t.heading} hover:${t.accentText} hover:${t.accentBorder.replace('/50', '')} transition-all shadow-md active:scale-95`}>{item.name}</button>
+                    <button key={iIdx} onClick={() => setSelectedSkill(item)} className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight ${t.itemBg} border ${t.itemBorder} ${t.heading} hover:${t.accentText} ${t.accentBorderHover} transition-all shadow-md active:scale-95`}>{item.name}</button>
                   ))}
                 </div>
             </div>
@@ -730,10 +736,7 @@ const App = () => {
                 <a href="https://linkedin.com/in/leblancns07" target="_blank" rel="noreferrer" className={`h-12 w-12 border ${t.itemBorder} rounded-xl flex items-center justify-center ${t.innerBg} transition-all ${t.heading} ${t.accentTextHover} ${t.accentBorderHover}`}><Linkedin size={18} /></a>
               </div>
             </div>
-            <div className="md:text-right">
-              <div className={`${t.muted} text-[9px] uppercase tracking-widest mb-1`}>Location</div>
-              <div className={`${t.heading} font-bold uppercase tracking-widest text-base flex items-center gap-2 md:justify-end`}>Olathe, Kansas <Globe size={16} className={t.accentText} /></div>
-            </div>
+
           </div>
           <div className={`pt-8 border-t ${t.cardBorder} text-[9px] font-bold uppercase tracking-widest ${t.mutedExtra} text-center md:text-left`}>© 2026 Nick LeBlanc — Senior Enterprise Leader</div>
         </div>
@@ -747,7 +750,7 @@ const App = () => {
                 <div><h2 className={`text-2xl font-bold ${t.heading} tracking-tight`}>Full Resume</h2><p className={`${t.accentText} font-bold text-[9px] uppercase tracking-widest mt-1 text-left`}>Nick LeBlanc • Systems Architecture & Strategy</p></div>
                 <button 
                   onClick={() => setIsResumeOpen(false)} 
-                  className={`p-3 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}
+                  className={`p-3 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95`}
                   aria-label="Close resume"
                 >
                   <X size={18} />
@@ -855,7 +858,7 @@ const App = () => {
           <div className={`${t.modalCardBg} w-full max-w-xl rounded-[2.5rem] overflow-hidden border ${t.modalBorder} shadow-2xl relative text-left`}>
             <button 
               onClick={() => setSelectedSkill(null)} 
-              className={`absolute top-6 right-6 p-2 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}
+              className={`absolute top-6 right-6 p-2 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95`}
               aria-label="Close artifact details"
             >
               <X size={18} />
@@ -885,7 +888,7 @@ const App = () => {
                 </div>
                 <button 
                   onClick={() => setSelectedCaseStudy(null)} 
-                  className={`p-3 ${t.innerBg} hover:bg-zinc-800 rounded-xl transition-all ${t.heading} active:scale-95`}
+                  className={`p-3 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95`}
                   aria-label="Close case study"
                 >
                   <X size={20} />
