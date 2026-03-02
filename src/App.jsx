@@ -195,7 +195,7 @@ const App = () => {
       how: "Developed compliant SaaS-to-SaaS LLM integrations to turn complex governance processes into a scalable, automated service.",
       skills: ["Agentic AI", "LLM Orchestration", "Process Engineering", "Workflow Automation", "Zero Trust", "Systems Analysis"],
       results: [
-        { metric: "Staffing Waste", outcome: "-66%" },
+        { metric: "Staff Waste", outcome: "-66%" },
         { metric: "Insight Scale", outcome: "500x" },
         { metric: "Velocity", outcome: "200%" }
       ]
