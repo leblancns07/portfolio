@@ -567,7 +567,7 @@ const App = () => {
                           {React.cloneElement(journeyPoints[activeJourneyStep].icon, { size: isDarkMode ? 24 : 28 })}
                         </div>
                         <div className="flex flex-col items-start text-left">
-                          <div className={`px-2 py-0.5 ${t.accentBg} text-[9px] font-black text-white rounded-md mb-2 shadow-sm border border-white/10 w-fit`}>{journeyPoints[activeJourneyStep].year}</div>
+                          <div className={`${t.itemBg} ${t.accentText} rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} mb-4 w-fit text-center`}>{journeyPoints[activeJourneyStep].year}</div>
                           <h3 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight`}>{journeyPoints[activeJourneyStep].title}</h3>
                         </div>
                     </div>
