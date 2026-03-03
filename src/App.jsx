@@ -146,7 +146,7 @@ const App = () => {
   const heroData = {
     h1: "Nick LeBlanc",
     h2: "I bring together product, marketing, and engineering to build systems at scale.",
-    body: "Twenty years of enterprise-scale delivery across Global 500 organizations. I have co-founded & designed platforms generating over $1B in value and lead automation initiatives to multiply team velocity. I don't just bridge strategy and execution, I synthesize with thinking frameworks.",
+    body: "I have 20 years of enterprise-scale delivery across Global 500 organizations. I am the co-founder & designer of platforms generating $1B+ in value. I direct automation initiatives to multiply team velocity. I synthesize thinking frameworks to become the build impactful outcomes.",
     roleTags: ["Leadership", "Product", "UX/Design", "MarTech", "AI/Automation", "MarComm", "Process", "Operations"],
     imageUrl: "/profile_picture.png",
     whyMeText: "At my core, I care.\n\n I care about people, integrity, and purpose.\n\n I am a strategic thought leader focused on people-first values and innovation. It is my goal to help people feel connected through the tools they use, becoming advocates themselves.\n\n I study complexity to share simplicity. I believe sharing builds community. Become a trusted advocate for the user, grow their confidence, and everyone wins.\n\n I take pride in learning the functional areas that surround me. I have found that when the spokes are stronger, the wheel rolls better."
@@ -431,7 +431,6 @@ const App = () => {
             <div className="hidden md:flex items-center space-x-6 text-xs font-black uppercase tracking-widest text-left">
               <a href="#journey" className={`transition-colors ${t.navHover}`}>Journey</a>
               <a href="#work" className={`transition-colors ${t.navHover}`}>Impact</a>
-              <a href="#skills" className={`transition-colors ${t.navHover}`}>Skills</a>
               <a href="#foundations" className={`transition-colors ${t.navHover}`}>Foundations</a>
               <button onClick={() => setIsResumeOpen(true)} className={`${t.accentBg} text-white px-4 py-2 rounded-full ${t.accentHover} transition-all flex items-center gap-2 font-black shadow-lg`}>Resume</button>
               <button 
@@ -458,7 +457,7 @@ const App = () => {
       {isMenuOpen && (
         <div className={`fixed inset-0 z-[49] md:hidden ${t.modalBg} backdrop-blur-3xl p-6 pt-32 animate-in fade-in zoom-in duration-300`}>
           <div className="flex flex-col space-y-8 items-center text-center">
-            {['journey', 'work', 'skills', 'foundations'].map((id) => (
+            {['journey', 'work', 'foundations'].map((id) => (
               <a 
                 key={id} 
                 href={`#${id}`} 
@@ -500,7 +499,7 @@ const App = () => {
             <p className={`text-base ${t.muted} mb-8 max-w-2xl leading-relaxed`}>{heroData.body}</p>
             <div className="flex flex-wrap gap-2 mb-8">
               {heroData.roleTags.map((tag, i) => (
-                <div key={i} className={`px-3 py-1 ${t.cardBg} border ${t.cardBorder} rounded-full text-[10px] font-bold ${t.muted} uppercase tracking-widest text-center`}>{tag}</div>
+                <div key={i} className={`px-3 py-1 ${t.cardBg} border ${t.cardBorder} rounded-full text-[10px] font-bold ${t.heading} uppercase tracking-widest text-center`}>{tag}</div>
               ))}
             </div>
             <div className="flex flex-wrap gap-4 mb-8">
@@ -511,7 +510,7 @@ const App = () => {
                 onClick={() => setIsHeroWhyMeOpen(true)}
                 className={`inline-flex items-center h-12 px-6 ${t.innerBg} border ${t.itemBorder} ${t.heading} rounded-xl font-bold gap-2 hover:${t.accentText} ${t.accentBorderHover} transition-all shadow-lg active:scale-95 text-sm`}
               >
-                Why Me <ArrowRight size={18} />
+                About Me <ArrowRight size={18} />
               </button>
             </div>
           </div>
@@ -551,6 +550,9 @@ const App = () => {
 
           {/* Slider Controls */}
           <div className="flex flex-col items-center mb-12 w-full">
+            <div className={`text-3xl md:text-5xl font-black ${isDarkMode ? 'text-white' : 'text-zinc-900'} tracking-tighter mb-4 tabular-nums`}>
+              {journeyPoints[activeJourneyStep].year}
+            </div>
             <div className="flex items-center gap-6 w-full max-w-[716px]">
               <button 
                 onClick={() => setActiveJourneyStep(prev => Math.max(0, prev - 1))}
@@ -585,26 +587,23 @@ const App = () => {
                 <ArrowRight size={18} />
               </button>
             </div>
-            <div className={`text-3xl md:text-5xl font-black ${isDarkMode ? 'text-white' : 'text-zinc-900'} tracking-tighter mt-4 tabular-nums`}>
-              {journeyPoints[activeJourneyStep].year}
-            </div>
           </div>
 
           <div className="w-full max-w-4xl">
             <div className={`p-8 md:p-12 ${t.cardBg} border ${t.cardBorder} ${t.cardHover} rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl relative overflow-hidden group/card transition-all duration-500`}>
                 <div className="relative flex flex-col items-start text-left">
-                    <div className="flex items-center gap-5 md:gap-8 w-full">
+                    <div className="flex items-center justify-center gap-5 md:gap-8 w-full">
                         <div className={`w-14 h-14 md:w-20 md:h-20 ${t.bg} border ${t.itemBorder} rounded-xl md:rounded-3xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 relative group/icon`}>
                           {React.cloneElement(journeyPoints[activeJourneyStep].icon, { size: isDarkMode ? 28 : 34 })}
                         </div>
-                        <h3 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight flex-1`}>
+                        <h3 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight`}>
                           {journeyPoints[activeJourneyStep].title}
                         </h3>
                     </div>
 
                     <div className={`h-px w-full ${t.cardBorder} opacity-30 my-6`} />
 
-                    <p className={`${t.text} text-lg md:text-xl leading-relaxed italic max-w-3xl`}>
+                    <p className={`${t.text} text-center text-lg md:text-xl leading-relaxed italic max-w-3xl`}>
                       &quot;{journeyPoints[activeJourneyStep].desc}&quot;
                     </p>
                 </div>
@@ -618,7 +617,7 @@ const App = () => {
         <div className="max-w-5xl mx-auto">
           <div className="mb-12 text-left">
             <div className="mb-8">
-              <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Experience & Impact</h2>
+              <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Impact</h2>
               <p className={`${t.muted} text-sm italic`}>Quantifiable value delivery across product and design.</p>
             </div>
             <div className="flex justify-start relative max-w-full w-full">
@@ -688,56 +687,46 @@ const App = () => {
         </div>
       </section>
 
-      {/* Skills & Tools Section */}
-      <section id="skills" className="py-12 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12 text-left">
-            <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Skills & Tools</h2>
-            <p className={`${t.muted} text-sm italic`}>Technical ecosystems and multidisciplinary leadership.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            {/* Professional Tenure Featured Card */}
-            <div className={`md:col-span-2 p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] ${t.cardHover} transition-all`}>
-                <div className="flex items-center gap-5 md:gap-8 mb-6 w-full">
-                  <div className={`w-14 h-14 md:w-20 md:h-20 ${t.bg} border ${t.itemBorder} rounded-xl md:rounded-3xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 group/icon`}>
-                    <Briefcase size={28} className="md:w-[34px] md:h-[34px]" />
-                  </div>
-                  <h3 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight flex-1`}>{skillGroups[0].group}</h3>
-                </div>
-                <p className={`${t.muted} text-sm leading-relaxed mb-6`}>{skillGroups[0].description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {skillGroups[0].items.map((item, iIdx) => (
-                    <button key={iIdx} onClick={() => setSelectedSkill(item)} className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight ${t.innerBg} border ${t.itemBorder} ${t.heading} hover:${t.accentText} ${t.accentBorderHover} transition-all shadow-md active:scale-95`}>{item.name}</button>
-                  ))}
-                </div>
-            </div>
-            {/* Grid Skills Cards */}
-            {skillGroups.slice(1).map((group, gIdx) => (
-              <div key={gIdx} className={`p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] ${t.cardHover} transition-all`}>
-                  <div className="flex items-center gap-5 md:gap-8 mb-6 w-full">
-                    <div className={`w-14 h-14 md:w-20 md:h-20 ${t.bg} border ${t.itemBorder} rounded-xl md:rounded-3xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 group/icon`}>
-                      {renderIcon(group.icon, 28)}
-                    </div>
-                    <h3 className={`text-2xl md:text-4xl font-bold ${t.heading} tracking-tight leading-tight flex-1`}>{group.group}</h3>
-                  </div>
-                  <p className={`${t.muted} text-[13px] leading-relaxed mb-6`}>{group.description || "Core toolset for enterprise project delivery."}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((item, iIdx) => (
-                      <button key={iIdx} onClick={() => setSelectedSkill(item)} className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-tight ${t.innerBg} border ${t.itemBorder} ${t.heading} hover:${t.accentText} ${t.accentBorderHover} transition-all shadow-md active:scale-95`}>{item.name}</button>
-                    ))}
-                  </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Foundations Section */}
       <section id="foundations" className={`py-12 px-6 ${t.sectionBg} border-t ${t.cardBorder}`}>
         <div className="max-w-5xl mx-auto text-left">
           <div className="mb-12">
             <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Foundations</h2>
-            <p className={`${t.muted} text-sm italic`}>Academic background, industry certifications, and key honors.</p>
+            <p className={`${t.muted} text-sm italic`}>Technical ecosystems, multidisciplinary leadership, and academic background.</p>
+          </div>
+
+          <div className={`flex items-center gap-3 ${t.accentText} mb-6 font-black uppercase tracking-widest text-[10px]`}><Layers size={14} /> Skills & Tools</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-16">
+            {/* Professional Tenure Featured Card */}
+            <div className={`md:col-span-2 p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] transition-all`}>
+                <div className="flex items-center gap-4 mb-6 w-full">
+                  <div className={`w-10 h-10 md:w-12 md:h-12 ${t.bg} border ${t.itemBorder} rounded-xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 group/icon`}>
+                    <Briefcase size={20} className="md:w-[24px] md:h-[24px]" />
+                  </div>
+                  <h3 className={`text-xl md:text-2xl font-bold ${t.heading} tracking-tight leading-tight flex-1`}>{skillGroups[0].group}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {skillGroups[0].items.map((item, iIdx) => (
+                    <div key={iIdx} className={`px-3 py-1 ${t.cardBg} border ${t.cardBorder} rounded-full text-[10px] font-bold ${t.heading} uppercase tracking-widest text-center`}>{item.name}</div>
+                  ))}
+                </div>
+            </div>
+            {/* Grid Skills Cards */}
+            {skillGroups.slice(1).map((group, gIdx) => (
+              <div key={gIdx} className={`p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] transition-all`}>
+                  <div className="flex items-center gap-4 mb-6 w-full">
+                    <div className={`w-10 h-10 md:w-12 md:h-12 ${t.bg} border ${t.itemBorder} rounded-xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 group/icon`}>
+                      {renderIcon(group.icon, 20)}
+                    </div>
+                    <h3 className={`text-xl md:text-2xl font-bold ${t.heading} tracking-tight leading-tight flex-1`}>{group.group}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((item, iIdx) => (
+                      <div key={iIdx} className={`px-3 py-1 ${t.cardBg} border ${t.cardBorder} rounded-full text-[10px] font-bold ${t.heading} uppercase tracking-widest text-center`}>{item.name}</div>
+                    ))}
+                  </div>
+              </div>
+            ))}
           </div>
 
           <div className="grid md:grid-cols-2 gap-16">
