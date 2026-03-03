@@ -508,7 +508,7 @@ const App = () => {
                 <span className={`text-[10px] font-black uppercase tracking-widest ${t.mutedExtra} mt-1.5`}>{stat.label}</span>
               </div>
               {i < stats.length - 1 && (
-                <div className={`h-8 w-px ${t.cardBorder} opacity-30 shrink-0`} />
+                <div className={`hidden md:block h-8 w-px ${t.cardBorder} opacity-30 shrink-0`} />
               )}
             </React.Fragment>
           ))}
@@ -562,11 +562,14 @@ const App = () => {
           <div className="w-full max-w-4xl">
             <div className={`p-8 md:p-12 ${t.cardBg} border ${t.cardBorder} ${t.cardHover} rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl relative overflow-hidden group/card transition-all duration-500`}>
                 <div className="relative flex flex-col items-center text-center">
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8 w-full">
-                        <div className={`w-16 h-16 ${t.bg} border ${t.itemBorder} rounded-2xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0`}>
-                          {React.cloneElement(journeyPoints[activeJourneyStep].icon, { size: 28 })}
+                    <div className="flex items-center justify-center gap-4 md:gap-6 mb-8 w-full px-4">
+                        <div className={`w-12 h-12 md:w-16 md:h-16 ${t.bg} border ${t.itemBorder} rounded-xl md:rounded-2xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 relative group/icon`}>
+                          {React.cloneElement(journeyPoints[activeJourneyStep].icon, { size: isDarkMode ? 24 : 28 })}
                         </div>
-                        <h3 className={`text-3xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight`}>{journeyPoints[activeJourneyStep].title}</h3>
+                        <div className="flex flex-col items-start text-left">
+                          <div className={`px-2 py-0.5 ${t.accentBg} text-[9px] font-black text-white rounded-md mb-2 shadow-sm border border-white/10 w-fit`}>{journeyPoints[activeJourneyStep].year}</div>
+                          <h3 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight`}>{journeyPoints[activeJourneyStep].title}</h3>
+                        </div>
                     </div>
                     <p className={`${t.text} text-lg md:text-xl leading-relaxed italic border-l-0 border-t-2 ${t.accentBorder} pt-8 mt-4 max-w-2xl`}>
                       &quot;{journeyPoints[activeJourneyStep].desc}&quot;
@@ -873,14 +876,14 @@ const App = () => {
           <div className={`${t.modalCardBg} w-full max-w-xl rounded-[2.5rem] overflow-hidden border ${t.modalBorder} shadow-2xl relative text-left`}>
             <button 
               onClick={() => setSelectedSkill(null)} 
-              className={`absolute top-6 right-6 p-2 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95`}
+              className={`absolute top-6 right-6 p-2 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95 z-10`}
               aria-label="Close artifact details"
             >
               <X size={18} />
             </button>
-            <div className="p-10">
-               <div className={`${t.accentText} font-black uppercase tracking-[0.3em] text-[9px] mb-3`}>Strategic Artifact</div>
-               <h2 className={`text-3xl font-bold ${t.heading} mb-8 tracking-tight`}>{selectedSkill.name}</h2>
+            <div className="p-10 relative">
+               <div className={`${t.accentText} font-black uppercase tracking-[0.3em] text-[9px] mb-3 pr-12`}>Strategic Artifact</div>
+               <h2 className={`text-2xl md:text-3xl font-bold ${t.heading} mb-8 tracking-tight pr-12`}>{selectedSkill.name}</h2>
                <div className="space-y-8">
                  <section className="flex gap-5"><div className={`w-10 h-10 ${t.itemBg} border ${t.itemBorder} rounded-xl flex items-center justify-center shrink-0`}><BarChart3 size={20} className={t.accentText} /></div><div><div className={`text-[9px] font-black ${t.muted} uppercase tracking-widest mb-1`}>Executive Summary (The What)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedSkill.what}</p></div></section>
                  <section className="flex gap-5"><div className={`w-10 h-10 ${t.itemBg} border ${t.itemBorder} rounded-xl flex items-center justify-center shrink-0`}><Target size={20} className={t.accentText} /></div><div><div className={`text-[9px] font-black ${t.muted} uppercase tracking-widest mb-1`}>Strategic Need (The Why)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedSkill.why}</p></div></section>
@@ -894,22 +897,33 @@ const App = () => {
       {/* Case Study Modal */}
       {selectedCaseStudy && (
         <div className={`fixed inset-0 z-[100] ${t.modalBgAlt} backdrop-blur-xl flex items-center justify-center p-4`}>
-          <div className={`${t.modalCardBg} w-full max-w-4xl max-h-[85vh] rounded-[2.5rem] overflow-hidden flex flex-col border ${t.modalBorder} shadow-2xl text-left`}>
+          <div className={`${t.modalCardBg} w-full max-w-5xl max-h-[85vh] rounded-[2.5rem] overflow-hidden flex flex-col border ${t.modalBorder} shadow-2xl text-left`}>
+            <div className="relative">
+              <button 
+                onClick={() => setSelectedCaseStudy(null)} 
+                className={`absolute top-8 right-8 p-3 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95 z-20`}
+                aria-label="Close case study"
+              >
+                <X size={20} />
+              </button>
+            </div>
             <div className="p-8 overflow-y-auto scrollbar-hide">
-              <div className="flex justify-between items-start mb-12 gap-12 md:gap-20">
+              {/* Header section constrained to match metrics width */}
+              <div className="max-w-4xl mx-auto w-full mb-12 flex justify-between items-start gap-12">
                 <div className="flex-1">
                   <div className={`${t.modalCardBg} ${t.accentText} rounded-full px-4 py-1.5 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} mb-4 w-fit flex items-center justify-center text-center`}>{selectedCaseStudy.subtitle}</div>
-                  <h2 className={`text-3xl md:text-4xl font-bold ${t.heading} tracking-tight`}>{selectedCaseStudy.title}</h2>
+                  <h2 className={`text-2xl md:text-3xl font-bold ${t.heading} tracking-tight`}>{selectedCaseStudy.title}</h2>
                 </div>
                 <button 
                   onClick={() => setSelectedCaseStudy(null)} 
-                  className={`p-3 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95`}
+                  className={`p-3 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95 shrink-0`}
                   aria-label="Close case study"
                 >
                   <X size={20} />
                 </button>
               </div>
-              <div className="flex flex-col gap-12">
+
+              <div className="flex flex-col gap-12 max-w-4xl mx-auto">
                 <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><BarChart3 size={14} className={t.accentText} /> Executive Summary (The What)</div><p className={`${t.subheading} text-lg leading-relaxed italic border-l-2 ${t.accentBorder} pl-6`}>{selectedCaseStudy.bluf}</p></section>
                 
                 <section>
@@ -939,7 +953,7 @@ const App = () => {
       {/* Hero "Why Me" Modal */}
       {isHeroWhyMeOpen && (
         <div className={`fixed inset-0 z-[110] ${t.modalBgAlt} backdrop-blur-xl flex items-center justify-center p-4`}>
-          <div className={`${t.modalCardBg} w-full max-w-2xl rounded-[2.5rem] overflow-hidden flex flex-col border ${t.modalBorder} shadow-2xl transition-all`}>
+          <div className={`${t.modalCardBg} w-full max-w-2xl max-h-[90vh] rounded-[2.5rem] overflow-hidden flex flex-col border ${t.modalBorder} shadow-2xl transition-all`}>
             <div className="p-8 overflow-y-auto scrollbar-hide flex flex-col items-center relative">
               <button 
                 onClick={() => setIsHeroWhyMeOpen(false)} 
