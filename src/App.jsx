@@ -30,7 +30,6 @@ const App = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
-  const [selectedSkill, setSelectedSkill] = useState(null);
   const [isHeroWhyMeOpen, setIsHeroWhyMeOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -183,6 +182,8 @@ const App = () => {
       subtitle: "Catalyst Platform Architecture",
       tags: ["Product", "Leadership"],
       bluf: "Co-founded and co-architected a first-of-kind distribution engine that scaled hyper-personalized content to millions of customers.",
+      whyImportant: "Personalization at scale drives loyalty, conversion, and significant revenue streams for global telecom.",
+      problemStatement: "Marketing teams were trapped in manual distribution cycles and disconnected data silos, preventing real-time customer relevance at scale.",
       why: "Marketing teams were trapped in manual distribution cycles and disconnected data silos, preventing real-time customer relevance at scale.",
       how: "Engineered a modular, zero-trust compliant MarTech infrastructure focused on technical interoperability and automated content orchestration.",
       skills: ["Systems Thinking", "Solution Engineering", "Agile", "Strategic Planning", "First Principles", "MarTech Architecture"],
@@ -198,6 +199,8 @@ const App = () => {
       subtitle: "My Verizon Ecosystem Redesign",
       tags: ["Product", "Leadership"],
       bluf: "Directed a top-to-bottom redesign of the flagship mobile experience, shifting app store sentiment from 2.0 to 4.5.",
+      whyImportant: "A mobile app is the primary touchpoint for millions of customers; its usability directly limits or drives support costs.",
+      problemStatement: "Frictional user journeys and legacy UI were driving excessive support volume and significant customer retention costs.",
       why: "Frictional user journeys and legacy UI were driving excessive support volume and significant customer retention costs.",
       how: "Applied Design Thinking and behavioral analytics to restructure core user flows and unify iOS/Android feature parity.",
       skills: ["Design Thinking", "UX Design", "Product Management", "Behavioral Analytics", "Cross-Platform Orchestration"],
@@ -213,6 +216,8 @@ const App = () => {
       subtitle: "High-Velocity Workflow Automation",
       tags: ["Product", "Leadership"],
       bluf: "Deployed autonomous AI agents to manage complex financial and marketing operations, replacing 24/7 manual oversight.",
+      whyImportant: "Enterprise governance and operations require massive, tedious overhead that limits human strategic capacity.",
+      problemStatement: "Traditional planning cycles and governance workflows were too slow to match the speed of global enterprise shifts.",
       why: "Traditional planning cycles and governance workflows were too slow to match the speed of global enterprise shifts.",
       how: "Developed compliant SaaS-to-SaaS LLM integrations to turn complex governance processes into a scalable, automated service.",
       skills: ["Agentic AI", "LLM Orchestration", "Process Engineering", "Workflow Automation", "Zero Trust", "Systems Analysis"],
@@ -492,7 +497,7 @@ const App = () => {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
           <div className="flex-1">
             <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full ${t.innerBg} border ${t.itemBorder} text-[10px] font-bold uppercase tracking-[0.2em] ${t.accentText} mb-6`}>
-              <Sparkles size={12} /> Strategic Leadership & MarTech Operations
+              <Sparkles size={12} /> Strategic Leadership & MarTech Ops
             </div>
             <h1 className={`text-5xl md:text-7xl font-bold ${t.heading} mb-6 tracking-tighter leading-none`}>{heroData.h1}</h1>
             <h2 className={`text-xl md:text-3xl font-medium ${t.subheading} mb-8 leading-tight`}>{heroData.h2}</h2>
@@ -657,22 +662,26 @@ const App = () => {
                 <div className="flex flex-col mb-8 gap-8">
                   <div className="w-full">
                     <h3 className={`text-2xl md:text-4xl font-bold ${t.heading} mb-4 tracking-tight leading-tight`}>{study.title}</h3>
-                    <p className={`${t.subheading} text-base font-medium border-l-2 ${t.accentBorder} pl-6 italic mb-4`}>{study.bluf}</p>
+                    <p className={`${t.subheading} text-base font-medium border-l-2 ${t.accentBorder} pl-6 italic`}>{study.bluf}</p>
                   </div>
                   <div className="w-full">
                     <div className={`p-4 md:p-6 ${t.itemBg} border ${t.itemBorder} rounded-2xl grid grid-cols-3 gap-4 w-full`}>
                         {study.results.map((r, i) => (
                           <div key={i} className="text-center">
                             <div className="text-[10px] md:text-[11px] uppercase font-bold text-zinc-600 mb-1 tracking-widest">{r.metric}</div>
-                            <div className={`text-xl md:text-3xl font-black ${t.heading} tabular-nums`}>{r.outcome}</div>
+                            <div className={`text-xl md:text-3xl font-black ${t.accentText} tabular-nums`}>{r.outcome}</div>
                           </div>
                         ))}
                     </div>
                   </div>
                 </div>
-                <div>
+                <div className="flex flex-col gap-6">
                   <section>
-                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Workflow size={12} className={t.accentText} /> How was this accomplished</div>
+                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Target size={12} className={t.accentText} /> What was the problem?</div>
+                    <p className={`${t.subheading} leading-relaxed`}>{study.why}</p>
+                  </section>
+                  <section>
+                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Workflow size={12} className={t.accentText} /> How we solved it</div>
                     <p className={`${t.subheading} leading-relaxed`}>{study.how}</p>
                   </section>
                 </div>
@@ -803,7 +812,7 @@ const App = () => {
         <div className={`fixed inset-0 z-[110] ${t.modalBg} backdrop-blur-xl flex items-center justify-center p-4`}>
           <div className={`${t.modalCardBg} w-full max-w-4xl h-[90vh] rounded-[2.5rem] border ${t.modalBorder} shadow-2xl flex flex-col overflow-hidden`}>
             <div className={`p-8 border-b ${t.cardBorder} flex justify-between items-center shrink-0 text-left`}>
-                <div><h2 className={`text-2xl font-bold ${t.heading} tracking-tight`}>Full Resume</h2><p className={`${t.accentText} font-bold text-[9px] uppercase tracking-widest mt-1 text-left`}>Nick LeBlanc • Systems Architecture & Strategy</p></div>
+                <div><h2 className={`text-2xl font-bold ${t.heading} tracking-tight`}>Full Resume</h2><p className={`${t.accentText} font-bold text-[9px] uppercase tracking-widest mt-1 text-left`}>Nick LeBlanc • Strategic Leadership & MarTech Ops</p></div>
                 <button 
                   onClick={() => setIsResumeOpen(false)} 
                   className={`p-3 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95`}
@@ -908,32 +917,7 @@ const App = () => {
         </div>
       )}
 
-      {/* Artifact Overlay */}
-      {selectedSkill && (
-        <div className={`fixed inset-0 z-[101] ${t.modalBgAlt} backdrop-blur-md flex items-center justify-center p-4`}>
-          <div className={`${t.modalCardBg} w-full max-w-5xl max-h-[90vh] rounded-[2.5rem] overflow-hidden flex flex-col border ${t.modalBorder} shadow-2xl text-left relative`}>
-            <button 
-              onClick={() => setSelectedSkill(null)} 
-              className={`absolute top-8 right-8 p-3 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95 z-20`}
-              aria-label="Close artifact details"
-            >
-              <X size={20} />
-            </button>
-            <div className="p-10 overflow-y-auto scrollbar-hide">
-               <div className="max-w-4xl mx-auto w-full mb-12">
-                 <div className={`${t.accentText} font-black uppercase tracking-[0.3em] text-[10px] mb-4`}>Strategic Artifact</div>
-                 <h2 className={`text-2xl md:text-4xl font-bold ${t.heading} tracking-tight leading-tight`}>{selectedSkill.name}</h2>
-               </div>
-               
-               <div className="max-w-4xl mx-auto space-y-12">
-                 <section className="flex gap-6"><div className={`w-12 h-12 ${t.itemBg} border ${t.itemBorder} rounded-2xl flex items-center justify-center shrink-0 shadow-sm`}><BarChart3 size={22} className={t.accentText} /></div><div className="pt-1"><div className={`text-[10px] font-black ${t.muted} uppercase tracking-[0.2em] mb-2`}>Executive Summary (The What)</div><p className={`${t.subheading} text-lg leading-relaxed`}>{selectedSkill.what}</p></div></section>
-                 <section className="flex gap-6"><div className={`w-12 h-12 ${t.itemBg} border ${t.itemBorder} rounded-2xl flex items-center justify-center shrink-0 shadow-sm`}><Target size={22} className={t.accentText} /></div><div className="pt-1"><div className={`text-[10px] font-black ${t.muted} uppercase tracking-[0.2em] mb-2`}>Strategic Need (The Why)</div><p className={`${t.subheading} text-lg leading-relaxed`}>{selectedSkill.why}</p></div></section>
-                 <section className="flex gap-6"><div className={`w-12 h-12 ${t.itemBg} border ${t.itemBorder} rounded-2xl flex items-center justify-center shrink-0 shadow-sm`}><Workflow size={22} className={t.accentText} /></div><div className="pt-1"><div className={`text-[10px] font-black ${t.muted} uppercase tracking-[0.2em] mb-2`}>Method of Delivery (The How)</div><p className={`${t.subheading} text-lg leading-relaxed`}>{selectedSkill.how}</p></div></section>
-               </div>
-            </div>
-          </div>
-        </div>
-      )}
+
 
       {/* Case Study Modal */}
       {selectedCaseStudy && (
@@ -952,29 +936,27 @@ const App = () => {
               </div>
 
               <div className="flex flex-col gap-12 max-w-4xl mx-auto">
-                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><BarChart3 size={14} className={t.accentText} /> Executive Summary (The What)</div><p className={`${t.subheading} text-lg leading-relaxed italic border-l-2 ${t.accentBorder} pl-6`}>{selectedCaseStudy.bluf}</p></section>
+                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><BarChart3 size={14} className={t.accentText} /> Where it started</div><p className={`${t.subheading} text-lg leading-relaxed italic`}>{selectedCaseStudy.bluf}</p></section>
                 
+                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Award size={14} className={t.accentText} /> Why is this important?</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.whyImportant}</p></section>
+                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Target size={14} className={t.accentText} /> So what&apos;s the problem?</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.problemStatement}</p></section>
+
+                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Workflow size={14} className={t.accentText} /> How we solved it</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.how}</p></section>
+
                 <section>
-                  <div className={`p-6 md:p-8 ${t.cardBg} border ${t.cardBorder} rounded-2xl flex flex-col md:flex-row md:items-center gap-8 md:gap-0`}>
-                    <div className="md:w-1/4 flex items-center gap-3 justify-center md:justify-start md:border-r border-zinc-800/50 md:pr-8 md:mr-8 shrink-0">
-                      <Trophy size={16} className={t.accentText} />
-                      <h4 className={`text-[9px] font-black uppercase tracking-[0.2em] ${t.muted}`}>Core Metrics</h4>
-                    </div>
-                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <div className={`p-6 md:p-8 ${t.cardBg} border ${t.cardBorder} rounded-2xl`}>
+                    <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6">
                       {selectedCaseStudy.results.map((r, i) => (
-                        <div key={i} className="text-center md:text-left">
+                        <div key={i} className="text-center flex flex-col items-center justify-center">
                           <div className="text-[11px] uppercase font-bold text-zinc-600 mb-1 tracking-tight">{r.metric}</div>
-                          <div className={`text-3xl md:text-3xl font-bold ${t.heading} tabular-nums`}>{r.outcome}</div>
+                          <div className={`text-3xl md:text-3xl font-bold ${t.accentText} tabular-nums`}>{r.outcome}</div>
                         </div>
                       ))}
                     </div>
                   </div>
                 </section>
-
-                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Target size={14} className={t.accentText} /> Strategic Need (The Why)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.why}</p></section>
-                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Workflow size={14} className={t.accentText} /> Method of Delivery (The How)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.how}</p></section>
                 
-                <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-zinc-800/30">
+                <div className="flex flex-wrap gap-2 pt-6 border-t border-zinc-800/30">
                   {selectedCaseStudy.tags && selectedCaseStudy.tags.map((tag, i) => (
                     <div key={i} className={`px-3 py-1 ${t.cardBg} border ${t.cardBorder} rounded-full text-[10px] font-bold ${t.heading} uppercase tracking-widest text-center`}>{tag}</div>
                   ))}
