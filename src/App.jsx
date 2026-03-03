@@ -524,8 +524,8 @@ const App = () => {
           </div>
 
           {/* Slider Controls */}
-          <div className="flex flex-col items-center mb-12">
-            <div className="flex items-center gap-6 w-full max-w-2xl">
+          <div className="flex flex-col items-center mb-12 w-full">
+            <div className="flex items-center gap-6 w-full max-w-[716px]">
               <button 
                 onClick={() => setActiveJourneyStep(prev => Math.max(0, prev - 1))}
                 className={`h-12 px-6 rounded-full border ${t.itemBorder} flex items-center justify-center transition-all active:scale-95 ${t.accentBg} text-white font-black shadow-lg ${t.accentHover}`}
@@ -559,7 +559,7 @@ const App = () => {
                 <ArrowRight size={18} />
               </button>
             </div>
-            <div className="text-3xl md:text-5xl font-black text-white tracking-tighter mt-4 tabular-nums">
+            <div className={`text-3xl md:text-5xl font-black ${isDarkMode ? 'text-white' : 'text-zinc-900'} tracking-tighter mt-4 tabular-nums`}>
               {journeyPoints[activeJourneyStep].year}
             </div>
           </div>
@@ -576,7 +576,7 @@ const App = () => {
                         </h3>
                     </div>
 
-                    <div className={`h-px w-full ${t.cardBorder} opacity-30 my-10`} />
+                    <div className={`h-px w-full ${t.cardBorder} opacity-30 my-6`} />
 
                     <p className={`${t.text} text-lg md:text-xl leading-relaxed italic max-w-3xl`}>
                       &quot;{journeyPoints[activeJourneyStep].desc}&quot;
