@@ -129,7 +129,7 @@ const App = () => {
     h2: "I build the systems where product, marketing, and engineering meet.",
     body: "Twenty years of enterprise-scale delivery across Global 500 organizations. I co-architected platforms generating over a billion dollars in value and lead AI initiatives that multiply team velocity. I don't just bridge strategy and execution—I engineer the infrastructure that makes them one.",
     roleTags: ["Leadership", "Product Management", "UX Design", "AI Automation", "MarTech", "Marketing Communications", "Systems", "Operations"],
-    imageUrl: "profile_picture.png",
+    imageUrl: "/public/profile_picture.png",
     whyMeText: "At my core, I care.\n\n I care about people, integrity, and purpose.\n\n I am a strategic thought leader focused on people-first values and innovation. It is my goal to help people feel connected through the tools they use, becoming advocates themselves.\n\n I study complexity to share simplicity. I believe sharing builds community. Become a trusted advocate for the user, grow their confidence, and everyone wins.\n\n I take pride in learning the functional areas that surround me. I have found that when the spokes are stronger, the wheel rolls better."
   };
 
@@ -958,7 +958,7 @@ const App = () => {
                   
                   <div className={`w-full max-w-[500px] mx-auto aspect-square rounded-[2rem] overflow-hidden border ${t.cardBorder} relative bg-black/5 p-8`}>
                     <img 
-                      src={isDarkMode ? "public/wheel_picture_d.png" : "public/wheel_picture_l.png"} 
+                      src={isDarkMode ? "/public/wheel_picture_d.png" : "/public/wheel_picture_l.png"} 
                       alt="Strategic Systems Visualization" 
                       className="w-full h-full object-contain block"
                     />
