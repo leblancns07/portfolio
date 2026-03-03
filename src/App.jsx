@@ -126,34 +126,35 @@ const App = () => {
   // --- CORE DATA DEFINITIONS ---
   const heroData = {
     h1: "Nick LeBlanc",
-    h2: "I build the systems where product, marketing, and engineering meet.",
-    body: "Twenty years of enterprise-scale delivery across Global 500 organizations. I co-architected platforms generating over a billion dollars in value and lead AI initiatives that multiply team velocity. I don't just bridge strategy and execution—I engineer the infrastructure that makes them one.",
-    roleTags: ["Leadership", "Product Management", "UX Design", "AI Automation", "MarTech", "Marketing Communications", "Systems", "Operations"],
+    h2: "I bring together product, marketing, and engineering to build systems at scale.",
+    body: "Twenty years of enterprise-scale delivery across Global 500 organizations. I have co-founded & designed platforms generating over $1B in value and lead automation initiatives to multiply team velocity. I don't just bridge strategy and execution, I synthesize with thinking frameworks.",
+    roleTags: ["Leadership", "Product", "UX/Design", "MarTech", "AI/Automation", "MarComm", "Process", "Operations"],
     imageUrl: "/profile_picture.png",
     whyMeText: "At my core, I care.\n\n I care about people, integrity, and purpose.\n\n I am a strategic thought leader focused on people-first values and innovation. It is my goal to help people feel connected through the tools they use, becoming advocates themselves.\n\n I study complexity to share simplicity. I believe sharing builds community. Become a trusted advocate for the user, grow their confidence, and everyone wins.\n\n I take pride in learning the functional areas that surround me. I have found that when the spokes are stronger, the wheel rolls better."
   };
 
   const stats = [
     { value: "$1B+", label: "Platform Value" },
-    { value: "$200M", label: "Value Realization" },
+    { value: "$200M", label: "Project Value" },
     { value: "200%", label: "Velocity Gain" },
     { value: "500x", label: "Insight Scale" },
     { value: "20yr", label: "Experience" }
   ];
 
   const journeyPoints = [
-    { year: "2003", title: "Technical Foundation", desc: "Completed specialized Web Development & Graphic Design diploma at York Technology Institute.", icon: <BookOpen size={16} /> },
-    { year: "2004", title: "Academic Excellence", desc: "Awarded Top GPA in Class (Webmaster Award), cementing a high-performance delivery mindset.", icon: <Award size={16} /> },
-    { year: "2006", title: "Sprint: Digital Adoption", desc: "Joined Sprint as Product Manager. Optimized Wireless Web adoption, growing DAUs by 300k users.", icon: <Globe size={16} /> },
-    { year: "2009", title: "The Design Pivot", desc: "Shifted to IT Project Manager & UX Designer. Designed enterprise care tools for 35k+ agents.", icon: <Layout size={16} /> },
-    { year: "2011", title: "Verizon: CX Transformation", desc: "Joined Verizon to direct the My Verizon flagship mobile redesign, focusing on Design Thinking.", icon: <Briefcase size={16} /> },
-    { year: "2014", title: "Financial Impact", desc: "Realized $30M in cost-savings through user journey optimization and iOS/Android feature parity.", icon: <Trophy size={16} /> },
-    { year: "2016", title: "Leadership Scale", desc: "Appointed Lead Product Manager. Graduated with BA in Applied Organizational Leadership.", icon: <ShieldCheck size={16} /> },
-    { year: "2018", title: "Marketing Architecture", desc: "Took ownership of the 'Engage' platform, delivering 250+ personalized global campaigns.", icon: <Layers size={16} /> },
-    { year: "2020", title: "Catalyst Launch", desc: "Co-founded Catalyst Distribution Platform, generating over $1B in enterprise value.", icon: <Zap size={16} /> },
-    { year: "2022", title: "Value Realization", desc: "Operationalized personalization roadmap resulting in $146M in direct realized revenue.", icon: <BarChart3 size={16} /> },
-    { year: "2024", title: "The AI Transition", desc: "Appointed Associate Director. Pivoted systems toward Agentic AI and LLM orchestration.", icon: <Cpu size={16} /> },
-    { year: "2025", title: "Velocity Multiplier", desc: "Current: Deploying compliant AI pipelines that multiply team velocity by 200%.", icon: <Sparkles size={16} /> }
+    { year: "2004", title: "Technical Foundation", desc: "Began journey as a designer and developer. Awarded Top GPA in Class.", icon: <BookOpen size={16} /> },
+    { year: "2006", title: "Sprint: Digital Ownership", desc: "Product Managed mobile web experience, building and deploying marketing campaigns.", icon: <Briefcase size={16} /> },
+    { year: "2009", title: "The First Pivot", desc: "Shifted to Project Manager & UX Designer, creating enterprise care tools for agents and managing enterprise projects.", icon: <Sparkles size={16} /> },
+    { year: "2011", title: "Verizon: The CX Lens", desc: "Joined Verizon as UX Designer, Project Manager, and Product Owner, growing my skills.", icon: <Briefcase size={16} /> },
+    { year: "2014", title: "The App Redesign", desc: "Analyzed, redesigned, and launched My Verizon App based on how customers used it.", icon: <Trophy size={16} /> },
+    { year: "2016", title: "Leadership Foundation", desc: "Received BA in Applied Organizational Leadership emphasizing conflict resolution.", icon: <BookOpen size={16} /> },
+    { year: "2016", title: "Beginning to Lead", desc: "Appointed Lead Product Manager, where I would create and orchestrate marketing communications.", icon: <ShieldCheck size={16} /> },
+    { year: "2017", title: "The Second Pivot", desc: "Became a MarTech SME, building out personalization capabilities and processes.", icon: <Sparkles size={16} /> },
+    { year: "2018", title: "Marketing Architecture", desc: "Launched 'Engage', the first version of an internal at-scale personalization CRM.", icon: <Layers size={16} /> },
+    { year: "2019", title: "The Defining Moment", desc: "Co-founded, co-architected, and designed Catalyst, an enterprise omnichannel personalization distribution platform.", icon: <Zap size={16} /> },
+    { year: "2020", title: "Leading the Charge", desc: "Promoted to Senior Manager, focused on operationalizing processes and personalization systems.", icon: <ShieldCheck size={16} /> },
+    { year: "2022", title: "The Third Pivot", desc: "Process Engineered implementation process and operational model to scale personalization across the enterprise.", icon: <Sparkles size={16} /> },
+    { year: "2024", title: "The Fourth Pivot", desc: "Promoted to Associate Director, combining all of my previous experiences into one role.", icon: <Sparkles size={16} /> }
   ];
 
   const caseStudies = useMemo(() => [
@@ -467,7 +468,7 @@ const App = () => {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
           <div className="flex-1">
             <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full ${t.innerBg} border ${t.itemBorder} text-[10px] font-bold uppercase tracking-[0.2em] ${t.accentText} mb-6`}>
-              <Sparkles size={12} /> Strategic Ops & MarTech Leadership
+              <Sparkles size={12} /> Strategic Leadership & MarTech Operations
             </div>
             <h1 className={`text-5xl md:text-7xl font-bold ${t.heading} mb-6 tracking-tighter leading-none`}>{heroData.h1}</h1>
             <h2 className={`text-xl md:text-3xl font-medium ${t.subheading} mb-8 leading-tight`}>{heroData.h2}</h2>
@@ -519,8 +520,8 @@ const App = () => {
       <section id="journey" className={`py-16 px-6 ${t.sectionBg} border-t ${t.cardBorder}`}>
         <div className="max-w-5xl mx-auto flex flex-col items-center">
           <div className="mb-12 text-center w-full">
-            <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Strategic Journey</h2>
-            <p className={`${t.muted} text-sm italic`}>Enterprise evolution and technical pivot.</p>
+            <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>My Journey</h2>
+            <p className={`${t.muted} text-sm italic`}>Professional evolution, pivots, and growth.</p>
           </div>
 
           {/* Slider Controls */}
@@ -596,9 +597,9 @@ const App = () => {
               <p className={`${t.muted} text-sm italic`}>Quantifiable value delivery across product and design.</p>
             </div>
             <div className="flex justify-start">
-              <div className={`flex flex-wrap gap-2 p-1 ${t.innerBg} border ${t.itemBorder} rounded-xl`}>
-                {["All", "Product", "Design / UX", "AI / Automation"].map(f => (
-                  <button key={f} onClick={() => setActiveFilter(f)} className={`px-4 py-2 rounded-lg text-[10px] font-bold tracking-tight transition-all active:scale-95 ${activeFilter === f ? t.tabActive : t.tabInactive}`}>{f}</button>
+              <div className={`flex flex-nowrap gap-2 p-1 ${t.innerBg} border ${t.itemBorder} rounded-xl overflow-x-auto scrollbar-hide max-w-full`}>
+                {["All", "Leadership", "Product", "UX/Design", "MarTech", "AI/Automation", "MarComm", "Process", "Operations"].map(f => (
+                  <button key={f} onClick={() => setActiveFilter(f)} className={`px-4 py-2 rounded-lg text-[10px] font-bold tracking-tight transition-all active:scale-95 whitespace-nowrap ${activeFilter === f ? t.tabActive : t.tabInactive}`}>{f}</button>
                 ))}
               </div>
             </div>
