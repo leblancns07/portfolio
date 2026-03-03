@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { 
   Linkedin, 
   Mail, 
@@ -21,7 +21,9 @@ import {
   Briefcase,
   Workflow,
   Sun,
-  Moon
+  Moon,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 
 const App = () => {
@@ -34,6 +36,23 @@ const App = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeJourneyStep, setActiveJourneyStep] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const filterScrollRef = useRef(null);
+
+  const checkScroll = () => {
+    if (filterScrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = filterScrollRef.current;
+      setCanScrollLeft(scrollLeft > 1);
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 1);
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(checkScroll, 100);
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
 
   // --- THEME DEFINITIONS ---
   const themes = {
@@ -207,22 +226,28 @@ const App = () => {
 
   const skillGroups = [
     {
-      group: "Professional Tenure",
+      group: "Functional Roles",
       icon: <Briefcase size={20} />,
-      description: "Leadership and management roles held across Global 500 and high-growth enterprise sectors.",
+      description: "Functional responsibilities I have performed.",
       items: [
-        { name: "Associate Director", what: "Senior-level strategic leadership & MarTech orchestration.", why: "To lead cross-functional teams in high-stakes environments where velocity and compliance must coexist.", how: "Directed MarTech AI Automation Systems & Operations at Verizon, leading a 24/7 global service management team." },
-        { name: "Senior Manager", what: "Orchestrating complex product lifecycles and GTM strategies.", why: "To bridge the gap between high-level vision and tactical execution.", how: "Led Personalization Strategy at Verizon, operationalizing a roadmap that realized $146M in revenue." },
-        { name: "Lead Product Manager", what: "Ownership of enterprise-scale platforms and feature sets.", why: "To ensure user-centric product development aligns with business financial goals.", how: "Served as Product Owner for the 'Engage' platform, delivering over 250 scalable marketing campaigns." },
-        { name: "Senior Product & Project Manager", what: "Integrated management of technical development and operational workflows.", why: "To reduce friction in the product delivery lifecycle and optimize resource allocation.", how: "Directed the My Verizon redesign, managing deployment schedules for millions of active users." },
-        { name: "UX Designer", what: "Human-centered systems and interface architecture.", why: "To transform low-performing applications into delightful, efficient tools that reduce support costs.", how: "Applied Design Thinking at Sprint to resolve 60 critical defects in under 90 days." },
-        { name: "Product Manager", what: "Early-stage digital ecosystem expansion.", why: "To accelerate digital adoption through journey mapping and production workflow optimization.", how: "Accelerated Sprint Wireless Web adoption, growing DAUs from 500k to 800k through journey optimization." }
+        { name: "Product Management", what: "x", why: "x", how: "x" },
+        { name: "Leadership", what: "x", why: "x", how: "x" },
+        { name: "UX/Design", what: "x", why: "x", how: "x" },
+        { name: "Operations/Automation", what: "x", why: "x", how: "x" },
+        { name: "Marketing Technology", what: "x", why: "x", how: "x" },
+        { name: "Project Management", what: "x", why: "x", how: "x" },
+        { name: "Marketing Communications", what: "x", why: "x", how: "x" },        
+        { name: "Governance, Risk & Compliance", what: "x", why: "x", how: "x" },
+        { name: "Analytics", what: "x", why: "x", how: "x" },
+        { name: "Enterprise Architecture", what: "x", why: "x", how: "x" },
+        { name: "System Administration", what: "x", why: "x", how: "x" },
+        { name: "Finance Planning", what: "x", why: "x", how: "x" }
       ]
     },
     { 
-      group: "Strategic Thinking", 
+      group: "Thinking Frameworks", 
       icon: <Command size={20} />,
-      description: "Foundational frameworks that move beyond generic management into architectural delivery.",
+      description: "Foundational models that move beyond generic management into scalable delivery.",
       items: [
         { name: "First Principles", what: "Deconstruction of complex problems to their core truths.", why: "To move beyond 'the way it's always been done' and reach objective efficiency.", how: "Applied during Verizon Finance planning transformation, replacing manual spreadsheets with an automated system of record." },
         { name: "Systems Thinking", what: "Holistic architectural interoperability.", why: "To ensure individual MarTech tools don't become expensive silos but rather a unified engine.", how: "Used to architect the Catalyst platform for enterprise-wide personalization distribution." },
@@ -596,11 +621,25 @@ const App = () => {
               <h2 className={`text-3xl font-bold ${t.heading} mb-2 tracking-tight uppercase`}>Experience & Impact</h2>
               <p className={`${t.muted} text-sm italic`}>Quantifiable value delivery across product and design.</p>
             </div>
-            <div className="flex justify-start">
-              <div className={`flex flex-nowrap gap-2 p-1 ${t.innerBg} border ${t.itemBorder} rounded-xl overflow-x-auto scrollbar-hide max-w-full`}>
-                {["All", "Leadership", "Product", "UX/Design", "MarTech", "AI/Automation", "MarComm", "Process", "Operations"].map(f => (
-                  <button key={f} onClick={() => setActiveFilter(f)} className={`px-4 py-2 rounded-lg text-[10px] font-bold tracking-tight transition-all active:scale-95 whitespace-nowrap ${activeFilter === f ? t.tabActive : t.tabInactive}`}>{f}</button>
-                ))}
+            <div className="flex justify-start relative max-w-full w-full">
+              <div className={`flex items-center p-1 ${t.innerBg} border ${t.itemBorder} rounded-xl w-full md:w-auto overflow-hidden shadow-sm`}>
+                {canScrollLeft && (
+                  <button onClick={() => filterScrollRef.current.scrollBy({ left: -200, behavior: 'smooth' })} className={`flex items-center justify-center rounded-lg transition-all active:scale-95 px-2 py-2 mr-1 ${t.tabInactive} shrink-0`} aria-label="Scroll left">
+                    <ChevronLeft size={16} />
+                  </button>
+                )}
+                
+                <div ref={filterScrollRef} onScroll={checkScroll} className="flex flex-nowrap gap-2 overflow-x-auto scrollbar-hide w-full max-w-full scroll-smooth">
+                  {["All", "Leadership", "Product", "UX/Design", "MarTech", "AI/Automation", "MarComm", "Process", "Operations"].map(f => (
+                    <button key={f} onClick={() => { setActiveFilter(f); setTimeout(checkScroll, 50); }} className={`px-4 py-2 rounded-lg text-[10px] font-bold tracking-tight transition-all active:scale-95 whitespace-nowrap ${activeFilter === f ? t.tabActive : t.tabInactive}`}>{f}</button>
+                  ))}
+                </div>
+
+                {canScrollRight && (
+                  <button onClick={() => filterScrollRef.current.scrollBy({ left: 200, behavior: 'smooth' })} className={`flex items-center justify-center rounded-lg transition-all active:scale-95 px-2 py-2 ml-1 ${t.tabInactive} shrink-0`} aria-label="Scroll right">
+                    <ChevronRight size={16} />
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -659,9 +698,11 @@ const App = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             {/* Professional Tenure Featured Card */}
             <div className={`md:col-span-2 p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] ${t.cardHover} transition-all`}>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className={`w-10 h-10 ${t.itemBg} border ${t.cardBorder} rounded-xl flex items-center justify-center ${t.accentText} shadow-inner`}><Briefcase size={18} /></div>
-                  <h3 className={`text-xl font-black ${t.heading} uppercase tracking-widest`}>{skillGroups[0].group}</h3>
+                <div className="flex items-center gap-5 md:gap-8 mb-6 w-full">
+                  <div className={`w-14 h-14 md:w-20 md:h-20 ${t.bg} border ${t.itemBorder} rounded-xl md:rounded-3xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 group/icon`}>
+                    <Briefcase size={28} className="md:w-[34px] md:h-[34px]" />
+                  </div>
+                  <h3 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight flex-1`}>{skillGroups[0].group}</h3>
                 </div>
                 <p className={`${t.muted} text-sm leading-relaxed mb-6`}>{skillGroups[0].description}</p>
                 <div className="flex flex-wrap gap-2">
@@ -673,11 +714,11 @@ const App = () => {
             {/* Grid Skills Cards */}
             {skillGroups.slice(1).map((group, gIdx) => (
               <div key={gIdx} className={`p-8 ${t.cardBg} border ${t.cardBorder} rounded-[2rem] ${t.cardHover} transition-all`}>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className={`w-10 h-10 ${t.itemBg} border ${t.cardBorder} rounded-xl flex items-center justify-center ${t.accentText} shadow-inner`}>
-                      {renderIcon(group.icon, 18)}
+                  <div className="flex items-center gap-5 md:gap-8 mb-6 w-full">
+                    <div className={`w-14 h-14 md:w-20 md:h-20 ${t.bg} border ${t.itemBorder} rounded-xl md:rounded-3xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 group/icon`}>
+                      {renderIcon(group.icon, 28)}
                     </div>
-                    <h3 className={`text-lg font-black ${t.heading} uppercase tracking-widest`}>{group.group}</h3>
+                    <h3 className={`text-2xl md:text-4xl font-bold ${t.heading} tracking-tight leading-tight flex-1`}>{group.group}</h3>
                   </div>
                   <p className={`${t.muted} text-[13px] leading-relaxed mb-6`}>{group.description || "Core toolset for enterprise project delivery."}</p>
                   <div className="flex flex-wrap gap-2">
