@@ -146,7 +146,7 @@ const App = () => {
   const heroData = {
     h1: "Nick LeBlanc",
     h2: "I bring together product, marketing, and engineering to build systems at scale.",
-    body: "I have 20 years of enterprise-scale delivery across Global 500 organizations. I am the co-founder & designer of platforms generating $1B+ in value. I direct automation initiatives to multiply team velocity. I synthesize thinking frameworks to become the build impactful outcomes.",
+    body: "I have 20 years of enterprise experience across Global 500 organizations. I am a co-founder & the designer of platforms generating over $1B in value. I direct automation initiatives to multiply team velocity. I synthesize thinking frameworks to build impactful outcomes.",
     roleTags: ["Leadership", "Product", "UX/Design", "MarTech", "AI/Automation", "MarComm", "Process", "Operations"],
     imageUrl: "/profile_picture.png",
     whyMeText: "At my core, I care.\n\n I care about people, integrity, and purpose.\n\n I am a strategic thought leader focused on people-first values and innovation. It is my goal to help people feel connected through the tools they use, becoming advocates themselves.\n\n I study complexity to share simplicity. I believe sharing builds community. Become a trusted advocate for the user, grow their confidence, and everyone wins.\n\n I take pride in learning the functional areas that surround me. I have found that when the spokes are stronger, the wheel rolls better."
@@ -164,7 +164,7 @@ const App = () => {
     { year: "2004", title: "Technical Foundation", desc: "Began journey as a designer and developer. Awarded Top GPA in Class.", icon: <BookOpen size={16} /> },
     { year: "2006", title: "Sprint: Digital Ownership", desc: "Product Managed mobile web experience, building and deploying marketing campaigns.", icon: <Briefcase size={16} /> },
     { year: "2009", title: "The First Pivot", desc: "Shifted to Project Manager & UX Designer, creating enterprise care tools for agents and managing enterprise projects.", icon: <Sparkles size={16} /> },
-    { year: "2011", title: "Verizon: The CX Lens", desc: "Joined Verizon as UX Designer, Project Manager, and Product Owner, growing my skills.", icon: <Briefcase size={16} /> },
+    { year: "2011", title: "Verizon: CX Growth", desc: "Joined Verizon as UX Designer, Project Manager, and Product Owner, growing my skills.", icon: <Briefcase size={16} /> },
     { year: "2014", title: "The App Redesign", desc: "Analyzed, redesigned, and launched My Verizon App based on how customers used it.", icon: <Trophy size={16} /> },
     { year: "2016", title: "Leadership Foundation", desc: "Received BA in Applied Organizational Leadership emphasizing conflict resolution.", icon: <BookOpen size={16} /> },
     { year: "2016", title: "Beginning to Lead", desc: "Appointed Lead Product Manager, where I would create and orchestrate marketing communications.", icon: <ShieldCheck size={16} /> },
@@ -181,7 +181,7 @@ const App = () => {
       id: 1,
       title: "Generating $1B+ in Enterprise Value via Omnichannel Personalization",
       subtitle: "Catalyst Platform Architecture",
-      tags: ["Product", "MarTech"],
+      tags: ["Product", "Leadership"],
       bluf: "Co-founded and co-architected a first-of-kind distribution engine that scaled hyper-personalized content to millions of customers.",
       why: "Marketing teams were trapped in manual distribution cycles and disconnected data silos, preventing real-time customer relevance at scale.",
       how: "Engineered a modular, zero-trust compliant MarTech infrastructure focused on technical interoperability and automated content orchestration.",
@@ -196,7 +196,7 @@ const App = () => {
       id: 2,
       title: "Realizing $30M in Operational Savings through CX Transformation",
       subtitle: "My Verizon Ecosystem Redesign",
-      tags: ["Design / UX", "Product"],
+      tags: ["Product", "Leadership"],
       bluf: "Directed a top-to-bottom redesign of the flagship mobile experience, shifting app store sentiment from 2.0 to 4.5.",
       why: "Frictional user journeys and legacy UI were driving excessive support volume and significant customer retention costs.",
       how: "Applied Design Thinking and behavioral analytics to restructure core user flows and unify iOS/Android feature parity.",
@@ -211,7 +211,7 @@ const App = () => {
       id: 3,
       title: "Multiplying Team Velocity 200% with Agentic AI Pipelines",
       subtitle: "High-Velocity Workflow Automation",
-      tags: ["AI / Automation", "MarTech"],
+      tags: ["Product", "Leadership"],
       bluf: "Deployed autonomous AI agents to manage complex financial and marketing operations, replacing 24/7 manual oversight.",
       why: "Traditional planning cycles and governance workflows were too slow to match the speed of global enterprise shifts.",
       how: "Developed compliant SaaS-to-SaaS LLM integrations to turn complex governance processes into a scalable, automated service.",
@@ -230,18 +230,18 @@ const App = () => {
       icon: <Briefcase size={20} />,
       description: "Functional responsibilities I have performed.",
       items: [
-        { name: "Product Management", what: "x", why: "x", how: "x" },
-        { name: "Leadership", what: "x", why: "x", how: "x" },
-        { name: "UX/Design", what: "x", why: "x", how: "x" },
-        { name: "Operations/Automation", what: "x", why: "x", how: "x" },
-        { name: "Marketing Technology", what: "x", why: "x", how: "x" },
-        { name: "Project Management", what: "x", why: "x", how: "x" },
-        { name: "Marketing Communications", what: "x", why: "x", how: "x" },        
-        { name: "Governance, Risk & Compliance", what: "x", why: "x", how: "x" },
-        { name: "Analytics", what: "x", why: "x", how: "x" },
-        { name: "Enterprise Architecture", what: "x", why: "x", how: "x" },
-        { name: "System Administration", what: "x", why: "x", how: "x" },
-        { name: "Finance Planning", what: "x", why: "x", how: "x" }
+        { name: "Product Management"},
+        { name: "Leadership"},
+        { name: "UX/Design"},
+        { name: "Operations/Automation"},
+        { name: "Marketing Technology"},
+        { name: "Project Management"},
+        { name: "Finance Planning"},
+        { name: "Marketing Communications"},
+        { name: "Analytics"},
+        { name: "Governance, Risk & Compliance"},
+        { name: "Enterprise Architecture"},
+        { name: "System Administration"},
       ]
     },
     { 
@@ -591,7 +591,7 @@ const App = () => {
 
           <div className="w-full max-w-4xl">
             <div className={`p-8 md:p-12 ${t.cardBg} border ${t.cardBorder} ${t.cardHover} rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl relative overflow-hidden group/card transition-all duration-500`}>
-                <div className="relative flex flex-col items-start text-left">
+                <div className="relative flex flex-col items-center text-center">
                     <div className="flex items-center justify-center gap-5 md:gap-8 w-full">
                         <div className={`w-14 h-14 md:w-20 md:h-20 ${t.bg} border ${t.itemBorder} rounded-xl md:rounded-3xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 relative group/icon`}>
                           {React.cloneElement(journeyPoints[activeJourneyStep].icon, { size: isDarkMode ? 28 : 34 })}
@@ -645,8 +645,7 @@ const App = () => {
           <div className="grid gap-8">
             {filteredStudies.map((study) => (
               <div key={study.id} className={`relative ${t.cardBg} border ${t.cardBorder} ${t.cardHover} rounded-[2.5rem] overflow-hidden p-8 text-left transition-all`}>
-                <div className="flex justify-between items-start mb-6 gap-4">
-                  <div className={`${t.itemBg} ${t.accentText} rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} w-fit text-center`}>{study.subtitle}</div>
+                <div className="flex justify-end items-start mb-6 gap-4">
                   <button 
                     onClick={() => setSelectedCaseStudy(study)} 
                     className={`w-10 h-10 flex items-center justify-center ${t.accentBg} text-white rounded-full transition-all shadow-lg active:scale-95 shrink-0 ${t.accentHover}`}
@@ -655,31 +654,32 @@ const App = () => {
                     <ArrowRight size={18} />
                   </button>
                 </div>
-                <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-8">
-                  <div className="flex-1">
+                <div className="flex flex-col mb-8 gap-8">
+                  <div className="w-full">
                     <h3 className={`text-2xl md:text-4xl font-bold ${t.heading} mb-4 tracking-tight leading-tight`}>{study.title}</h3>
                     <p className={`${t.subheading} text-base font-medium border-l-2 ${t.accentBorder} pl-6 italic mb-4`}>{study.bluf}</p>
                   </div>
-                  <div className="w-full md:w-40 shrink-0">
-                    <div className={`p-3 md:p-4 ${t.itemBg} border ${t.itemBorder} rounded-2xl grid grid-cols-3 md:grid-cols-1 gap-2 md:space-y-4`}>
+                  <div className="w-full">
+                    <div className={`p-4 md:p-6 ${t.itemBg} border ${t.itemBorder} rounded-2xl grid grid-cols-3 gap-4 w-full`}>
                         {study.results.map((r, i) => (
                           <div key={i} className="text-center">
-                            <div className="text-[10px] md:text-[11px] uppercase font-bold text-zinc-600 mb-1">{r.metric}</div>
-                            <div className={`text-xl md:text-2xl font-bold ${t.heading}`}>{r.outcome}</div>
+                            <div className="text-[10px] md:text-[11px] uppercase font-bold text-zinc-600 mb-1 tracking-widest">{r.metric}</div>
+                            <div className={`text-xl md:text-3xl font-black ${t.heading} tabular-nums`}>{r.outcome}</div>
                           </div>
                         ))}
                     </div>
                   </div>
                 </div>
-                <div className="grid md:grid-cols-2 gap-8 text-sm">
+                <div>
                   <section>
-                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Target size={12} className={t.accentText} /> Strategic Need (The Why)</div>
-                    <p className={`${t.subheading} leading-relaxed`}>{study.why}</p>
-                  </section>
-                  <section>
-                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Workflow size={12} className={t.accentText} /> Method of Delivery (The How)</div>
+                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Workflow size={12} className={t.accentText} /> How was this accomplished</div>
                     <p className={`${t.subheading} leading-relaxed`}>{study.how}</p>
                   </section>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-zinc-800/30">
+                  {study.tags && study.tags.map((tag, i) => (
+                    <div key={i} className={`px-3 py-1 ${t.cardBg} border ${t.cardBorder} rounded-full text-[10px] font-bold ${t.heading} uppercase tracking-widest text-center`}>{tag}</div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -947,9 +947,7 @@ const App = () => {
               <X size={20} />
             </button>
             <div className="p-8 overflow-y-auto scrollbar-hide pt-16 md:pt-14">
-              {/* Header section constrained to match metrics width */}
               <div className="max-w-4xl mx-auto w-full mb-12">
-                <div className={`${t.modalCardBg} ${t.accentText} rounded-full px-4 py-1.5 text-[9px] font-black uppercase tracking-widest border ${t.itemBorder} mb-4 w-fit flex items-center justify-center text-center`}>{selectedCaseStudy.subtitle}</div>
                 <h2 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight`}>{selectedCaseStudy.title}</h2>
               </div>
 
@@ -975,6 +973,12 @@ const App = () => {
 
                 <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Target size={14} className={t.accentText} /> Strategic Need (The Why)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.why}</p></section>
                 <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Workflow size={14} className={t.accentText} /> Method of Delivery (The How)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.how}</p></section>
+                
+                <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-zinc-800/30">
+                  {selectedCaseStudy.tags && selectedCaseStudy.tags.map((tag, i) => (
+                    <div key={i} className={`px-3 py-1 ${t.cardBg} border ${t.cardBorder} rounded-full text-[10px] font-bold ${t.heading} uppercase tracking-widest text-center`}>{tag}</div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -994,7 +998,7 @@ const App = () => {
               </button>
 
               <div className="mt-12 mb-8 flex flex-col items-center w-full">
-                <h2 className={`text-4xl md:text-5xl font-bold ${t.heading} mb-8 tracking-tighter text-center`}>Why Me?</h2>
+                <h2 className={`text-4xl md:text-5xl font-bold ${t.heading} mb-8 tracking-tighter text-center`}>About Me</h2>
                 <div className="max-w-xl w-full">
                   <p className={`${t.subheading} text-lg md:text-xl leading-relaxed italic text-center border-t-2 ${t.accentBorder} pt-8 mb-12 whitespace-pre-line`}>
                     {heroData.whyMeText}
