@@ -402,7 +402,7 @@ const App = () => {
               </button>
               <span className={`font-bold ${t.heading} tracking-tight text-sm uppercase`}>{heroData.h1}</span>
             </div>
-            <div className="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-widest">
+            <div className="hidden md:flex items-center space-x-6 text-xs font-black uppercase tracking-widest text-left">
               <a href="#journey" className={`transition-colors ${t.navHover}`}>Journey</a>
               <a href="#work" className={`transition-colors ${t.navHover}`}>Impact</a>
               <a href="#skills" className={`transition-colors ${t.navHover}`}>Skills</a>
@@ -437,7 +437,7 @@ const App = () => {
                 key={id} 
                 href={`#${id}`} 
                 onClick={() => setIsMenuOpen(false)}
-                className={`text-2xl font-bold uppercase tracking-widest ${t.heading} ${t.navHover} transition-all`}
+                className={`text-2xl font-black uppercase tracking-widest ${t.heading} ${t.navHover} transition-all`}
               >
                 {id.charAt(0).toUpperCase() + id.slice(1)}
               </a>
@@ -504,7 +504,7 @@ const App = () => {
           {stats.map((stat, i) => (
             <React.Fragment key={i}>
               <div className="flex flex-col items-center text-center group">
-                <span className={`text-2xl md:text-3xl font-black ${t.accentText} tracking-tight leading-none`}>{stat.value}</span>
+                <span className={`text-2xl md:text-3xl font-black ${t.accentText} tracking-tighter leading-none`}>{stat.value}</span>
                 <span className={`text-[10px] font-black uppercase tracking-widest ${t.mutedExtra} mt-1.5`}>{stat.label}</span>
               </div>
               {i < stats.length - 1 && (
