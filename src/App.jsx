@@ -875,18 +875,23 @@ const App = () => {
       {/* Artifact Overlay */}
       {selectedSkill && (
         <div className={`fixed inset-0 z-[101] ${t.modalBgAlt} backdrop-blur-md flex items-center justify-center p-4`}>
-          <div className={`${t.modalCardBg} w-full max-w-xl rounded-[2.5rem] overflow-hidden border ${t.modalBorder} shadow-2xl relative text-left`}>
-            <button 
-              onClick={() => setSelectedSkill(null)} 
-              className={`absolute top-6 right-6 p-2 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95 z-10`}
-              aria-label="Close artifact details"
-            >
-              <X size={18} />
-            </button>
-            <div className="p-10 relative">
-               <div className={`${t.accentText} font-black uppercase tracking-[0.3em] text-[9px] mb-3 pr-12`}>Strategic Artifact</div>
-               <h2 className={`text-2xl md:text-3xl font-bold ${t.heading} mb-8 tracking-tight pr-12`}>{selectedSkill.name}</h2>
-               <div className="space-y-8">
+          <div className={`${t.modalCardBg} w-full max-w-3xl max-h-[85vh] rounded-[2.5rem] overflow-hidden flex flex-col border ${t.modalBorder} shadow-2xl text-left`}>
+            <div className="p-10 overflow-y-auto scrollbar-hide">
+               <div className="max-w-2xl mx-auto w-full mb-8 flex justify-between items-start gap-12">
+                 <div className="flex-1">
+                   <div className={`${t.accentText} font-black uppercase tracking-[0.3em] text-[9px] mb-3`}>Strategic Artifact</div>
+                   <h2 className={`text-2xl md:text-3xl font-bold ${t.heading} tracking-tight`}>{selectedSkill.name}</h2>
+                 </div>
+                 <button 
+                   onClick={() => setSelectedSkill(null)} 
+                   className={`p-2 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95 shrink-0`}
+                   aria-label="Close artifact details"
+                 >
+                   <X size={18} />
+                 </button>
+               </div>
+               
+               <div className="max-w-2xl mx-auto space-y-8">
                  <section className="flex gap-5"><div className={`w-10 h-10 ${t.itemBg} border ${t.itemBorder} rounded-xl flex items-center justify-center shrink-0`}><BarChart3 size={20} className={t.accentText} /></div><div><div className={`text-[9px] font-black ${t.muted} uppercase tracking-widest mb-1`}>Executive Summary (The What)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedSkill.what}</p></div></section>
                  <section className="flex gap-5"><div className={`w-10 h-10 ${t.itemBg} border ${t.itemBorder} rounded-xl flex items-center justify-center shrink-0`}><Target size={20} className={t.accentText} /></div><div><div className={`text-[9px] font-black ${t.muted} uppercase tracking-widest mb-1`}>Strategic Need (The Why)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedSkill.why}</p></div></section>
                  <section className="flex gap-5"><div className={`w-10 h-10 ${t.itemBg} border ${t.itemBorder} rounded-xl flex items-center justify-center shrink-0`}><Workflow size={20} className={t.accentText} /></div><div><div className={`text-[9px] font-black ${t.muted} uppercase tracking-widest mb-1`}>Method of Delivery (The How)</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedSkill.how}</p></div></section>
@@ -900,15 +905,6 @@ const App = () => {
       {selectedCaseStudy && (
         <div className={`fixed inset-0 z-[100] ${t.modalBgAlt} backdrop-blur-xl flex items-center justify-center p-4`}>
           <div className={`${t.modalCardBg} w-full max-w-5xl max-h-[85vh] rounded-[2.5rem] overflow-hidden flex flex-col border ${t.modalBorder} shadow-2xl text-left`}>
-            <div className="relative">
-              <button 
-                onClick={() => setSelectedCaseStudy(null)} 
-                className={`absolute top-8 right-8 p-3 ${t.innerBg} border ${t.cardBorder} hover:${t.accentText} ${t.accentBorderHover} rounded-xl transition-all active:scale-95 z-20`}
-                aria-label="Close case study"
-              >
-                <X size={20} />
-              </button>
-            </div>
             <div className="p-8 overflow-y-auto scrollbar-hide">
               {/* Header section constrained to match metrics width */}
               <div className="max-w-4xl mx-auto w-full mb-12 flex justify-between items-start gap-12">
