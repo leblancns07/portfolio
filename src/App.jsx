@@ -178,34 +178,6 @@ const App = () => {
   const caseStudies = useMemo(() => [
     {
       id: 1,
-      headline: "Generating $1B+ in Enterprise Value via Omnichannel Personalization",
-      tags: ["Product", "Leadership"],
-      fundamentalQuestion: "Co-founded and co-architected a first-of-kind distribution engine that scaled hyper-personalized content to millions of customers.",
-      problemStatement: "Marketing teams were trapped in manual distribution cycles and disconnected data silos, preventing real-time customer relevance at scale.",
-      how: "Engineered a modular, zero-trust compliant MarTech infrastructure focused on technical interoperability and automated content orchestration.",
-      whyImportant: "Personalization at scale drives loyalty, conversion, and significant revenue streams for global telecom.",
-      results: [
-        { metric: "Total Value", outcome: "$1B+" },
-        { metric: "Velocity Gain", outcome: "78%" },
-        { metric: "Campaigns", outcome: "250+" }
-      ]
-    },
-    {
-      id: 2,
-      headline: "Realizing $30M in Operational Savings through CX Transformation",
-      tags: ["Product", "Leadership"],
-      fundamentalQuestion: "Directed a top-to-bottom redesign of the flagship mobile experience, shifting app store sentiment from 2.0 to 4.5.",
-      problemStatement: "Frictional user journeys and legacy UI were driving excessive support volume and significant customer retention costs.",
-      how: "Applied Design Thinking and behavioral analytics to restructure core user flows and unify iOS/Android feature parity.",
-      whyImportant: "A mobile app is the primary touchpoint for millions of customers; its usability directly limits or drives support costs.",
-      results: [
-        { metric: "App Rating", outcome: "2 to 4.5" },
-        { metric: "Cost Savings", outcome: "$30M" },
-        { metric: "Engagement", outcome: "+45%" }
-      ]
-    },
-    {
-      id: 4,
       headline: "Velocity Acceleration via Automation-Led Pipelines",
       tags: ["Leadership", "Process", "Operations"],
       fundamentalQuestion: "How can we do in minutes what currently takes us days?",
@@ -217,7 +189,7 @@ const App = () => {
       ]
     },
     {
-      id: 5,
+      id: 2,
       headline: "500x Insight Scale: AI Data Engine",
       tags: ["AI/Automation", "Process", "Operations"],
       fundamentalQuestion: "What is the one piece of information that actually changes our minds?",
@@ -231,7 +203,7 @@ const App = () => {
       ]
     },
     {
-      id: 6,
+      id: 3,
       headline: "Slashing Waste: 66% Leaner Global Ops",
       tags: ["Leadership", "Operations", "MarTech"],
       fundamentalQuestion: "How do we make sure our best people are working on our biggest problems?",
@@ -245,7 +217,7 @@ const App = () => {
       ]
     },
     {
-      id: 7,
+      id: 4,
       headline: "Compliance First: SaaS-to-SaaS Win",
       tags: ["MarTech", "Operations", "Process"],
       fundamentalQuestion: "Can we make the 'right way' the 'easiest way' by building it into the system?",
@@ -259,7 +231,7 @@ const App = () => {
       ]
     },
     {
-      id: 8,
+      id: 5,
       headline: "Co-Founder: $1B Growth Platform",
       tags: ["Leadership", "Product", "MarComm", "MarTech"],
       fundamentalQuestion: "How do we make sure our brand speaks with one voice to every customer?",
@@ -273,7 +245,7 @@ const App = () => {
       ]
     },
     {
-      id: 9,
+      id: 6,
       headline: "Unlocked $146M via Data Roadmaps",
       tags: ["Product", "Operations", "Process"],
       fundamentalQuestion: "How do we know which of our many ideas will actually move the needle?",
@@ -287,7 +259,7 @@ const App = () => {
       ]
     },
     {
-      id: 10,
+      id: 7,
       headline: "78% Faster Marketing Deployments",
       tags: ["MarComm", "Process", "Operations"],
       fundamentalQuestion: "How can we change direction as fast as our customers do?",
@@ -301,7 +273,7 @@ const App = () => {
       ]
     },
     {
-      id: 11,
+      id: 8,
       headline: "Strategy-to-Code: The Eng Bridge",
       tags: ["Leadership", "Product", "MarTech"],
       fundamentalQuestion: "Are we limited by our tools, or just by how we’ve always used them?",
@@ -315,7 +287,7 @@ const App = () => {
       ]
     },
     {
-      id: 12,
+      id: 9,
       headline: "250+ High-Logic UX Deliveries",
       tags: ["MarComm", "UX/Design", "Operations"],
       fundamentalQuestion: "How do we stay human at a scale of millions?",
@@ -329,7 +301,7 @@ const App = () => {
       ]
     },
     {
-      id: 13,
+      id: 10,
       headline: "$700K Gain: Data-Led Efficiency",
       tags: ["MarComm", "MarTech", "Process"],
       fundamentalQuestion: "How do we stop sending noise and start sending value?",
@@ -343,7 +315,7 @@ const App = () => {
       ]
     },
     {
-      id: 14,
+      id: 11,
       headline: "Scaling Pilots to Core Functions",
       tags: ["Product", "Process", "Operations"],
       fundamentalQuestion: "How do we take a single success and make it our standard way of working?",
@@ -357,7 +329,7 @@ const App = () => {
       ]
     },
     {
-      id: 15,
+      id: 12,
       headline: "Rating Surge: 2.0 to 4.5 Stars",
       tags: ["Leadership", "Product", "UX/Design"],
       fundamentalQuestion: "Where are we accidentally annoying people while trying to help them?",
@@ -371,7 +343,7 @@ const App = () => {
       ]
     },
     {
-      id: 16,
+      id: 13,
       headline: "$30M Saved via Design Thinking",
       tags: ["UX/Design", "Process", "Operations"],
       fundamentalQuestion: "If we started from scratch today, would we still do it this way?",
@@ -385,7 +357,7 @@ const App = () => {
       ]
     },
     {
-      id: 17,
+      id: 14,
       headline: "Agent UX: Cutting Handle Times",
       tags: ["UX/Design", "Process", "Operations"],
       fundamentalQuestion: "What is the shortest path between a customer's problem and our solution?",
@@ -399,7 +371,7 @@ const App = () => {
       ]
     },
     {
-      id: 18,
+      id: 15,
       headline: "Recovery: 60 Defect Fixes in 90 Days",
       tags: ["Leadership", "MarComm", "Operations"],
       fundamentalQuestion: "How do we stop the bleeding so we can start building?",
@@ -413,7 +385,7 @@ const App = () => {
       ]
     },
     {
-      id: 19,
+      id: 16,
       headline: "60% DAU Surge via Journey Mapping",
       tags: ["Product", "MarComm", "UX/Design"],
       fundamentalQuestion: "Why would someone pick us when they have a world of other options?",
@@ -427,7 +399,7 @@ const App = () => {
       ]
     },
     {
-      id: 20,
+      id: 17,
       headline: "57% Faster Market-to-Launch Flow",
       tags: ["Product", "Process", "Operations"],
       fundamentalQuestion: "How do we get our best ideas into the world before they lose their spark?",
