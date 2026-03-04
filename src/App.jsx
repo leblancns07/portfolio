@@ -178,15 +178,12 @@ const App = () => {
   const caseStudies = useMemo(() => [
     {
       id: 1,
-      title: "Generating $1B+ in Enterprise Value via Omnichannel Personalization",
-      subtitle: "Catalyst Platform Architecture",
+      headline: "Generating $1B+ in Enterprise Value via Omnichannel Personalization",
       tags: ["Product", "Leadership"],
-      bluf: "Co-founded and co-architected a first-of-kind distribution engine that scaled hyper-personalized content to millions of customers.",
-      whyImportant: "Personalization at scale drives loyalty, conversion, and significant revenue streams for global telecom.",
+      fundamentalQuestion: "Co-founded and co-architected a first-of-kind distribution engine that scaled hyper-personalized content to millions of customers.",
       problemStatement: "Marketing teams were trapped in manual distribution cycles and disconnected data silos, preventing real-time customer relevance at scale.",
-      why: "Marketing teams were trapped in manual distribution cycles and disconnected data silos, preventing real-time customer relevance at scale.",
       how: "Engineered a modular, zero-trust compliant MarTech infrastructure focused on technical interoperability and automated content orchestration.",
-      skills: ["Systems Thinking", "Solution Engineering", "Agile", "Strategic Planning", "First Principles", "MarTech Architecture"],
+      whyImportant: "Personalization at scale drives loyalty, conversion, and significant revenue streams for global telecom.",
       results: [
         { metric: "Total Value", outcome: "$1B+" },
         { metric: "Velocity Gain", outcome: "78%" },
@@ -195,15 +192,12 @@ const App = () => {
     },
     {
       id: 2,
-      title: "Realizing $30M in Operational Savings through CX Transformation",
-      subtitle: "My Verizon Ecosystem Redesign",
+      headline: "Realizing $30M in Operational Savings through CX Transformation",
       tags: ["Product", "Leadership"],
-      bluf: "Directed a top-to-bottom redesign of the flagship mobile experience, shifting app store sentiment from 2.0 to 4.5.",
-      whyImportant: "A mobile app is the primary touchpoint for millions of customers; its usability directly limits or drives support costs.",
+      fundamentalQuestion: "Directed a top-to-bottom redesign of the flagship mobile experience, shifting app store sentiment from 2.0 to 4.5.",
       problemStatement: "Frictional user journeys and legacy UI were driving excessive support volume and significant customer retention costs.",
-      why: "Frictional user journeys and legacy UI were driving excessive support volume and significant customer retention costs.",
       how: "Applied Design Thinking and behavioral analytics to restructure core user flows and unify iOS/Android feature parity.",
-      skills: ["Design Thinking", "UX Design", "Product Management", "Behavioral Analytics", "Cross-Platform Orchestration"],
+      whyImportant: "A mobile app is the primary touchpoint for millions of customers; its usability directly limits or drives support costs.",
       results: [
         { metric: "App Rating", outcome: "2 to 4.5" },
         { metric: "Cost Savings", outcome: "$30M" },
@@ -212,15 +206,12 @@ const App = () => {
     },
     {
       id: 3,
-      title: "Multiplying Team Velocity 200% with Agentic AI Pipelines",
-      subtitle: "High-Velocity Workflow Automation",
+      headline: "Multiplying Team Velocity 200% with Agentic AI Pipelines",
       tags: ["Product", "Leadership"],
-      bluf: "Deployed autonomous AI agents to manage complex financial and marketing operations, replacing 24/7 manual oversight.",
-      whyImportant: "Enterprise governance and operations require massive, tedious overhead that limits human strategic capacity.",
+      fundamentalQuestion: "Deployed autonomous AI agents to manage complex financial and marketing operations, replacing 24/7 manual oversight.",
       problemStatement: "Traditional planning cycles and governance workflows were too slow to match the speed of global enterprise shifts.",
-      why: "Traditional planning cycles and governance workflows were too slow to match the speed of global enterprise shifts.",
       how: "Developed compliant SaaS-to-SaaS LLM integrations to turn complex governance processes into a scalable, automated service.",
-      skills: ["Agentic AI", "LLM Orchestration", "Process Engineering", "Workflow Automation", "Zero Trust", "Systems Analysis"],
+      whyImportant: "Enterprise governance and operations require massive, tedious overhead that limits human strategic capacity.",
       results: [
         { metric: "Staff Waste", outcome: "-66%" },
         { metric: "Insight Scale", outcome: "500x" },
@@ -254,48 +245,48 @@ const App = () => {
       icon: <Command size={20} />,
       description: "Foundational models that move beyond generic management into scalable delivery.",
       items: [
-        { name: "First Principles", what: "Deconstruction of complex problems to their core truths.", why: "To move beyond 'the way it's always been done' and reach objective efficiency.", how: "Applied during Verizon Finance planning transformation, replacing manual spreadsheets with an automated system of record." },
-        { name: "Systems Thinking", what: "Holistic architectural interoperability.", why: "To ensure individual MarTech tools don't become expensive silos but rather a unified engine.", how: "Used to architect the Catalyst platform for enterprise-wide personalization distribution." },
-        { name: "Agile Leadership", what: "Iterative value delivery with a bias toward action.", why: "To maintain momentum while navigating the friction of Global 500 governance.", how: "Operationalized personalized roadmaps that directly realized $146M in revenue." },
-        { name: "Strategic Planning", what: "Long-term vision mapping for enterprise platforms.", why: "To ensure technical roadmaps anticipate future market shifts and scale requirements.", how: "Developed 3-year MarTech transformation strategies for Verizon's distribution engine." },
-        { name: "Solution Engineering", what: "Designing technical fixes for business process friction.", why: "To reduce operational waste through automation and better data flow.", how: "Engineered first-of-kind compliant SaaS-to-SaaS integrations at Verizon." },
-        { name: "SDLC Oversight", what: "Full-cycle software development management.", why: "To guarantee quality, compliance, and parity across platform deployments.", how: "Managed iOS and Android deployment schedules for millions of Verizon customers." }
+        { name: "First Principles"},
+        { name: "Systems Thinking"},
+        { name: "Agile Leadership"},
+        { name: "Strategic Planning"},
+        { name: "Solution Engineering"},
+        { name: "SDLC Oversight"}
       ] 
     },
     { 
       group: "AI & Automation", 
       icon: <Cpu size={20} />,
       items: [
-        { name: "Agentic AI", what: "Autonomous workflow design using AI agents.", why: "To multiply team velocity by automating complex decision-making tasks.", how: "Engineered compliant SaaS integrations that allowed agents to manage 24/7 global service tasks." },
-        { name: "LLM Orchestration", what: "Multi-model implementation for specialized tasks.", why: "To leverage the specific strengths of Gemini, ChatGPT, and Claude within a single enterprise pipeline.", how: "Created a cross-functional AI pipeline that increased team scalability by 500x." },
-        { name: "Prompt Engineering", what: "Designing context windows for precise AI outputs.", why: "To maximize accuracy and minimize hallucination in enterprise AI workflows.", how: "Applied context engineering to financial planning models to automate system-of-record updates." },
-        { name: "RAG Systems", what: "Retrieval-Augmented Generation for specialized datasets.", why: "To give AI agents access to secure, private documentation for more relevant answers.", how: "Evaluated and integrated vector database backends for internal compliance governance agents." },
-        { name: "Vector Databases", what: "High-dimensional data storage for AI search and retrieval.", why: "To enable semantic search capabilities across large volumes of legacy enterprise data.", how: "Leveraged for knowledge grounding within internal AI operational pipelines." },
-        { name: "Context Engineering", what: "Structuring environment data for LLMs.", why: "To ensure AI assistants have the exact persona and constraints required for enterprise tasks.", how: "Integrated into Verizon's AI-led financial planning shift." }
+        { name: "Agentic AI"},
+        { name: "LLM Orchestration"},
+        { name: "Prompt Engineering"},
+        { name: "RAG Systems"},
+        { name: "Vector Databases"},
+        { name: "Context Engineering"}
       ] 
     },
     {
       group: "Design & Prototype",
       icon: <Layout size={20} />,
       items: [
-        { name: "Figma", what: "Collaborative interface design and rapid prototyping.", why: "To visualize user journeys and test functionality before engineering cycles begin.", how: "Used to iterate on core navigation flows during the My Verizon ecosystem redesign." },
-        { name: "Sketch", what: "Vector-based digital design platform.", why: "To maintain high-fidelity design standards for mobile and web components.", how: "Leveraged for initial My Verizon redesign components before transitioning to cloud-based tools." },
-        { name: "Adobe Illustrator", what: "Professional vector graphics creation.", why: "To produce scalable assets and iconography for global brand ecosystems.", how: "Applied to create specialized MarTech architecture diagrams and presentation artifacts." },
-        { name: "Adobe Photoshop", what: "High-level raster image manipulation and UI refinement.", why: "To ensure every visual artifact meets global 500 brand standards.", how: "Used for detailed asset production across multiple digital marketing portfolios." },
-        { name: "Lucid", what: "Enterprise-grade flow charting and systems mapping.", why: "To visualize complex MarTech distribution logic for engineering teams.", how: "Used to map the architecture of the Catalyst personalization distribution platform." },
-        { name: "Design Thinking", what: "Problem-solving framework focused on user empathy.", why: "To identify real customer friction points that quantitative data might miss.", how: "Applied to turn low application sentiment (2.0) into delight (4.5) through top-down redesign." }
+        { name: "Figma"},
+        { name: "Sketch"},
+        { name: "Adobe Illustrator"},
+        { name: "Adobe Photoshop"},
+        { name: "Lucid"},
+        { name: "Design Thinking"}
       ]
     },
     {
       group: "Productivity & Insights",
       icon: <BarChart3 size={20} />,
       items: [
-        { name: "Adobe Analytics", what: "Behavioral data tracking and attribution.", why: "To base product roadmaps on actual user actions rather than assumptions.", how: "Directly used to identify drop-off points in the Verizon consumer app flow." },
-        { name: "Adobe Workfront", what: "Project management for enterprise marketing operations.", why: "To centralize 24/7 global service management and reduce staffing waste.", how: "Optimized a global team's performance by reducing operational waste by 66%." },
-        { name: "Tableau", what: "Data visualization for strategic reporting.", why: "To communicate complex metrics to SVP stakeholders.", how: "Created dashboards to track the billions in value generated by personalization distribution." },
-        { name: "Google Looker", what: "Cloud-native business intelligence platform.", why: "To enable real-time data exploration across cross-functional enterprise teams.", how: "Leveraged for tracking velocity gains in AI-automated operational workflows." },
-        { name: "JIRA", what: "Agile product and issue tracking system.", why: "To maintain development velocity and prioritize high-value feature sets.", how: "Used to resolve critical digital marketing portfolio defects in record time." },
-        { name: "Notion", what: "Centralized knowledge management and documentation.", why: "To ensure cross-functional teams have a single source of truth for strategy.", how: "Utilized for internal team coordination and context grounding for agentic AI projects." }
+        { name: "Adobe Analytics"},
+        { name: "Adobe Workfront"},
+        { name: "Tableau"},
+        { name: "Google Looker"},
+        { name: "JIRA"},
+        { name: "Notion"}
       ]
     }
   ];
@@ -654,15 +645,15 @@ const App = () => {
                   <button 
                     onClick={() => setSelectedCaseStudy(study)} 
                     className={`w-10 h-10 flex items-center justify-center ${t.accentBg} text-white rounded-full transition-all shadow-lg active:scale-95 shrink-0 ${t.accentHover}`}
-                    aria-label={`View ${study.title} case study`}
+                    aria-label={`View ${study.headline} case study`}
                   >
                     <ArrowRight size={18} />
                   </button>
                 </div>
                 <div className="flex flex-col mb-8 gap-8">
                   <div className="w-full">
-                    <h3 className={`text-2xl md:text-4xl font-bold ${t.heading} mb-4 tracking-tight leading-tight`}>{study.title}</h3>
-                    <p className={`${t.subheading} text-base font-medium border-l-2 ${t.accentBorder} pl-6 italic`}>{study.bluf}</p>
+                    <h3 className={`text-2xl md:text-4xl font-bold ${t.heading} mb-4 tracking-tight leading-tight`}>{study.headline}</h3>
+                    <p className={`${t.subheading} text-base font-medium border-l-2 ${t.accentBorder} pl-6 italic`}>{study.whyImportant}</p>
                   </div>
                   <div className="w-full">
                     <div className={`p-4 md:p-6 ${t.itemBg} border ${t.itemBorder} rounded-2xl grid grid-cols-3 gap-4 w-full`}>
@@ -677,11 +668,11 @@ const App = () => {
                 </div>
                 <div className="flex flex-col gap-6">
                   <section>
-                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Target size={12} className={t.accentText} /> What was the problem?</div>
-                    <p className={`${t.subheading} leading-relaxed`}>{study.why}</p>
+                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Target size={12} className={t.accentText} /> The problem</div>
+                    <p className={`${t.subheading} leading-relaxed`}>{study.problemStatement}</p>
                   </section>
                   <section>
-                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Workflow size={12} className={t.accentText} /> How we solved it</div>
+                    <div className={`text-[9px] font-black ${t.text} uppercase tracking-widest mb-2 flex items-center gap-2`}><Workflow size={12} className={t.accentText} /> The solution</div>
                     <p className={`${t.subheading} leading-relaxed`}>{study.how}</p>
                   </section>
                 </div>
@@ -932,16 +923,16 @@ const App = () => {
             </button>
             <div className="p-8 overflow-y-auto scrollbar-hide pt-16 md:pt-14">
               <div className="max-w-4xl mx-auto w-full mb-12">
-                <h2 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight`}>{selectedCaseStudy.title}</h2>
+                <h2 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight`}>{selectedCaseStudy.headline}</h2>
               </div>
 
               <div className="flex flex-col gap-12 max-w-4xl mx-auto">
-                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><BarChart3 size={14} className={t.accentText} /> Where it started</div><p className={`${t.subheading} text-lg leading-relaxed italic`}>{selectedCaseStudy.bluf}</p></section>
+                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><BarChart3 size={14} className={t.accentText} /> Where it started</div><p className={`${t.subheading} text-lg leading-relaxed`}>{selectedCaseStudy.problemStatement}</p></section>
                 
                 <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Award size={14} className={t.accentText} /> Why is this important?</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.whyImportant}</p></section>
-                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Target size={14} className={t.accentText} /> So what&apos;s the problem?</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.problemStatement}</p></section>
+                <section><p className={`${t.subheading} text-base leading-relaxed font-bold italic`}>{selectedCaseStudy.fundamentalQuestion}</p></section>
 
-                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Workflow size={14} className={t.accentText} /> How we solved it</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.how}</p></section>
+                <section><div className={`flex items-center gap-3 ${t.text} mb-4 font-black uppercase tracking-widest text-[10px]`}><Workflow size={14} className={t.accentText} /> The solution</div><p className={`${t.subheading} text-base leading-relaxed`}>{selectedCaseStudy.how}</p></section>
 
                 <section>
                   <div className={`p-6 md:p-8 ${t.cardBg} border ${t.cardBorder} rounded-2xl`}>
