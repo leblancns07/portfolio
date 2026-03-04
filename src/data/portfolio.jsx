@@ -48,239 +48,213 @@ export const journeyPoints = [
 
 export const caseStudies = [
   {
-    id: 1,
-    headline: "Velocity Acceleration via Automation-Led Pipelines",
-    tags: ["Leadership", "Process", "Operations"],
-    fundamentalQuestion: "How can we do in minutes what currently takes us days?",
-    problemStatement: "Fragmented handoffs and manual approval layers created a \"wait-state\" culture that stalled campaign delivery.",
-    how: "I architected an automated delivery pipeline using automation-driven triggers to eliminate manual intervention and directed the technical logic for autonomous decision-making across teams.",
-    whyImportant: "200% velocity gains with zero headcount growth allow the business to capture market share before opportunities expire.",
-    results: [
-      { metric: "Velocity", outcome: "200% Increase" }
-    ]
-  },
-  {
-    id: 2,
-    headline: "500x Insight Scale: AI Data Engine",
-    tags: ["AI/Automation", "Process", "Operations"],
-    fundamentalQuestion: "What is the one piece of information that actually changes our minds?",
-    problemStatement: "Manual finance planning was too slow and reactive to guide high-velocity enterprise strategy.",
-    how: "I applied First Principles Thinking to strip the process to its core data needs and rebuilt it as a scalable backend engine, serving as the primary architect for the system transition.",
-    whyImportant: "500x processing at $0 labor cost turns data into a real-time asset for proactive decisions.",
-    results: [
-      { metric: "Processing Capacity", outcome: "500x Increase" },
-      { metric: "Manual Labor", outcome: "$0" },
-      { metric: "Insight Availability", outcome: "Real-time" }
-    ]
-  },
-  {
-    id: 3,
-    headline: "Slashing Waste: 66% Leaner Global Ops",
-    tags: ["Leadership", "Operations", "MarTech"],
-    fundamentalQuestion: "How do we make sure our best people are working on our biggest problems?",
-    problemStatement: "Global teams lacked centralized oversight, leading to resource overlap and significant staffing waste.",
-    how: "I optimized a global service management model within Adobe Workfront, balancing speed and risk to ensure high-quality, continuous delivery across all time zones.",
-    whyImportant: "Slashing waste while expanding to 24/7 support ensures talent focus is on high-value output.",
-    results: [
-      { metric: "Staffing Waste", outcome: "66% Reduction" },
-      { metric: "Operation Support", outcome: "24/7" },
-      { metric: "Resource Visibility", outcome: "100% Centralized" }
-    ]
-  },
-  {
-    id: 4,
-    headline: "Compliance First: SaaS-to-SaaS Win",
-    tags: ["MarTech", "Operations", "Process"],
-    fundamentalQuestion: "Can we make the 'right way' the 'easiest way' by building it into the system?",
-    problemStatement: "Manual compliance reviews were a major bottleneck that delayed modern cloud-to-cloud technical integrations.",
-    how: "I led the first compliant SaaS-to-SaaS integration by embedding risk checks directly into the technical layer, turning a gatekeeper process into a self-service enabler.",
-    whyImportant: "Turning governance into a service allows for rapid innovation without compromising security.",
-    results: [
-      { metric: "Compliance Delay", outcome: "0%" },
-      { metric: "Audit Pass Rate", outcome: "100%" },
-      { metric: "Governance Efficiency", outcome: "First-of-Kind" }
-    ]
-  },
-  {
-    id: 5,
-    headline: "Co-Founder: $1B Growth Platform",
-    tags: ["Leadership", "Product", "MarComm", "MarTech"],
-    fundamentalQuestion: "How do we make sure our brand speaks with one voice to every customer?",
-    problemStatement: "Disjointed personalization tools led to fragmented customer experiences and missed revenue opportunities.",
-    how: "I co-founded and co-architected 'Catalyst,' a centralized platform that synced personalization logic across all channels, defining the core requirements for massive scale.",
-    whyImportant: "Driving $1B+ in revenue proves enterprise personalization is a core financial engine.",
-    results: [
-      { metric: "Revenue Growth", outcome: "$1B+" },
-      { metric: "Channel Consistency", outcome: "100%" },
-      { metric: "Platform Uptime", outcome: "100%" }
-    ]
-  },
-  {
-    id: 6,
-    headline: "Unlocked $146M via Data Roadmaps",
-    tags: ["Product", "Operations", "Process"],
-    fundamentalQuestion: "How do we know which of our many ideas will actually move the needle?",
-    problemStatement: "High-value marketing ideas often failed to launch due to poor prioritization and technical execution gaps.",
-    how: "I created a data-driven prioritization framework that ranked personalization tasks by ROI, ensuring the engineering team always built the most valuable features first.",
-    whyImportant: "Bridging the gap between strategy and code realized $146M in actual market value.",
-    results: [
-      { metric: "Revenue Generated", outcome: "$146M" },
-      { metric: "Roadmap Prioritization", outcome: "100% Data-Driven" },
-      { metric: "Execution Gap", outcome: "Eliminated" }
-    ]
-  },
-  {
-    id: 7,
-    headline: "78% Faster Marketing Deployments",
-    tags: ["MarComm", "Process", "Operations"],
-    fundamentalQuestion: "How can we change direction as fast as our customers do?",
-    problemStatement: "Rigid, waterfall-style deployment cycles prevented marketing from responding to real-time market shifts.",
-    how: "I transformed the project lifecycle into an agile framework, integrating compliance checks into the sprint cycle to remove traditional roadblocks.",
-    whyImportant: "78% faster cycles mean the business can respond to competitors in days rather than months.",
-    results: [
-      { metric: "Deployment Speed", outcome: "78% Improvement" },
-      { metric: "Deployment Compliance", outcome: "100%" },
-      { metric: "Lifecycle Agility", outcome: "Enterprise-Scalable" }
-    ]
-  },
-  {
-    id: 8,
-    headline: "Strategy-to-Code: The Eng Bridge",
-    tags: ["Leadership", "Product", "MarTech"],
-    fundamentalQuestion: "Are we limited by our tools, or just by how we’ve always used them?",
-    problemStatement: "Misalignment between business goals and engineering execution led to technical debt and missed features.",
-    how: "As Product Owner, I served as the 'translator,' architecting the functional requirements for 'Engage' to ensure technical builds matched business strategy.",
-    whyImportant: "Ensuring 100% alignment ensures dev dollars create immediate marketing value rather than rework.",
-    results: [
-      { metric: "Business-Tech Alignment", outcome: "100%" },
-      { metric: "Platform Adoption", outcome: "Enterprise-wide" },
-      { metric: "Rework Costs", outcome: "Significantly Reduced" }
-    ]
-  },
-  {
-    id: 9,
-    headline: "250+ High-Logic UX Deliveries",
-    tags: ["MarComm", "UX/Design", "Operations"],
-    fundamentalQuestion: "How do we stay human at a scale of millions?",
-    problemStatement: "Scaling high-logic personalized campaigns manually was unsustainable and prone to experience errors.",
-    how: "I led the delivery strategy for automated content programming, ensuring that personalized data never compromised the high-quality design of the customer journey.",
-    whyImportant: "Delivering 250+ campaigns at scale proves logic doesn't have to break the user experience.",
-    results: [
-      { metric: "Campaigns Delivered", outcome: "250+" },
-      { metric: "UX Consistency", outcome: "100%" },
-      { metric: "System Logic", outcome: "High-Scale" }
-    ]
-  },
-  {
-    id: 10,
-    headline: "$700K Gain: Data-Led Efficiency",
-    tags: ["MarComm", "MarTech", "Process"],
-    fundamentalQuestion: "How do we stop sending noise and start sending value?",
-    problemStatement: "Generic marketing communications lacked relevancy, leading to wasted spend and lower engagement.",
-    how: "I integrated data-driven relevancy models into the marketing lifecycle, focusing spend on the highest-performing segments to maximize both savings and revenue.",
-    whyImportant: "Six-figure gains through relevancy show that personalization is a profit center, not a cost center.",
-    results: [
-      { metric: "Financial Gain", outcome: "$700K+" },
-      { metric: "Comm Relevancy", outcome: "Increased" },
-      { metric: "Lifecycle Efficiency", outcome: "Improved" }
-    ]
-  },
-  {
-    id: 11,
-    headline: "Scaling Pilots to Core Functions",
-    tags: ["Product", "Process", "Operations"],
-    fundamentalQuestion: "How do we take a single success and make it our standard way of working?",
-    problemStatement: "Successful 'pilot' programs often failed to scale because they lacked a repeatable operational model.",
-    how: "I established the operational frameworks that standardized personalization, moving it from a localized experiment to a permanent, global business function.",
-    whyImportant: "Scaling pilots ensures that innovation actually becomes part of the company's financial DNA.",
-    results: [
-      { metric: "Pilot Success Rate", outcome: "High" },
-      { metric: "Core Business Adoption", outcome: "100%" },
-      { metric: "Organizational Scale", outcome: "Enterprise" }
-    ]
-  },
-  {
-    id: 12,
-    headline: "Rating Surge: 2.0 to 4.5 Stars",
-    tags: ["Leadership", "Product", "UX/Design"],
-    fundamentalQuestion: "Where are we accidentally annoying people while trying to help them?",
-    problemStatement: "A poor user experience in the flagship app was driving high churn and negative brand sentiment.",
-    how: "I directed a data-led redesign, using user analytics to pinpoint where customers were struggling and prioritizing those fixes in the development roadmap.",
-    whyImportant: "Moving from 2.0 to 4.5 stars signals brand recovery and lowers acquisition costs.",
-    results: [
-      { metric: "App Rating", outcome: "4.5 Stars" },
-      { metric: "User Churn", outcome: "Reduced" },
-      { metric: "Sentiment", outcome: "Positive Shift" }
-    ]
-  },
-  {
-    id: 13,
-    headline: "$30M Saved via Design Thinking",
-    tags: ["UX/Design", "Process", "Operations"],
-    fundamentalQuestion: "If we started from scratch today, would we still do it this way?",
-    problemStatement: "Legacy project lifecycle processes were inefficient and consumed millions in unnecessary operational overhead.",
-    how: "I engineered process improvements using Design Thinking to identify waste and structured data models to track the resulting savings in real-time.",
-    whyImportant: "Saving $30M via design thinking proves efficient processes are as valuable as new revenue.",
-    results: [
-      { metric: "Cost Savings", outcome: "$30M" },
-      { metric: "Process Efficiency", outcome: "Scaled" },
-      { metric: "Data Model Accuracy", outcome: "High" }
-    ]
-  },
-  {
-    id: 14,
-    headline: "Agent UX: Cutting Handle Times",
-    tags: ["UX/Design", "Process", "Operations"],
-    fundamentalQuestion: "What is the shortest path between a customer's problem and our solution?",
-    problemStatement: "Agents were forced to use fragmented, legacy tools that increased handle times and customer frustration.",
-    how: "I designed a centralized interface and optimized backend data flows to provide agents with the exact information they need in a single view.",
-    whyImportant: "Optimizing UX for 35K users saves millions and drastically improves workforce morale.",
-    results: [
-      { metric: "User Base", outcome: "35,000+ Agents" },
-      { metric: "Handle Time", outcome: "Reduced" },
-      { metric: "Navigation Friction", outcome: "Minimized" }
-    ]
-  },
-  {
-    id: 15,
-    headline: "Recovery: 60 Defect Fixes in 90 Days",
-    tags: ["Leadership", "MarComm", "Operations"],
-    fundamentalQuestion: "How do we stop the bleeding so we can start building?",
-    problemStatement: "A high rate of technical defects was stalling marketing launches and eroding stakeholder trust.",
-    how: "I led a 'stabilization sprint,' prioritizing the most impactful defects and streamlining the engineering workflow to resolve 60 issues in one quarter.",
-    whyImportant: "Rapid stabilization restores the operational foundation required for future growth.",
-    results: [
-      { metric: "Critical Defects Resolved", outcome: "60" },
-      { metric: "Timeline", outcome: "90 Days" },
-      { metric: "Portfolio Health", outcome: "Stabilized" }
-    ]
-  },
-  {
-    id: 16,
-    headline: "60% DAU Surge via Journey Mapping",
-    tags: ["Product", "MarComm", "UX/Design"],
-    fundamentalQuestion: "Why would someone pick us when they have a world of other options?",
-    problemStatement: "Low adoption of the mobile digital ecosystem was limiting the brand's influence and growth potential.",
-    how: "I optimized marketing campaigns and used journey mapping to remove technical roadblocks, making it easier for users to adopt the mobile web portal.",
-    whyImportant: "60% DAU growth proves journey optimization is the direct path to sustainable engagement.",
-    results: [
-      { metric: "DAU Growth", outcome: "60%" },
-      { metric: "User Base", outcome: "800k" },
-      { metric: "Adoption Velocity", outcome: "Accelerated" }
-    ]
-  },
-  {
-    id: 17,
-    headline: "57% Faster Market-to-Launch Flow",
-    tags: ["Product", "Process", "Operations"],
-    fundamentalQuestion: "How do we get our best ideas into the world before they lose their spark?",
-    problemStatement: "7-day production cycles were too slow to compete in a high-velocity digital market.",
-    how: "I re-engineered the production cycle by identifying 'dead time' in the workflow and automating transition points, cutting the cycle from 7 days down to 3.",
-    whyImportant: "57% faster time-to-market allows the brand to dominate digital ecosystems before competitors.",
-    results: [
-      { metric: "TTM Reduction", outcome: "57%" },
-      { metric: "Cycle Time", outcome: "3 Days" },
-      { metric: "Launch Capacity", outcome: "Expanded" }
+      id: 1,
+      headline: "Velocity Acceleration via Automation-Led Pipelines",
+      tags: ["Leadership", "Process", "Operations"],
+      fundamentalQuestion: "How can we do in minutes what currently takes us days?",
+      problemStatement: "Fragmented handoffs and manual approval layers created a \"wait-state\" culture that stalled campaign delivery.",
+      how: "I architected an automated delivery pipeline using automation-driven triggers to eliminate manual intervention and directed the technical logic for autonomous decision-making across teams.",
+      whyImportant: "200% velocity gains with zero headcount growth allow the business to capture market share before opportunities expire.",
+      results: [
+        { metric: "Velocity", outcome: "200% Increase" },
+        { metric: "Human Overhead", outcome: "0% Growth" },
+        { metric: "Cross-functional Handoffs", outcome: "100% Automated" }
+      ]
+    },
+    {
+      id: 2,
+      headline: "Insights at Scale: Automation Data Engine",
+      tags: ["AI/Automation", "Process", "Operations"],
+      fundamentalQuestion: "What is the one piece of information that actually changes our minds?",
+      problemStatement: "Manual finance planning was too slow and reactive to guide high-velocity enterprise strategy.",
+      how: "I applied First Principles Thinking to strip the process to its core data needs and had it rebuilt as a scalable backend engine, serving as the director for the system transition.",
+      whyImportant: "500x processing at $0 labor cost turns data into a real-time asset for proactive decisions.",
+      results: [
+        { metric: "Processing Capacity", outcome: "500x Increase" },
+        { metric: "Manual Labor", outcome: "$0" },
+        { metric: "Insight Availability", outcome: "Real-time" }
+      ]
+    },
+    {
+      id: 3,
+      headline: "Slashing Waste: A Leaner Global Operation",
+      tags: ["Leadership", "Operations", "MarTech"],
+      fundamentalQuestion: "How do we make sure our best people are working on our biggest problems?",
+      problemStatement: "Global teams lacked centralized oversight, leading to resource overlap and significant staffing waste.",
+      how: "I optimized operations using a global service management model within Adobe Workfront, balancing speed and risk to ensure high-quality, continuous delivery across all time zones.",
+      whyImportant: "Slashing waste while expanding to 24/7 support ensures talent focus is on high-value output.",
+      results: [
+        { metric: "Staffing Waste", outcome: "66% Reduction" },
+        { metric: "Operation Support", outcome: "24/7" },
+        { metric: "Resource Visibility", outcome: "100% Centralized" }
+      ]
+    },
+    {
+      id: 4,
+      headline: "Breaking Down Walls: First Compliant SaaS-to-SaaS",
+      tags: ["MarTech", "Operations", "Process"],
+      fundamentalQuestion: "Can we make the 'right way' the 'easiest way' by building it into the system?",
+      problemStatement: "Manual compliance reviews were a major bottleneck that delayed modern cloud-to-cloud technical integrations.",
+      how: "I led the first compliant SaaS-to-SaaS integration by embedding risk checks directly into the technical layer, turning a gatekeeper process into a self-service enabler.",
+      whyImportant: "Turning governance into a service allows for rapid innovation without compromising security.",
+      results: [
+        { metric: "Compliance Delay", outcome: "0%" },
+        { metric: "Audit Pass Rate", outcome: "100%" },
+        { metric: "Governance Efficiency", outcome: "First-of-Kind" }
+      ]
+    },
+    {
+      id: 5,
+      headline: "Scaling MarComm: $1B Growth Platform",
+      tags: ["Leadership", "Product", "MarComm", "MarTech"],
+      fundamentalQuestion: "How do we make sure our brand speaks with one voice to every customer?",
+      problemStatement: "Disjointed personalization tools led to fragmented customer experiences and missed revenue opportunities.",
+      how: "I co-founded, co-architected, and designed 'Catalyst,' a centralized platform that synced personalization logic and marketing communication programming across all channels, defining the core requirements for massive scale.",
+      whyImportant: "Driving $1B+ in revenue proves enterprise personalization is a core financial engine.",
+      results: [
+        { metric: "Revenue Growth", outcome: "$1B+" },
+        { metric: "Content Multiplier", outcome: "1:10" },
+        { metric: "Speed to Market", outcome: "99.7% Improvement" }
+      ]
+    },
+    {
+      id: 6,
+      headline: "Data-Driven Decisions: Unlocking The Roadmap",
+      tags: ["Product", "Operations", "Process"],
+      fundamentalQuestion: "How do we know which of our many ideas will actually move the needle?",
+      problemStatement: "High-value marketing ideas often failed to launch due to poor prioritization and technical execution gaps.",
+      how: "I created a data-driven prioritization framework that ranked personalization tasks by ROI, ensuring the engineering team always built the most valuable features first.",
+      whyImportant: "Bridging the gap between strategy and code realized $146M in actual market value.",
+      results: [
+        { metric: "Revenue Generated", outcome: "$146M" },
+        { metric: "Roadmap Prioritization", outcome: "100% Data-Driven" },
+        { metric: "Execution Gap", outcome: "Eliminated" }
+      ]
+    },
+    {
+      id: 7,
+      headline: "Shifting Process: Working Smarter",
+      tags: ["MarComm", "Process", "Operations"],
+      fundamentalQuestion: "How can we change direction as fast as our customers do?",
+      problemStatement: "Rigid, waterfall-style deployment cycles prevented marketing from responding to real-time market shifts.",
+      how: "I transformed the project lifecycle from a parallel waterfall process into a parallel agile framework, integrating compliance checks into the sprint cycle to remove traditional roadblocks.",
+      whyImportant: "78% faster cycles mean the business can respond to competitors in days rather than months.",
+      results: [
+        { metric: "Lifecycle Speed", outcome: "78% Improvement" },
+        { metric: "Deployment Compliance", outcome: "100%" },
+        { metric: "Content Reuse", outcome: "One-to-Many" }
+      ]
+    },
+    {
+      id: 8,
+      headline: "Strategy-to-Code: The Technology Bridge",
+      tags: ["Leadership", "Product", "MarTech", "Process"],
+      fundamentalQuestion: "Are we limited by our tools, or just by how we’ve always used them?",
+      problemStatement: "Misalignment between business goals and engineering execution led to technical debt and missed features.",
+      how: "As Product Owner, I served as the 'translator,' architecting the functional requirements for 'Engage' to ensure technical builds matched business strategy. I established the operational frameworks that standardized personalization, moving it from a localized experiment to a permanent, global business function.",
+      whyImportant: "Ensuring 100% alignment ensures dev dollars create immediate marketing value rather than rework.",
+      results: [
+        { metric: "Business-Tech Alignment", outcome: "100%" },
+        { metric: "Speed to Market", outcome: "20% Improvement" },
+        { metric: "Rework Costs", outcome: "Significantly Reduced" }
+      ]
+    },
+    {
+      id: 9,
+      headline: "Marketing Delivery: Personalized Campaigns",
+      tags: ["MarComm", "UX/Design", "Operations"],
+      fundamentalQuestion: "How do we stay human at a scale of millions?",
+      problemStatement: "Scaling high-logic personalized campaigns manually was unsustainable and prone to experience errors.",
+      how: "I led the delivery strategy for automated content programming, ensuring that personalized data never compromised the high-quality design of the customer journey.",
+      whyImportant: "Delivering 250+ campaigns at scale proves logic doesn't have to break the user experience.",
+      results: [
+        { metric: "Campaigns Delivered", outcome: "250+" },
+        { metric: "UX Consistency", outcome: "100%" },
+        { metric: "Personalization", outcome: "High-Scale" }
+      ]
+    },
+    {
+      id: 10,
+      headline: "Data-Driven: MarComm Efficiency",
+      tags: ["MarComm", "MarTech", "Process"],
+      fundamentalQuestion: "How do we stop sending noise and start sending value?",
+      problemStatement: "Generic marketing communications lacked relevancy, leading to wasted spend and lower engagement.",
+      how: "I integrated data-driven relevancy models into the marketing lifecycle, focusing spend on the highest-performing segments to maximize both savings and revenue.",
+      whyImportant: "$700K gains through relevancy show that personalization is a profit center, not a cost center.",
+      results: [
+        { metric: "Financial Gain", outcome: "$700K+" },
+        { metric: "Comm Relevancy", outcome: "Increased" },
+        { metric: "Lifecycle Efficiency", outcome: "15% Improved" }
+      ]
+    },
+    {
+      id: 11,
+      headline: "The Benefits of Listening To The Customer",
+      tags: ["Leadership", "Product", "UX/Design", "Process", "Operations"],
+      fundamentalQuestion: "Where are we accidentally annoying people while trying to help them?",
+      problemStatement: "A poor user experience in the flagship app was driving high churn and negative brand sentiment.",
+      how: "I directed a data-led redesign, using user analytics to pinpoint where customers were struggling and prioritizing those fixes in the development roadmap. I engineered process improvements using Design Thinking to identify waste and structured data models to track the resulting savings in real-time.",
+      whyImportant: "Moving from 2.0 to 4.5 stars signals brand recovery and lowers acquisition costs, resulting in $30M in call-deflection value.",
+      results: [
+        { metric: "App Rating", outcome: "4.5 Stars" },
+        { metric: "Utilization", outcome: "15% Improved" },
+        { metric: "Cost Savings", outcome: "$30M" }
+      ]
+    },
+    {
+      id: 12,
+      headline: "Agent UX: Cutting Handle Times",
+      tags: ["UX/Design", "Process", "Operations"],
+      fundamentalQuestion: "What is the shortest path between a customer's problem and our solution?",
+      problemStatement: "Agents were forced to use fragmented, legacy tools that increased handle times and customer frustration.",
+      how: "I designed a centralized interface and optimized backend data flows to provide agents with the exact information they need in a single view.",
+      whyImportant: "Optimizing UX for 35K users saves millions and drastically improves workforce morale.",
+      results: [
+        { metric: "User Base", outcome: "35,000+ Agents" },
+        { metric: "Handle Time", outcome: "Reduced" },
+        { metric: "Navigation Friction", outcome: "Minimized" }
+      ]
+    },
+    {
+      id: 13,
+      headline: "Process Recovery: Preventing Defects",
+      tags: ["Leadership", "Operations"],
+      fundamentalQuestion: "How do we stop the bleeding so we can start building?",
+      problemStatement: "A high rate of technical defects was stalling marketing launches and eroding stakeholder trust.",
+      how: "I led a 'stabilization sprint,' prioritizing the most impactful defects and streamlining the engineering workflow to resolve 60 issues in one quarter.",
+      whyImportant: "Rapid stabilization restores the operational foundation required for future growth.",
+      results: [
+        { metric: "Critical Defects Resolved", outcome: "60" },
+        { metric: "Timeline", outcome: "90 Days" },
+        { metric: "Portfolio Health", outcome: "Stabilized" }
+      ]
+    },
+    {
+      id: 14,
+      headline: "Journey Mapping: When Usage Surges",
+      tags: ["Product", "MarComm", "UX/Design"],
+      fundamentalQuestion: "Why would someone pick us when they have a world of other options?",
+      problemStatement: "Low adoption of the mobile digital ecosystem was limiting the brand's influence and growth potential.",
+      how: "I optimized marketing campaigns and used journey mapping to remove technical roadblocks, making it easier for users to adopt the mobile web portal.",
+      whyImportant: "60% DAU growth proves journey optimization is the direct path to sustainable engagement.",
+      results: [
+        { metric: "DAU Growth", outcome: "60%" },
+        { metric: "User Base", outcome: "800k" },
+        { metric: "Adoption Velocity", outcome: "Accelerated" }
+      ]
+    },
+    {
+      id: 15,
+      headline: "Speed To Market: Unlocked",
+      tags: ["Product", "Process", "Operations"],
+      fundamentalQuestion: "How do we get our best ideas into the world before they lose their spark?",
+      problemStatement: "7-day production cycles were too slow to compete in a high-velocity digital market.",
+      how: "I re-engineered the production cycle by identifying 'dead time' in the workflow and automating transition points, cutting the cycle from 7 days down to 3.",
+      whyImportant: "57% faster time-to-market allows the brand to dominate digital ecosystems before competitors.",
+      results: [
+        { metric: "TTM Reduction", outcome: "57%" },
+        { metric: "Cycle Time", outcome: "3 Days" },
+        { metric: "Launch Capacity", outcome: "Expanded" }
     ]
   }
 ];

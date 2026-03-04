@@ -1,4 +1,4 @@
-import React from 'react';
+import { cloneElement } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const Journey = ({ t, isDarkMode, journeyPoints, activeJourneyStep, setActiveJourneyStep }) => {
@@ -56,7 +56,7 @@ const Journey = ({ t, isDarkMode, journeyPoints, activeJourneyStep, setActiveJou
               <div className="relative flex flex-col items-center text-center">
                   <div className="flex items-center justify-center gap-5 md:gap-8 w-full">
                       <div className={`w-14 h-14 md:w-20 md:h-20 ${t.bg} border ${t.itemBorder} rounded-xl md:rounded-3xl flex items-center justify-center ${t.accentText} shadow-inner shrink-0 relative group/icon`}>
-                        {React.cloneElement(journeyPoints[activeJourneyStep].icon, { size: isDarkMode ? 28 : 34 })}
+                        {cloneElement(journeyPoints[activeJourneyStep].icon, { size: isDarkMode ? 28 : 34 })}
                       </div>
                       <h3 className={`text-2xl md:text-5xl font-bold ${t.heading} tracking-tight leading-tight`}>
                         {journeyPoints[activeJourneyStep].title}

@@ -1,4 +1,3 @@
-import React from 'react';
 import { X, BarChart3, Award, Workflow } from 'lucide-react';
 
 const CaseStudyModal = ({ t, selectedCaseStudy, setSelectedCaseStudy }) => {

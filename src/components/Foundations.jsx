@@ -1,9 +1,9 @@
-import React from 'react';
+import { cloneElement } from 'react';
 import { Layers, Briefcase, BookOpen, ShieldCheck, Award, Globe } from 'lucide-react';
 
 const renderIcon = (icon, size = 20) => {
   if (!icon) return null;
-  return React.cloneElement(icon, { size });
+  return cloneElement(icon, { size });
 };
 
 const Foundations = ({ t, skillGroups, resumeData }) => {

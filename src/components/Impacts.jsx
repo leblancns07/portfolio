@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight, Target, Workflow } from 'lucide-react';
 import { caseStudies } from '../data/portfolio.jsx';
 import CaseStudyModal from './CaseStudyModal';
@@ -50,7 +50,7 @@ const Impacts = ({ t, SHOW_CASE_STUDIES }) => {
                 
                 <div ref={filterScrollRef} onScroll={checkScroll} className="flex flex-nowrap gap-2 overflow-x-auto scrollbar-hide w-full max-w-full scroll-smooth">
                   {["All", "Leadership", "Product", "UX/Design", "MarTech", "AI/Automation", "MarComm", "Process", "Operations"].map(f => (
-                    <button key={f} onClick={() => { setActiveFilter(f); setTimeout(checkScroll, 50); }} className={`px-4 py-2 rounded-lg text-[10px] font-bold tracking-tight transition-all active:scale-95 whitespace-nowrap ${activeFilter === f ? t.tabActive : t.tabInactive}`}>{f}</button>
+                    <button key={f} onClick={() => { setActiveFilter(f); setTimeout(checkScroll, 50); }} className={`px-4 py-2 rounded-lg text-xs font-bold tracking-tight transition-all active:scale-95 whitespace-nowrap ${activeFilter === f ? t.tabActive : t.tabInactive}`}>{f}</button>
                   ))}
                 </div>
 
